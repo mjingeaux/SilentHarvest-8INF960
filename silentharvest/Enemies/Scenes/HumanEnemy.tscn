@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://cs1plvef6f8u1"]
+
+[ext_resource type="Texture2D" uid="uid://4oxrymhiy31k" path="res://icon.svg" id="1_t3s2h"]
+[ext_resource type="Script" path="res://Enemies/Scripts/human_enemy.gd" id="1_xs7d5"]
+[ext_resource type="Script" path="res://Enemies/Scripts/enemy_state_machine.gd" id="3_ym6pk"]
+[ext_resource type="Script" path="res://Enemies/Scripts/States/enemy_state_idle.gd" id="4_mrbuv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wd6u1"]
+size = Vector2(148, 148)
+
+[node name="HumanEnemy" type="CharacterBody2D"]
+script = ExtResource("1_xs7d5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wd6u1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_t3s2h")
+
+[node name="EnemyStateMachine" type="Node" parent="."]
+script = ExtResource("3_ym6pk")
+
+[node name="Idle" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("4_mrbuv")
