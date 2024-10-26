@@ -1,20 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs1plvef6f8u1"]
+[gd_scene load_steps=8 format=3 uid="uid://cs1plvef6f8u1"]
 
 [ext_resource type="Texture2D" uid="uid://4oxrymhiy31k" path="res://icon.svg" id="1_t3s2h"]
 [ext_resource type="Script" path="res://Enemies/Scripts/human_enemy.gd" id="1_xs7d5"]
 [ext_resource type="Script" path="res://Enemies/Scripts/enemy_state_machine.gd" id="3_ym6pk"]
 [ext_resource type="Script" path="res://Enemies/Scripts/States/enemy_state_idle.gd" id="4_mrbuv"]
+[ext_resource type="Script" path="res://Enemies/Scripts/States/enemy_state_chase.gd" id="5_cki7o"]
+[ext_resource type="PackedScene" uid="uid://dh01ugaralit0" path="res://Enemies/Scenes/VisionArea.tscn" id="6_c8emu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd6u1"]
-size = Vector2(148, 148)
+size = Vector2(54, 23)
 
 [node name="HumanEnemy" type="CharacterBody2D"]
 script = ExtResource("1_xs7d5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 18.5)
 shape = SubResource("RectangleShape2D_wd6u1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.375, 0.359375)
 texture = ExtResource("1_t3s2h")
 
 [node name="EnemyStateMachine" type="Node" parent="."]
@@ -22,3 +26,14 @@ script = ExtResource("3_ym6pk")
 
 [node name="Idle" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("4_mrbuv")
+
+[node name="Chase" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("vision_area", "next_state")]
+script = ExtResource("5_cki7o")
+vision_area = NodePath("../../VisionArea")
+next_state = NodePath("../Idle")
+
+[node name="VisionArea" parent="." instance=ExtResource("6_c8emu")]
+position = Vector2(2, 10)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea"]
+polygon = PackedVector2Array(-16, 0, 16, 0, 128, 128, -128, 128)
