@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://qexsipij86go"]
+
+[ext_resource type="Texture2D" uid="uid://crigktfbspyrv" path="res://warning.png" id="1_nx2w4"]
+
+[node name="ExclamationMark" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -93)
+scale = Vector2(0.142578, 0.173828)
+texture = ExtResource("1_nx2w4")
