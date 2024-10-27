@@ -24,8 +24,9 @@ texture = ExtResource("1_t3s2h")
 [node name="EnemyStateMachine" type="Node" parent="."]
 script = ExtResource("3_ym6pk")
 
-[node name="Idle" type="Node" parent="EnemyStateMachine"]
+[node name="Idle" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_idle_state")]
 script = ExtResource("4_mrbuv")
+after_idle_state = NodePath(".")
 
 [node name="Chase" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("vision_area", "next_state")]
 script = ExtResource("5_cki7o")

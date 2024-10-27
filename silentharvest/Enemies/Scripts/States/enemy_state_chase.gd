@@ -6,7 +6,7 @@ class_name EnemyStateChase extends EnemyState
 
 @export_category("AI")
 @export var vision_area : VisionArea
-@export var state_aggro_duration : float = 0.5
+@export var state_aggro_duration : float = 1.5
 @export var next_state : EnemyState
 
 var _timer : float = 0.0
@@ -27,8 +27,8 @@ func enter() -> void:
 	_timer = state_aggro_duration
 	enemy.update_animation(anim_name) 
 	
-	#enemy.velocity = _direction * chase_speed
-	#enemy.set_direction(_direction)
+	enemy.velocity = _direction * chase_speed
+	enemy.set_direction(_direction)
 	pass
 	
 

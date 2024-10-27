@@ -18,6 +18,7 @@ const JUMP_VELOCITY = -400.0
 
 func _ready():
 	state_machine.initialize(self)
+	
 	pass
 
 func _process(delta):
@@ -26,6 +27,7 @@ func _process(delta):
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
+	
 
 func set_direction(_new_direction : Vector2) -> bool:
 	direction = _new_direction
@@ -42,7 +44,7 @@ func set_direction(_new_direction : Vector2) -> bool:
 	return true
 	
 func update_animation(state : String) -> void:
-	animation_player.play(state+"_"+anim_direction())
+	#animation_player.play(state+"_"+anim_direction())
 	pass
 
 func anim_direction() -> String:
