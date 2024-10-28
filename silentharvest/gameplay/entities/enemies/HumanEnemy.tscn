@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://cs1plvef6f8u1"]
 
 [ext_resource type="Texture2D" uid="uid://4oxrymhiy31k" path="res://icon.svg" id="1_t3s2h"]
-[ext_resource type="Script" path="res://Enemies/Scripts/human_enemy.gd" id="1_xs7d5"]
-[ext_resource type="Script" path="res://Enemies/Scripts/enemy_state_machine.gd" id="3_ym6pk"]
-[ext_resource type="Script" path="res://Enemies/Scripts/States/enemy_state_idle.gd" id="4_mrbuv"]
-[ext_resource type="Script" path="res://Enemies/Scripts/States/enemy_state_chase.gd" id="5_cki7o"]
-[ext_resource type="PackedScene" uid="uid://dh01ugaralit0" path="res://Enemies/Scenes/VisionArea.tscn" id="6_c8emu"]
+[ext_resource type="Script" path="res://gameplay/entities/enemies/human_enemy.gd" id="1_xs7d5"]
+[ext_resource type="Script" path="res://gameplay/entities/enemies/enemy_state_machine.gd" id="3_ym6pk"]
+[ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_idle.gd" id="4_mrbuv"]
+[ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_chase.gd" id="5_cki7o"]
+[ext_resource type="PackedScene" uid="uid://dh01ugaralit0" path="res://gameplay/entities/enemies/VisionArea.tscn" id="6_c8emu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd6u1"]
 size = Vector2(54, 23)
@@ -38,3 +38,8 @@ position = Vector2(2, 10)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea"]
 polygon = PackedVector2Array(-16, 0, 16, 0, 128, 128, -128, 128)
+
+[node name="POI_Timer_TEMP" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="POI_Timer_TEMP" to="." method="_on_poi_timer_temp_timeout"]

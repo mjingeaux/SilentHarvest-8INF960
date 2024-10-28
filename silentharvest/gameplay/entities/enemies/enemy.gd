@@ -2,6 +2,7 @@ class_name Enemy extends CharacterBody2D
 
 signal direction_changed( _new_direction : Vector2)
 signal enemy_damaged()
+signal poi_finished()
 
 const DIR_4 = [Vector2.RIGHT,Vector2.DOWN,Vector2.LEFT,Vector2.UP]
 
@@ -60,3 +61,7 @@ func anim_direction() -> String:
 		return "up"
 	else:
 		return "side"
+		
+func play_poi(poi_id : int):
+	print("playing point of interest ", poi_id)
+	$POI_Timer_TEMP.start()
