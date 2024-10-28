@@ -46,7 +46,7 @@ func set_direction(_new_direction : Vector2) -> bool:
 	
 func update_animation(state : String) -> void:
 	if state == "chase":
-		var exclamation = preload("res://Enemies/Scenes/ExclamationMark.tscn").instantiate()
+		var exclamation = preload("res://gameplay/entities/enemies/ExclamationMark.tscn").instantiate()
 		add_child(exclamation)
 		await get_tree().create_timer(0.5).timeout
 		remove_child(exclamation)

@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cglq8jyi26srj"]
-
-[ext_resource type="PackedScene" uid="uid://cs1plvef6f8u1" path="res://Enemies/Scenes/HumanEnemy.tscn" id="1_q23el"]
-
-[node name="TestChase" type="Node2D"]
-
-[node name="HumanEnemy" parent="." instance=ExtResource("1_q23el")]
-position = Vector2(413, 145)
