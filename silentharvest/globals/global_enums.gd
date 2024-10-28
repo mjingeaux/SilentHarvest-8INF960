@@ -1,4 +1,4 @@
-class_name GlobalEnum
+class_name GlobalEnum extends Node
 
 #name with EnameOfTheEnum
 

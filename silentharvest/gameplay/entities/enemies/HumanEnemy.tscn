@@ -37,3 +37,7 @@ position = Vector2(2, 10)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea"]
 polygon = PackedVector2Array(-16, 0, 16, 0, 128, 128, -128, 128)
+
+[node name="POI_Timer_TEMP" type="Timer" parent="."]
+
+[connection signal="timeout" from="POI_Timer_TEMP" to="." method="_on_poi_timer_temp_timeout"]

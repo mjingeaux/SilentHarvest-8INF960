@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="SilentHarvest"
+run/main_scene="res://gameplay/levels/Level_1.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -18,6 +19,18 @@ config/icon="res://icon.svg"
 
 PlayerManager="*res://globals/global_player_manager.gd"
 GlobalE="*res://globals/global_enums.gd"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "red",
+"res://assets/audio/": "orange",
+"res://assets/sprites/": "yellow",
+"res://gameplay/": "blue",
+"res://gameplay/entities/": "teal",
+"res://gameplay/levels/": "green",
+"res://globals/": "gray"
+}
 
 [rendering]
 
