@@ -39,5 +39,6 @@ position = Vector2(2, 10)
 polygon = PackedVector2Array(-16, 0, 16, 0, 128, 128, -128, 128)
 
 [node name="POI_Timer_TEMP" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="POI_Timer_TEMP" to="." method="_on_poi_timer_temp_timeout"]

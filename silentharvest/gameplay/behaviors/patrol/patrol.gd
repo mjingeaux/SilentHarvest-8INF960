@@ -25,10 +25,11 @@ func _ready() -> void:
 	add_entity_to_path_follow_node.call_deferred()
 	
 	# Scans its children in search of path2D
-	for c in get_children():
+	for id in range(get_child_count()):
+		var c = get_child(id)
 		if (c is Path2D):
 			path_count += 1
-			print(c.name, " detected !")
+			print(c.name, " detected ! (", id, ")")
 			
 	start_patrol()
 	
@@ -46,14 +47,15 @@ func start_patrol():
 	change_patrol_segment()
 	
 func change_patrol_segment(id := 0):
-	var next_path : Path2D = get_node(str("Path", id))
+	var next_path : Path2D = get_child(id)
 	if (current_path_id != -1):
-		get_child(current_path_id).remove_child(path_follow_node)
+		get_child(current_path_id - reverse).remove_child(path_follow_node)
 		next_path.add_child(path_follow_node)
 	else:
 		next_path.add_child(path_follow_node)
 	current_path_id = id
 	current_path_lenth = next_path.curve.get_baked_length()
+	path_follow_node.progress_ratio = 0. if (reverse == 1.) else 1.
 	
 func play_entity_poi():
 	paused = true
@@ -70,7 +72,6 @@ func _process(delta: float) -> void:
 	if (!paused):
 		path_follow_node.progress += speed * delta * reverse
 		
-		print(path_follow_node.progress_ratio)
 		if ((path_follow_node.progress_ratio >= 1. ||
 		 path_follow_node.progress_ratio <= 0.) &&
 		 !just_started):
@@ -80,12 +81,13 @@ func _process(delta: float) -> void:
 			if (current_poi == 0 || current_poi >= path_count):
 				#last patrol segment reached
 				if (!loop_between_segments): #ping pong
-					reverse *= -1.
+					reverse = -reverse
 					just_started = true
 				if (pause_at_end):
 					play_entity_poi()
 			else:
 				play_entity_poi()
+				just_started = true
 				
 				
 			current_path_id += reverse
