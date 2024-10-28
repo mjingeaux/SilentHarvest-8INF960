@@ -5,4 +5,4 @@
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_cnmgr")
-lstLevels = Array[PackedScene]([ExtResource("2_ruspc")])
+lst_levels = Array[PackedScene]([ExtResource("2_ruspc")])
