@@ -10,19 +10,18 @@ class_name Patrol extends Node2D
 var path_follow_node : PathFollow2D
 var path_count := 0
 
-var reverse := 1.
-var current_path_id := -1
 var paused = true
 var just_started = false
-var current_path_lenth : float
-var chasing = false
+
+var state := 1
+var step := 1.
 
 func _ready() -> void:
-	
 	path_follow_node = PathFollow2D.new()
 	path_follow_node.loop = false
 	path_follow_node.rotates = false
 	
+	entity.global_position = Vector2.ZERO
 	add_entity_to_path_follow_node.call_deferred()
 	
 	# Scans its children in search of path2D
@@ -32,78 +31,73 @@ func _ready() -> void:
 			path_count += 1
 			print(c.name, " detected ! (", id, ")")
 			
-	start_patrol()
+	start_path()
 	
 func add_entity_to_path_follow_node():
 	if (entity.get_parent()):
 		entity.get_parent().remove_child(entity)
 	path_follow_node.add_child(entity)
 	entity.poi_finished.connect(on_entity_finished_poi)
-		
-func start_patrol():
-	current_path_id = 0
-	path_follow_node.progress_ratio = 0
-	paused = false
-	just_started = true
-	change_patrol_segment()
 	
-func change_patrol_segment(id := 0):
-	var next_path : Path2D = get_child(id)
-	if (current_path_id != -1):
-		get_child(current_path_id - reverse).remove_child(path_follow_node)
-		next_path.add_child(path_follow_node)
-	else:
-		next_path.add_child(path_follow_node)
-	current_path_id = id
-	current_path_lenth = next_path.curve.get_baked_length()
-	path_follow_node.progress_ratio = 0. if (reverse == 1.) else 1.
-	
-func play_entity_poi():
-	paused = true
-	var poi_id = get_current_poi()
-	entity.play_poi(poi_id)
+func change_patrol_segment(path_id : int):
+	var next_path : Path2D = get_child(path_id)
+	var parent = path_follow_node.get_parent()
+	if (parent):
+		parent.remove_child(path_follow_node)
+	next_path.add_child(path_follow_node)
+	path_follow_node.progress_ratio = 0. if step == 1. else 1.
 
-func get_current_poi() -> int:
-	#here current path id is the middle of 2 poi (ie. ( currentPathId + 1) / 2)
-	# and reverse's sign will determine which side's poi to choose.
-	# (+1 is either completeted to 2, or neutralized to 0 by reverse's value)
-	return (current_path_id * 2 + 1 + reverse) / 2
 	
 func _process(delta: float) -> void:
-	if (entity.state_machine.curr_state is EnemyStateChase):
-		chasing = true
+	if (paused ):
+		return
+	
+	path_follow_node.progress += speed * delta * step
+	
+	if ((path_follow_node.progress_ratio >= 1. ||
+	 path_follow_node.progress_ratio <= 0.) &&
+	 !just_started):
+		# patrol segment ended
+		next_state()
 	else:
-		chasing = false
-	if (!paused && !chasing):
-		path_follow_node.progress += speed * delta * reverse
+		just_started = false
 		
-		if ((path_follow_node.progress_ratio >= 1. ||
-		 path_follow_node.progress_ratio <= 0.) &&
-		 !just_started):
-			# patrol segment ended
-			
-			var current_poi = get_current_poi()
-			if (current_poi == 0 || current_poi >= path_count):
-				#last patrol segment reached
-				if (!loop_between_segments): #ping pong
-					reverse = -reverse
-					just_started = true
-				if (pause_at_end):
-					play_entity_poi()
-			else:
-				play_entity_poi()
-				just_started = true
-				
-				
-			current_path_id += reverse
-			if (loop_between_segments):
-				current_path_id %= path_count
-			else:
-				current_path_id = pingpong(current_path_id, path_count)
-			change_patrol_segment(current_path_id)
+func next_state():
+	state += step
+	
+	var min_state := 0 #included 
+	var max_state := path_count * 2 #included
+	
+	if (!pause_at_end):
+		min_state += 1
+		
+	if (!pause_at_end || loop_between_segments):
+		max_state -= 1
+	
+	if (state < min_state ||
+		state > max_state):
+		if (loop_between_segments):
+			state = posmod(state, max_state + 1) + min_state
 		else:
-			just_started = false
+			step = -step
+			if (!pause_at_end):
+				state = clampi(state, min_state, max_state)
+			else:
+				state = pingpong(state, max_state)
+			
+	if (state % 2 == 1): #path
+		start_path((state-1) / 2)
+	else: #poi
+		play_entity_poi(state / 2)
+		
+func start_path(path_id := 0):
+	paused = false
+	just_started = true
+	change_patrol_segment(path_id)
+
+func play_entity_poi(id := 0):
+	paused = true
+	entity.play_poi(id)
 
 func on_entity_finished_poi():
-	print("poi finished")
-	paused = false
+	next_state()

@@ -63,5 +63,4 @@ func anim_direction() -> String:
 		return "side"
 		
 func play_poi(poi_id : int):
-	print("playing point of interest ", poi_id)
 	$POI_Timer_TEMP.start()
