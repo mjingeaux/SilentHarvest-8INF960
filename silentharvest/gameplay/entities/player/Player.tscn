@@ -1,10 +1,10 @@
 [gd_scene load_steps=22 format=3 uid="uid://cek825tx7ay7r"]
 
 [ext_resource type="Script" path="res://gameplay/entities/player/player.gd" id="1_44c6v"]
-[ext_resource type="Texture2D" uid="uid://4oxrymhiy31k" path="res://icon.svg" id="2_2fsk3"]
+[ext_resource type="Texture2D" uid="uid://bmc41qcaqh80a" path="res://assets/mcSpriteSheet.png" id="2_sfsj4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbfn4"]
-size = Vector2(144, 140)
+size = Vector2(24, 20)
 
 [sub_resource type="Animation" id="Animation_1odas"]
 length = 0.001
@@ -277,7 +277,6 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(0.2, 0.2)
 script = ExtResource("1_44c6v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -285,7 +284,10 @@ position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_lbfn4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_2fsk3")
+texture = ExtResource("2_sfsj4")
+hframes = 4
+vframes = 11
+frame = 20
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

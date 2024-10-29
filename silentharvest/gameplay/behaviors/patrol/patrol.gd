@@ -15,6 +15,7 @@ var current_path_id := -1
 var paused = true
 var just_started = false
 var current_path_lenth : float
+var chasing = false
 
 func _ready() -> void:
 	
@@ -69,7 +70,11 @@ func get_current_poi() -> int:
 	return (current_path_id * 2 + 1 + reverse) / 2
 	
 func _process(delta: float) -> void:
-	if (!paused):
+	if (entity.state_machine.curr_state is EnemyStateChase):
+		chasing = true
+	else:
+		chasing = false
+	if (!paused && !chasing):
 		path_follow_node.progress += speed * delta * reverse
 		
 		if ((path_follow_node.progress_ratio >= 1. ||
