@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bca3ldqcvf6lb"]
+
+[sub_resource type="Curve2D" id="Curve2D_yyh0g"]
+
+[sub_resource type="GDScript" id="GDScript_n47wr"]
+script/source = "class_name patroller extends PathFollow2D
+
+
+"
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_yyh0g")
+
+[node name="Patroller" type="PathFollow2D" parent="."]
+script = SubResource("GDScript_n47wr")
