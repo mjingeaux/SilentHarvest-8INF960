@@ -1,13 +1,11 @@
-class_name EnemyStateIdle extends EnemyState
+class_name EnemyStateGoto extends EnemyState
 
-@export var anim_name : String = "idle"
+@export var anim_name : String = "chase"
 
 @export_category("AI")
-@export var state_duration_min : float = 0.5
-@export var state_duration_max : float = 1.5
-@export var after_idle_state : EnemyState
-
-var _timer : float = 0.0
+@export var destination := Vector2(0, 0)
+@export var after_goto_state : EnemyState
+@export var goto_speed : float = 40.0
 
 
 ## What happens when we initialize this state ?
@@ -18,18 +16,19 @@ func init() -> void:
 ## What happens when the enemy enters this state ?
 func enter() -> void:
 	super()
-	enemy.velocity = Vector2.ZERO
-	_timer = randf_range(state_duration_min,state_duration_max)
 	enemy.update_animation(anim_name) 
 	
 
 ## What happens when the enemy exits this state ?
 func exit() -> void:
 	super()
-	
+
 ## What happens during the _process update of this state ?
 func process(_delta : float) -> EnemyState:
-	_timer -= _delta
-	if _timer <= 0:
-		return after_idle_state
+	enemy.velocity = destination - enemy.position
+	if (enemy.velocity.length() < 3.):
+		enemy.position = destination
+		return after_goto_state
+	else:
+		enemy.velocity = enemy.velocity.normalized() * goto_speed
 	return null

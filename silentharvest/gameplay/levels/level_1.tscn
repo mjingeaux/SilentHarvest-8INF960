@@ -32,7 +32,6 @@ position = Vector2(202, 232)
 
 [node name="Patrol" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
 entity = NodePath("../HumanEnemy")
-speed = 300.0
 
 [node name="Path2D" type="Path2D" parent="Patrol"]
 curve = SubResource("Curve2D_stvnh")

@@ -1,8 +1,11 @@
 class_name Enemy extends CharacterBody2D
 
 signal direction_changed( _new_direction : Vector2)
-signal enemy_damaged()
+signal enemy_damaged() #??
 signal poi_finished()
+
+signal entering_patrol()
+signal exiting_patrol()
 
 const DIR_4 = [Vector2.RIGHT,Vector2.DOWN,Vector2.LEFT,Vector2.UP]
 
@@ -10,12 +13,12 @@ var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 var player : Player
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D 
 @onready var state_machine : EnemyStateMachine = $EnemyStateMachine
+
+var first_state_entering := true
+
 
 func _ready():
 	state_machine.initialize(self)
@@ -50,9 +53,16 @@ func update_animation(state : String) -> void:
 		add_child(exclamation)
 		await get_tree().create_timer(0.5).timeout
 		remove_child(exclamation)
-		pass
 	#animation_player.play(state+"_"+anim_direction())
-	pass
+
+func _on_idle_state_exited() -> void:
+	exiting_patrol.emit()
+
+func _on_idle_state_entered() -> void:
+	if (first_state_entering):
+		first_state_entering = false
+		return
+	entering_patrol.emit()
 
 func anim_direction() -> String:
 	if cardinal_direction == Vector2.DOWN:

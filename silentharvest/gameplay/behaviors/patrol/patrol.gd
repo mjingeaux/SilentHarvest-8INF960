@@ -5,7 +5,8 @@ class_name Patrol extends Node2D
 
 @export var loop_between_segments := false
 @export var pause_at_end := true
-@export var speed := 100.
+@export var speed := 30.
+@export var autostart := true
 
 var path_follow_node : PathFollow2D
 var path_count := 0
@@ -24,14 +25,23 @@ func _ready() -> void:
 	entity.global_position = Vector2.ZERO
 	add_entity_to_path_follow_node.call_deferred()
 	
+	entity.entering_patrol.connect(_on_entity_entering_patrol)
+	entity.exiting_patrol.connect(_on_entity_exiting_patrol)
+	
 	# Scans its children in search of path2D
 	for id in range(get_child_count()):
 		var c = get_child(id)
 		if (c is Path2D):
 			path_count += 1
-			print(c.name, " detected ! (", id, ")")
 			
-	start_path()
+	_start_path()
+	paused = !autostart
+	
+func start():
+	paused = false
+	
+func pause():
+	paused = true
 	
 func add_entity_to_path_follow_node():
 	if (entity.get_parent()):
@@ -39,7 +49,7 @@ func add_entity_to_path_follow_node():
 	path_follow_node.add_child(entity)
 	entity.poi_finished.connect(on_entity_finished_poi)
 	
-func change_patrol_segment(path_id : int):
+func _change_patrol_segment(path_id : int):
 	var next_path : Path2D = get_child(path_id)
 	var parent = path_follow_node.get_parent()
 	if (parent):
@@ -58,11 +68,11 @@ func _process(delta: float) -> void:
 	 path_follow_node.progress_ratio <= 0.) &&
 	 !just_started):
 		# patrol segment ended
-		next_state()
+		_next_state()
 	else:
 		just_started = false
 		
-func next_state():
+func _next_state():
 	state += step
 	
 	var min_state := 0 #included 
@@ -86,18 +96,24 @@ func next_state():
 				state = pingpong(state, max_state)
 			
 	if (state % 2 == 1): #path
-		start_path((state-1) / 2)
+		_start_path((state-1) / 2)
 	else: #poi
-		play_entity_poi(state / 2)
+		_play_entity_poi(state / 2)
 		
-func start_path(path_id := 0):
+func _start_path(path_id := 0):
 	paused = false
 	just_started = true
-	change_patrol_segment(path_id)
+	_change_patrol_segment(path_id)
 
-func play_entity_poi(id := 0):
+func _play_entity_poi(id := 0):
 	paused = true
 	entity.play_poi(id)
 
 func on_entity_finished_poi():
-	next_state()
+	_next_state()
+
+func _on_entity_entering_patrol():
+	start()
+	
+func _on_entity_exiting_patrol():
+	pause()

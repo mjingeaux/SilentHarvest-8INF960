@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cs1plvef6f8u1"]
+[gd_scene load_steps=10 format=3 uid="uid://cs1plvef6f8u1"]
 
 [ext_resource type="Texture2D" uid="uid://4oxrymhiy31k" path="res://icon.svg" id="1_t3s2h"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/human_enemy.gd" id="1_xs7d5"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/enemy_state_machine.gd" id="3_ym6pk"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_idle.gd" id="4_mrbuv"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_chase.gd" id="5_cki7o"]
+[ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_goto.gd" id="5_svj4v"]
 [ext_resource type="Texture2D" uid="uid://qc7thoqo4onh" path="res://assets/rangeVisualizer.png" id="6_78c51"]
 [ext_resource type="PackedScene" uid="uid://dh01ugaralit0" path="res://gameplay/entities/enemies/VisionArea.tscn" id="6_c8emu"]
 
@@ -28,7 +29,11 @@ after_idle_state = NodePath(".")
 [node name="Chase" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("vision_area", "next_state")]
 script = ExtResource("5_cki7o")
 vision_area = NodePath("../../VisionArea")
-next_state = NodePath("../Idle")
+next_state = NodePath("../Goto")
+
+[node name="Goto" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_goto_state")]
+script = ExtResource("5_svj4v")
+after_goto_state = NodePath("../Idle")
 
 [node name="VisionArea" parent="." instance=ExtResource("6_c8emu")]
 position = Vector2(2, 10)
@@ -48,4 +53,6 @@ one_shot = true
 scale = Vector2(0.375, 0.359375)
 texture = ExtResource("1_t3s2h")
 
+[connection signal="state_entered" from="EnemyStateMachine/Idle" to="." method="_on_idle_state_entered"]
+[connection signal="state_exited" from="EnemyStateMachine/Idle" to="." method="_on_idle_state_exited"]
 [connection signal="timeout" from="POI_Timer_TEMP" to="." method="_on_poi_timer_temp_timeout"]
