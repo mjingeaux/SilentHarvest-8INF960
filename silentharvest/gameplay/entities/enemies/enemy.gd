@@ -16,14 +16,13 @@ var player : Player
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D 
 @onready var state_machine : EnemyStateMachine = $EnemyStateMachine
+@onready var vision_area : VisionArea = $VisionArea
 
 var first_state_entering := true
 
 
 func _ready():
 	state_machine.initialize(self)
-	
-	pass
 
 func _process(delta):
 	pass
@@ -44,7 +43,7 @@ func set_direction(_new_direction : Vector2) -> bool:
 	
 	cardinal_direction = new_dir
 	direction_changed.emit(new_dir)
-	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
+	#sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
 	return true
 	
 func update_animation(state : String) -> void:

@@ -1,5 +1,26 @@
 class_name VisionArea extends Area2D
 
+
+enum Erotation_speed{
+	slow,
+	medium,
+	fast,
+	instant
+}
+
+# progress [0, 1] per second
+const SLOW_ROTATION 	= 1.3
+const MEDIUM_ROTATION 	= 2.5
+const FAST_ROTATION 	= 3.9
+
+var _angle_from_degree: float
+var angle_target_degree: float : set = _set_angle_target_degree
+var is_rotating = false
+var _rotation_progress : float # 0..1
+signal rotation_completed()
+
+@export var rotation_speed : Erotation_speed
+
 signal player_entered()
 signal player_exited()
 
@@ -25,8 +46,42 @@ func _on_body_exit(_b : Node2D) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if (is_rotating):
+		_rotation_progress += delta * _get_rotation_speed()
+		
+		if (_rotation_progress >= 1.): 
+			rotation_degrees = angle_target_degree
+			is_rotating = false
+			rotation_completed.emit()
+		else:
+			rotation_degrees = lerp_angle(_angle_from_degree, angle_target_degree, _rotation_progress)
+		
 
+func _get_rotation_speed():
+	match rotation_speed:
+		Erotation_speed.slow:
+			return SLOW_ROTATION
+			
+		Erotation_speed.medium:
+			return MEDIUM_ROTATION
+			
+		Erotation_speed.fast:
+			return FAST_ROTATION
+	return 9999.
+	
+func _set_angle_target_degree(new_degree_angle : float):
+	if (new_degree_angle == angle_target_degree):
+		return
+		
+	if (rotation_speed == Erotation_speed.instant):
+		rotation_degrees = new_degree_angle
+		rotation_completed.emit()
+		return
+		
+	_angle_from_degree = rotation_degrees
+	angle_target_degree = new_degree_angle
+	is_rotating = true
+	_rotation_progress = 0.
 
 func _on_direction_change(new_direction : Vector2) -> void:
 	match new_direction:
