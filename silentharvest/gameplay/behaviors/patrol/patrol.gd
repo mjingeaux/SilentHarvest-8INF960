@@ -3,10 +3,14 @@ class_name Patrol extends Node2D
 @export var entity : Enemy
 
 
+@export_category("Patrol")
 @export var loop_between_segments := false
 @export var pause_at_end := true
 @export var speed := 30.
 @export var autostart := true
+
+@export_category("Points of Interest")
+@export var lst_poi : Array[GE.Epoi_type]
 
 var path_follow_node : PathFollow2D
 var path_count := 0
@@ -37,6 +41,7 @@ func _ready() -> void:
 	_start_path()
 	paused = !autostart
 	
+	
 func start():
 	paused = false
 	
@@ -61,6 +66,9 @@ func _change_patrol_segment(path_id : int):
 func _process(delta: float) -> void:
 	if (paused ):
 		return
+	
+	
+	entity.match_direction_to_displacement()
 	
 	path_follow_node.progress += speed * delta * step
 	
@@ -107,7 +115,11 @@ func _start_path(path_id := 0):
 
 func _play_entity_poi(id := 0):
 	paused = true
-	entity.play_poi(id)
+	entity.play_poi(_get_poi_type(id))
+	
+func _get_poi_type(id : int) -> GE.Epoi_type:
+	assert(id < lst_poi.size())
+	return lst_poi[id]
 
 func on_entity_finished_poi():
 	_next_state()

@@ -26,6 +26,7 @@ func exit() -> void:
 ## What happens during the _process update of this state ?
 func process(_delta : float) -> EnemyState:
 	enemy.velocity = destination - enemy.position
+	enemy.match_direction_to_displacement()
 	if (enemy.velocity.length() < 3.):
 		enemy.position = destination
 		return after_goto_state

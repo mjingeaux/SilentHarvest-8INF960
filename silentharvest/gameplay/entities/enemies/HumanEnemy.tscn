@@ -36,14 +36,14 @@ script = ExtResource("5_svj4v")
 after_goto_state = NodePath("../Idle")
 
 [node name="VisionArea" parent="." instance=ExtResource("6_c8emu")]
-position = Vector2(2, 10)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea"]
-polygon = PackedVector2Array(-16, 0, 16, 0, 128, 128, -128, 128)
+position = Vector2(117, -11)
+polygon = PackedVector2Array(-93.248, 25.4167, -93.7766, -1.59661, 35.4728, -129.36, 35.5505, 152.684)
 
 [node name="RangeVisualizer" type="Sprite2D" parent="VisionArea/CollisionPolygon2D"]
-position = Vector2(3.8147e-06, 129)
-rotation = 0.785398
+position = Vector2(35.012, 11.25)
+rotation = -0.785398
 texture = ExtResource("6_78c51")
 
 [node name="POI_Timer_TEMP" type="Timer" parent="."]

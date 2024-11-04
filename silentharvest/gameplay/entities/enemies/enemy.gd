@@ -7,11 +7,13 @@ signal poi_finished()
 signal entering_patrol()
 signal exiting_patrol()
 
-const DIR_4 = [Vector2.RIGHT,Vector2.DOWN,Vector2.LEFT,Vector2.UP]
-
-var cardinal_direction : Vector2 = Vector2.DOWN
-var direction : Vector2 = Vector2.ZERO
 var player : Player
+
+const DIR_4 = [Vector2.RIGHT,Vector2.DOWN,Vector2.LEFT,Vector2.UP]
+var cardinal_direction : Vector2 = Vector2.DOWN
+var _last_pos : Vector2
+
+
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D 
@@ -23,6 +25,7 @@ var first_state_entering := true
 
 func _ready():
 	state_machine.initialize(self)
+	_last_pos = global_position
 
 func _process(delta):
 	pass
@@ -32,19 +35,30 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 
-func set_direction(_new_direction : Vector2) -> bool:
-	direction = _new_direction
-	if direction == Vector2.ZERO:
-		return false
-	var direction_id : int = int(round((direction + cardinal_direction * 0.1).angle()/TAU*DIR_4.size()))
-	var new_dir = DIR_4[direction_id]
-	if new_dir == cardinal_direction:
-		return false
-	
-	cardinal_direction = new_dir
-	direction_changed.emit(new_dir)
+#func set_direction(_new_direction : Vector2) -> bool:
+	#direction = _new_direction
+	#if direction == Vector2.ZERO:
+		#return false
+	#var direction_id : int = int(round((direction + cardinal_direction * 0.1).angle()/TAU*DIR_4.size()))
+	#var new_dir = DIR_4[direction_id]
+	#if new_dir == cardinal_direction:
+		#return false
+	#
+	#cardinal_direction = new_dir
+	#direction_changed.emit(new_dir)
 	#sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
-	return true
+	#return true
+
+func match_direction_to_displacement():
+	if (global_position != _last_pos):
+		var direction = rad_to_deg((global_position - _last_pos).angle())
+		_last_pos = global_position
+		set_direction(direction)
+	
+func set_direction(angle_degree : float):
+	if (!vision_area):
+		return
+	vision_area.angle_target_degree = angle_degree
 	
 func update_animation(state : String) -> void:
 	if state == "chase":
@@ -71,5 +85,29 @@ func anim_direction() -> String:
 	else:
 		return "side"
 		
-func play_poi(poi_id : int):
-	$POI_Timer_TEMP.start()
+
+func play_poi(poi_id : GE.Epoi_type):
+	match poi_id:
+		GE.Epoi_type.wait_short:
+			await get_tree().create_timer(.5).timeout
+		GE.Epoi_type.wait_long:
+			await get_tree().create_timer(1.5).timeout
+		GE.Epoi_type.right_then_left_narrow:
+			pass
+		GE.Epoi_type.right_then_left_wide:
+			pass
+		GE.Epoi_type.left_then_right_narrow:
+			pass
+		GE.Epoi_type.left_then_right_wide:
+			pass
+		GE.Epoi_type.left_trick:
+			pass
+		GE.Epoi_type.right_trick:
+			pass
+		GE.Epoi_type.cw_full_turn:
+			pass
+		GE.Epoi_type.ccw_full_turn:
+			pass
+	poi_finished.emit()
+
+#func _wait(sec : float):

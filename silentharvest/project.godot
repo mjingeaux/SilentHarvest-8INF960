@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerManager="*res://globals/global_player_manager.gd"
-GlobalE="*res://globals/global_enums.gd"
+GE="*res://globals/global_enums.gd"
 
 [file_customization]
 

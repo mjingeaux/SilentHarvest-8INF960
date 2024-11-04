@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 			is_rotating = false
 			rotation_completed.emit()
 		else:
-			rotation_degrees = lerp_angle(_angle_from_degree, angle_target_degree, _rotation_progress)
+			rotation = lerp_angle(deg_to_rad(_angle_from_degree), deg_to_rad(angle_target_degree), _rotation_progress)
 		
 
 func _get_rotation_speed():
