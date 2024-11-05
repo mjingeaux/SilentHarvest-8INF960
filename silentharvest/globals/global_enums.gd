@@ -15,3 +15,8 @@ enum Edirection{
 	west = 3,
 	w = west
 }
+
+enum EitemType{
+	carrot = 0,
+	potato = 1
+}

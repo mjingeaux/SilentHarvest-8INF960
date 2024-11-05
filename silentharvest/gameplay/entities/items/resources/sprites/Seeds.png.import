@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6ytebyuhahwq"
-path="res://.godot/imported/test.png-764e88ee899d372f8b6ef43d83501de5.ctex"
+uid="uid://bf24nkve04tmx"
+path="res://.godot/imported/Seeds.png-e8e253232463ece317a005ce0ddcf5fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/test.png"
-dest_files=["res://.godot/imported/test.png-764e88ee899d372f8b6ef43d83501de5.ctex"]
+source_file="res://gameplay/entities/items/resources/sprites/Seeds.png"
+dest_files=["res://.godot/imported/Seeds.png-e8e253232463ece317a005ce0ddcf5fc.ctex"]
 
 [params]
 

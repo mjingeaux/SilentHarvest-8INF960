@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b13556wayypnq"]
+[gd_scene load_steps=3 format=3 uid="uid://b13556wayypnq"]
 
 [ext_resource type="PackedScene" uid="uid://cs1plvef6f8u1" path="res://gameplay/entities/enemies/HumanEnemy.tscn" id="1_nrs3p"]
+[ext_resource type="PackedScene" uid="uid://cek825tx7ay7r" path="res://gameplay/entities/player/Player.tscn" id="2_pr6fy"]
 
 [node name="TestChase" type="Node2D"]
 
 [node name="HumanEnemy" parent="." instance=ExtResource("1_nrs3p")]
 position = Vector2(413, 145)
+
+[node name="Player" parent="." instance=ExtResource("2_pr6fy")]

@@ -1,7 +1,6 @@
 class_name Enemy extends CharacterBody2D
 
 signal direction_changed( _new_direction : Vector2)
-signal enemy_damaged()
 signal poi_finished()
 
 const DIR_4 = [Vector2.RIGHT,Vector2.DOWN,Vector2.LEFT,Vector2.UP]

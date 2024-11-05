@@ -14,7 +14,7 @@ var reverse := 1.
 var current_path_id := -1
 var paused = true
 var just_started = false
-var current_path_lenth : float
+var current_path_length : float
 var chasing = false
 
 func _ready() -> void:
@@ -55,7 +55,7 @@ func change_patrol_segment(id := 0):
 	else:
 		next_path.add_child(path_follow_node)
 	current_path_id = id
-	current_path_lenth = next_path.curve.get_baked_length()
+	current_path_length = next_path.curve.get_baked_length()
 	path_follow_node.progress_ratio = 0. if (reverse == 1.) else 1.
 	
 func play_entity_poi():

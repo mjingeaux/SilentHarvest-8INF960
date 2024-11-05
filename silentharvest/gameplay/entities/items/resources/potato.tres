@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bldrb0aymd42b"]
+
+[ext_resource type="Script" path="res://gameplay/entities/items/resources/item_data.gd" id="1_450hc"]
+[ext_resource type="Texture2D" uid="uid://6fk4tigk0078" path="res://gameplay/entities/items/resources/sprites/potato.png" id="2_yy6y5"]
+
+[resource]
+script = ExtResource("1_450hc")
+name = "Potato"
+description = "Good shit."
+texture = ExtResource("2_yy6y5")
+value = 3

@@ -6,6 +6,8 @@ const CROUCH_SPEED = 80
 const CROUCH_ACCELERATION = 40
 @onready var animation = $AnimationPlayer
 
+var inventory : Inventory
+
 func crouching_movement(direction: Vector2) -> void:
 	velocity.x = move_toward(velocity.x, direction.x * CROUCH_SPEED, CROUCH_ACCELERATION)
 	velocity.y = move_toward(velocity.y, direction.y * CROUCH_SPEED, CROUCH_ACCELERATION)

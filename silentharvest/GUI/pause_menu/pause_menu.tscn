@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3jp10ql71lfr"]
+
+[ext_resource type="Script" path="res://GUI/pause_menu/pause_menu.gd" id="1_rypip"]
+[ext_resource type="Texture2D" uid="uid://c7yrskitx27a" path="res://gameplay/entities/items/resources/sprites/items.png" id="2_4fsgg"]
+[ext_resource type="PackedScene" uid="uid://bwlxk3ldnukl3" path="res://GUI/pause_menu/inventory/inventory_slot.tscn" id="3_n1b37"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4j3kl"]
+font_size = 32
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4i4fg"]
+atlas = ExtResource("2_4fsgg")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h60f0"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = SubResource("AtlasTexture_4i4fg")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+
+[node name="PauseMenu" type="Node2D"]
+script = ExtResource("1_rypip")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 67.0
+offset_bottom = 31.0
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_4j3kl")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+offset_left = 54.0
+offset_top = 121.0
+offset_right = 214.0
+offset_bottom = 173.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_h60f0")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/PanelContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+columns = 5
+
+[node name="InventorySlot" parent="CanvasLayer/PanelContainer/GridContainer" instance=ExtResource("3_n1b37")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="CanvasLayer/PanelContainer/GridContainer" instance=ExtResource("3_n1b37")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="CanvasLayer/PanelContainer/GridContainer" instance=ExtResource("3_n1b37")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="CanvasLayer/PanelContainer/GridContainer" instance=ExtResource("3_n1b37")]
+layout_mode = 2

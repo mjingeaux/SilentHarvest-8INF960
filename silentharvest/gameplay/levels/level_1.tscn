@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=4 uid="uid://fehr3p1frps7"]
+[gd_scene load_steps=11 format=4 uid="uid://fehr3p1frps7"]
 
 [ext_resource type="Script" path="res://gameplay/levels/level_1.gd" id="1_ehrcc"]
-[ext_resource type="TileSet" uid="uid://4m1whi8xvife" path="res://assets/sprites/tilesets/grass.tres" id="2_27k8j"]
+[ext_resource type="TileSet" uid="uid://4m1whi8xvife" path="res://Assets/sprites/tilesets/grass.tres" id="2_27k8j"]
 [ext_resource type="PackedScene" uid="uid://drlbic8jcmk7x" path="res://gameplay/entities/props/Tree.tscn" id="3_ctuf2"]
 [ext_resource type="PackedScene" uid="uid://bontrauqnjxcx" path="res://gameplay/entities/traps/GlueTrap.tscn" id="4_1nxl1"]
 [ext_resource type="PackedScene" uid="uid://011gh33qvxap" path="res://gameplay/behaviors/patrol/Patrol.tscn" id="5_i52hj"]
 [ext_resource type="PackedScene" uid="uid://cs1plvef6f8u1" path="res://gameplay/entities/enemies/HumanEnemy.tscn" id="6_6jlwx"]
+[ext_resource type="PackedScene" uid="uid://cv75k0dbr2h1x" path="res://gameplay/entities/items/item_pickup.tscn" id="7_jyymn"]
+[ext_resource type="Resource" uid="uid://cca0a5fiq6xcs" path="res://gameplay/entities/items/resources/apple.tres" id="8_me2hq"]
 
 [sub_resource type="Curve2D" id="Curve2D_3qw2w"]
 _data = {
@@ -64,3 +66,7 @@ position = Vector2(136, 37)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(256, 144)
 zoom = Vector2(2, 2)
+
+[node name="ItemPickup" parent="." instance=ExtResource("7_jyymn")]
+position = Vector2(407, 124)
+item_data = ExtResource("8_me2hq")
