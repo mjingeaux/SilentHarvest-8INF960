@@ -1,13 +1,8 @@
-[gd_resource type="Resource" script_class="InventoryData" load_steps=5 format=3 uid="uid://b2jfiufsunu2q"]
+[gd_resource type="Resource" script_class="InventoryData" load_steps=3 format=3 uid="uid://b2jfiufsunu2q"]
 
 [ext_resource type="Script" path="res://GUI/pause_menu/inventory/inventory_data.gd" id="1_4lwnm"]
 [ext_resource type="Script" path="res://GUI/pause_menu/inventory/slot_data.gd" id="2_q23it"]
-[ext_resource type="Resource" uid="uid://cca0a5fiq6xcs" path="res://gameplay/entities/items/resources/apple.tres" id="3_1y3kr"]
-
-[sub_resource type="Resource" id="Resource_jnpm1"]
-script = ExtResource("2_q23it")
-item_data = ExtResource("3_1y3kr")
 
 [resource]
 script = ExtResource("1_4lwnm")
-slots = Array[ExtResource("2_q23it")]([SubResource("Resource_jnpm1"), null, null])
+slots = Array[ExtResource("2_q23it")]([null, null, null, null, null])

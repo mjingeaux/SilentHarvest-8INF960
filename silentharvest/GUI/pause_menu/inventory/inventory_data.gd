@@ -8,5 +8,9 @@ func add_item(item : ItemData) -> bool:
 			var new_slot = SlotData.new()
 			new_slot.item_data = item
 			slots[i] = new_slot
+			print("ITEM ADDED : ")
+			print(slots)
 			return true
+	print("ITEM NOT ADDED !")
+	print(slots)
 	return false
