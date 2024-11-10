@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6ytebyuhahwq"
-path="res://.godot/imported/test.png-764e88ee899d372f8b6ef43d83501de5.ctex"
+uid="uid://cv7x62xklc8ui"
+path="res://.godot/imported/eggplant.png-17bd52c5349482acc57042d2df2975a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/test.png"
-dest_files=["res://.godot/imported/test.png-764e88ee899d372f8b6ef43d83501de5.ctex"]
+source_file="res://Assets/sprites/items/eggplant.png"
+dest_files=["res://.godot/imported/eggplant.png-17bd52c5349482acc57042d2df2975a3.ctex"]
 
 [params]
 

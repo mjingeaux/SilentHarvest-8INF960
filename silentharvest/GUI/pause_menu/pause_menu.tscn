@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3jp10ql71lfr"]
+
+[ext_resource type="Script" path="res://GUI/pause_menu/pause_menu.gd" id="1_rypip"]
+[ext_resource type="Texture2D" uid="uid://c7yrskitx27a" path="res://Assets/sprites/items/items.png" id="2_4fsgg"]
+[ext_resource type="Script" path="res://GUI/pause_menu/inventory/inventory_ui.gd" id="3_266bn"]
+[ext_resource type="Resource" uid="uid://b2jfiufsunu2q" path="res://Assets/resources/player_inventory.tres" id="4_kgxp0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4j3kl"]
+font_size = 28
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4i4fg"]
+atlas = ExtResource("2_4fsgg")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h60f0"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = SubResource("AtlasTexture_4i4fg")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+
+[node name="PauseMenu" type="CanvasLayer"]
+script = ExtResource("1_rypip")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 58.0
+offset_right = 68.0
+offset_bottom = 103.0
+grow_horizontal = 2
+text = "[ Paused ]"
+label_settings = SubResource("LabelSettings_4j3kl")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_left = 91.0
+offset_top = 122.0
+offset_right = 280.0
+offset_bottom = 208.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_h60f0")
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+columns = 5
+script = ExtResource("3_266bn")
+data = ExtResource("4_kgxp0")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -77.0
+offset_right = 150.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Btn_Reprendre" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+text = "Reprendre"
+
+[node name="Btn_Quitter" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+text = "Quitter"
+
+[connection signal="pressed" from="GridContainer/Btn_Reprendre" to="." method="_on_btn_reprendre_pressed"]
+[connection signal="pressed" from="GridContainer/Btn_Quitter" to="." method="_on_btn_quitter_pressed"]

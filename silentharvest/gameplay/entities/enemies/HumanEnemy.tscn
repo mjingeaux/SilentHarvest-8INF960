@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://gameplay/entities/enemies/enemy_state_machine.gd" id="3_ym6pk"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_idle.gd" id="4_mrbuv"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_chase.gd" id="5_cki7o"]
-[ext_resource type="Texture2D" uid="uid://qc7thoqo4onh" path="res://assets/rangeVisualizer.png" id="6_78c51"]
+[ext_resource type="Texture2D" uid="uid://qc7thoqo4onh" path="res://Assets/rangeVisualizer.png" id="6_78c51"]
 [ext_resource type="PackedScene" uid="uid://dh01ugaralit0" path="res://gameplay/entities/enemies/VisionArea.tscn" id="6_c8emu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd6u1"]
@@ -34,11 +34,12 @@ next_state = NodePath("../Idle")
 position = Vector2(2, 10)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea"]
-polygon = PackedVector2Array(-16, 0, 16, 0, 128, 128, -128, 128)
+polygon = PackedVector2Array(-16, 0, 16, 0, 64, 64, -64, 64)
 
 [node name="RangeVisualizer" type="Sprite2D" parent="VisionArea/CollisionPolygon2D"]
-position = Vector2(3.8147e-06, 129)
+position = Vector2(-1.32434, 63.8728)
 rotation = 0.785398
+scale = Vector2(0.547794, 0.559452)
 texture = ExtResource("6_78c51")
 
 [node name="POI_Timer_TEMP" type="Timer" parent="."]

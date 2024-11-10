@@ -14,6 +14,8 @@ class_name EnemyStateChase extends EnemyState
 var _timer : float = 0.0
 var _direction : Vector2
 var _can_see_player : bool = false
+var _last_player_position : Vector2
+@onready var _player : Player = PlayerManager.player
 
 
 ## What happens when we initialize this state ?
@@ -40,12 +42,12 @@ func exit() -> void:
 	
 ## What happens during the _process update of this state ?
 func process(_delta : float) -> EnemyState:
-	var new_dir : Vector2 = enemy.global_position.direction_to(PlayerManager.player.global_position)
+	
+	var new_dir : Vector2 = enemy.global_position.direction_to(_player.global_position)
 	_direction = lerp(_direction,new_dir,turn_rate)
 	enemy.velocity = _direction * chase_speed
 	if enemy.set_direction(_direction):
 		enemy.update_animation(anim_name)
-	
 	if _can_see_player == false:
 		_timer -= _delta
 		if _timer <= 0:
