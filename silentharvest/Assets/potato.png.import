@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dqdipl7uw5n8n"
-path="res://.godot/imported/potato.png-64edac6e1173c57ce4289d7e66c57756.ctex"
+path="res://.godot/imported/potato.png-1e83fca169fd45bea467b0d3de9f2753.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/potato.png"
-dest_files=["res://.godot/imported/potato.png-64edac6e1173c57ce4289d7e66c57756.ctex"]
+source_file="res://assets/potato.png"
+dest_files=["res://.godot/imported/potato.png-1e83fca169fd45bea467b0d3de9f2753.ctex"]
 
 [params]
 
