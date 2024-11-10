@@ -3,8 +3,9 @@ class_name Player extends CharacterBody2D
 
 const SPEED = 200
 const ACCELERATION = 75
-const CROUCH_SPEED = 80
-const CROUCH_ACCELERATION = 40
+const CROUCH_SPEED = 40
+const CROUCH_ACCELERATION = 20
+var LAST_DIRECTION = 0
 @onready var animation = $AnimationPlayer
 
 func crouching_movement(direction: Vector2) -> void:
@@ -16,15 +17,26 @@ func crouching_animation() -> void:
 		if(abs(velocity.x) < abs(velocity.y)):
 			if(velocity.y > 0):
 				animation.play("crouch_down")
+				LAST_DIRECTION = 1
 			else:
 				animation.play("crouch_up");
+				LAST_DIRECTION = 3
 		else:
 			if(velocity.x > 0):
 				animation.play("crouch_right")
+				LAST_DIRECTION = 0
 			else:
 				animation.play("crouch_left");
+				LAST_DIRECTION = 2
 	else:
-		animation.play("crouch_idle_right")
+		if(LAST_DIRECTION == 0):
+			animation.play("crouch_idle_right")
+		elif(LAST_DIRECTION == 1):
+			animation.play("crouch_idle_down")
+		elif(LAST_DIRECTION == 2):
+			animation.play("crouch_idle_left")
+		elif(LAST_DIRECTION == 3):
+			animation.play("crouch_idle_up")
 
 func walking_movement(direction: Vector2) -> void:
 	velocity.x = move_toward(velocity.x, direction.x * SPEED, ACCELERATION)
@@ -35,15 +47,26 @@ func walking_animation() -> void:
 		if(abs(velocity.x) < abs(velocity.y)):
 			if(velocity.y > 0):
 				animation.play("walk_down")
+				LAST_DIRECTION = 1
 			else:
 				animation.play("walk_up");
+				LAST_DIRECTION = 3
 		else:
 			if(velocity.x > 0):
 				animation.play("walk_right")
+				LAST_DIRECTION = 0
 			else:
 				animation.play("walk_left");
+				LAST_DIRECTION = 2
 	else:
-		animation.play("idle_right")
+		if(LAST_DIRECTION == 0):
+			animation.play("idle_right")
+		elif(LAST_DIRECTION == 1):
+			animation.play("idle_down")
+		elif(LAST_DIRECTION == 2):
+			animation.play("idle_left")
+		elif(LAST_DIRECTION == 3):
+			animation.play("idle_up")
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("left", "right","up","down")
