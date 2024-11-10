@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://011gh33qvxap" path="res://gameplay/behaviors/patrol/Patrol.tscn" id="5_i52hj"]
 [ext_resource type="PackedScene" uid="uid://cs1plvef6f8u1" path="res://gameplay/entities/enemies/HumanEnemy.tscn" id="6_6jlwx"]
 [ext_resource type="PackedScene" uid="uid://cv75k0dbr2h1x" path="res://gameplay/entities/items/item_pickup.tscn" id="7_jyymn"]
-[ext_resource type="Resource" uid="uid://cca0a5fiq6xcs" path="res://gameplay/entities/items/resources/apple.tres" id="8_me2hq"]
+[ext_resource type="Resource" uid="uid://cca0a5fiq6xcs" path="res://Assets/resources/apple.tres" id="8_me2hq"]
 
 [sub_resource type="Curve2D" id="Curve2D_3qw2w"]
 _data = {

@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://ds54ksw8lhyk2"]
+[gd_scene load_steps=4 format=3 uid="uid://p8vqjn33c0ha"]
 
 [ext_resource type="Texture2D" uid="uid://4oxrymhiy31k" path="res://icon.svg" id="1_3n7nn"]
-[ext_resource type="Script" path="res://gameplay/entities/items/item.gd" id="1_jnx31"]
+
+[sub_resource type="GDScript" id="GDScript_c5oq1"]
+script/source = "class_name Item extends Area2D
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2phg"]
 size = Vector2(64, 64)
 
 [node name="Item" type="Area2D"]
-script = ExtResource("1_jnx31")
+script = SubResource("GDScript_c5oq1")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 modulate = Color(0.842551, 0.259883, 0.19793, 1)

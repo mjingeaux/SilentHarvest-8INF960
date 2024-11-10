@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3jp10ql71lfr"]
+[gd_scene load_steps=8 format=3 uid="uid://c3jp10ql71lfr"]
 
 [ext_resource type="Script" path="res://GUI/pause_menu/pause_menu.gd" id="1_rypip"]
-[ext_resource type="Texture2D" uid="uid://c7yrskitx27a" path="res://gameplay/entities/items/resources/sprites/items.png" id="2_4fsgg"]
-[ext_resource type="PackedScene" uid="uid://bwlxk3ldnukl3" path="res://GUI/pause_menu/inventory/inventory_slot.tscn" id="3_n1b37"]
+[ext_resource type="Texture2D" uid="uid://c7yrskitx27a" path="res://Assets/sprites/items/items.png" id="2_4fsgg"]
+[ext_resource type="Script" path="res://GUI/pause_menu/inventory/inventory_ui.gd" id="3_266bn"]
+[ext_resource type="Resource" uid="uid://b2jfiufsunu2q" path="res://Assets/resources/player_inventory.tres" id="4_kgxp0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4j3kl"]
-font_size = 32
+font_size = 28
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4i4fg"]
 atlas = ExtResource("2_4fsgg")
@@ -26,34 +27,30 @@ texture_margin_bottom = 14.0
 script = ExtResource("1_rypip")
 
 [node name="Label" type="Label" parent="."]
-offset_right = 100.0
-offset_bottom = 45.0
-text = "PAUSE"
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 58.0
+offset_right = 68.0
+offset_bottom = 103.0
+grow_horizontal = 2
+text = "[ Paused ]"
 label_settings = SubResource("LabelSettings_4j3kl")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_left = 91.0
 offset_top = 122.0
-offset_right = 251.0
-offset_bottom = 174.0
+offset_right = 280.0
+offset_bottom = 208.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_h60f0")
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 columns = 5
-
-[node name="InventorySlot" parent="PanelContainer/GridContainer" instance=ExtResource("3_n1b37")]
-layout_mode = 2
-
-[node name="InventorySlot7" parent="PanelContainer/GridContainer" instance=ExtResource("3_n1b37")]
-layout_mode = 2
-
-[node name="InventorySlot4" parent="PanelContainer/GridContainer" instance=ExtResource("3_n1b37")]
-layout_mode = 2
-
-[node name="InventorySlot6" parent="PanelContainer/GridContainer" instance=ExtResource("3_n1b37")]
-layout_mode = 2
+script = ExtResource("3_266bn")
+data = ExtResource("4_kgxp0")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 anchors_preset = 8

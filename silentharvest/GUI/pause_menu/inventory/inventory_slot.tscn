@@ -1,51 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwlxk3ldnukl3"]
+[gd_scene load_steps=2 format=3 uid="uid://bwlxk3ldnukl3"]
 
-[ext_resource type="Texture2D" uid="uid://c7yrskitx27a" path="res://gameplay/entities/items/resources/sprites/items.png" id="1_lch0v"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2lpqe"]
-atlas = ExtResource("1_lch0v")
-region = Rect2(192, 0, 32, 0)
-
-[sub_resource type="FontFile" id="FontFile_qvnqj"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/8/0/ascent = 0.0
-cache/0/8/0/descent = 0.0
-cache/0/8/0/underline_position = 0.0
-cache/0/8/0/underline_thickness = 0.0
-cache/0/8/0/scale = 1.0
-cache/0/10/0/ascent = 0.0
-cache/0/10/0/descent = 0.0
-cache/0/10/0/underline_position = 0.0
-cache/0/10/0/underline_thickness = 0.0
-cache/0/10/0/scale = 1.0
+[ext_resource type="Script" path="res://GUI/pause_menu/inventory/inventory_slot_ui.gd" id="1_xuxb2"]
 
 [node name="InventorySlot" type="Button"]
 custom_minimum_size = Vector2(32, 32)
 offset_right = 32.0
 offset_bottom = 32.0
+script = ExtResource("1_xuxb2")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
-texture = SubResource("AtlasTexture_2lpqe")
 stretch_mode = 3
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_top = 10.0
-offset_right = 31.0
-offset_bottom = 33.0
-theme_override_fonts/font = SubResource("FontFile_qvnqj")
-theme_override_font_sizes/font_size = 8
-text = "99
-"
-horizontal_alignment = 2
-vertical_alignment = 2

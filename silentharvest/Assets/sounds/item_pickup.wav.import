@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://tqlpcjln43ro"
-path="res://.godot/imported/item_pickup.wav-4e67e72acdbe5c82f3b26b853cec5607.sample"
+path="res://.godot/imported/item_pickup.wav-6b34cc90df7321815cff5ba4d2c41c24.sample"
 
 [deps]
 
-source_file="res://gameplay/entities/items/resources/item_pickup.wav"
-dest_files=["res://.godot/imported/item_pickup.wav-4e67e72acdbe5c82f3b26b853cec5607.sample"]
+source_file="res://Assets/sounds/item_pickup.wav"
+dest_files=["res://.godot/imported/item_pickup.wav-6b34cc90df7321815cff5ba4d2c41c24.sample"]
 
 [params]
 

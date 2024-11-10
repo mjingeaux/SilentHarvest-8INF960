@@ -1,5 +1,8 @@
 class_name PauseMenu extends CanvasLayer
 
+signal shown
+signal hidden
+
 var is_paused : bool = false
 
 func _ready() -> void:
@@ -10,19 +13,18 @@ func pause_game() -> void:
 	get_tree().paused = true
 	is_paused = true
 	show()
+	shown.emit()
 	pass
 
 func resume_game() -> void:
-	print("RESUMING GAME")
 	get_tree().paused = false
 	is_paused = false
 	hide()
-	print(visible)
+	hidden.emit()
 	pass
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
-		print("JUST PRESSED PAUSE")
 		if is_paused:
 			resume_game()
 		else:

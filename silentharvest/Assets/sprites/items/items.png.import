@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3xp2gayfyfn7"
-path="res://.godot/imported/carrot.png-ed292e8deff32a126df9dad0833e92de.ctex"
+uid="uid://c7yrskitx27a"
+path="res://.godot/imported/items.png-b3a69bdeb65beae59f1b42ebc409ad09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/entities/items/resources/sprites/carrot.png"
-dest_files=["res://.godot/imported/carrot.png-ed292e8deff32a126df9dad0833e92de.ctex"]
+source_file="res://Assets/sprites/items/items.png"
+dest_files=["res://.godot/imported/items.png-b3a69bdeb65beae59f1b42ebc409ad09.ctex"]
 
 [params]
 
