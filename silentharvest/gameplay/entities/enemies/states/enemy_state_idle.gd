@@ -17,23 +17,19 @@ func init() -> void:
 
 ## What happens when the enemy enters this state ?
 func enter() -> void:
+	super()
 	enemy.velocity = Vector2.ZERO
 	_timer = randf_range(state_duration_min,state_duration_max)
 	enemy.update_animation(anim_name) 
-	pass
 	
 
 ## What happens when the enemy exits this state ?
 func exit() -> void:
-	pass
+	super()
 	
 ## What happens during the _process update of this state ?
 func process(_delta : float) -> EnemyState:
 	_timer -= _delta
 	if _timer <= 0:
 		return after_idle_state
-	return null
-
-## What happens during the _physics update of this state ?
-func physics(_delta : float) -> EnemyState:
 	return null

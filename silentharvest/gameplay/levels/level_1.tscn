@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=4 uid="uid://fehr3p1frps7"]
+[gd_scene load_steps=7 format=4 uid="uid://fehr3p1frps7"]
 
 [ext_resource type="Script" path="res://gameplay/levels/level_1.gd" id="1_ehrcc"]
-[ext_resource type="TileSet" uid="uid://4m1whi8xvife" path="res://Assets/sprites/tilesets/grass.tres" id="2_27k8j"]
-[ext_resource type="PackedScene" uid="uid://drlbic8jcmk7x" path="res://gameplay/entities/props/Tree.tscn" id="3_ctuf2"]
+[ext_resource type="TileSet" uid="uid://4m1whi8xvife" path="res://assets/sprites/tilesets/grass.tres" id="2_27k8j"]
 [ext_resource type="PackedScene" uid="uid://bontrauqnjxcx" path="res://gameplay/entities/traps/GlueTrap.tscn" id="4_1nxl1"]
 [ext_resource type="PackedScene" uid="uid://011gh33qvxap" path="res://gameplay/behaviors/patrol/Patrol.tscn" id="5_i52hj"]
 [ext_resource type="PackedScene" uid="uid://cs1plvef6f8u1" path="res://gameplay/entities/enemies/HumanEnemy.tscn" id="6_6jlwx"]
@@ -12,17 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://cv7x62xklc8ui" path="res://Assets/sprites/items/eggplant.png" id="10_qmwaa"]
 [ext_resource type="Texture2D" uid="uid://bqgr86oxg6ruj" path="res://Assets/sprites/items/carrot.png" id="11_cec04"]
 
-[sub_resource type="Curve2D" id="Curve2D_3qw2w"]
+[sub_resource type="Curve2D" id="Curve2D_stvnh"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 95, -24, 0, 0, 0, 0, 158, 80, 0, 0, 0, 0, -49, 157)
+"points": PackedVector2Array(0, 0, 0, 0, 224, 32, 0, 0, 0, 0, 288, 32)
 }
-point_count = 4
-
-[sub_resource type="Curve2D" id="Curve2D_dg3t7"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 46, 168, 0, 0, 0, 0, -51, 163, 0, 0, 0, 0, -63, 71, 0, 0, 0, 0, 95, 11)
-}
-point_count = 4
+point_count = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kpr2h"]
 atlas = ExtResource("10_qmwaa")
@@ -59,34 +52,24 @@ tile_set = ExtResource("2_27k8j")
 
 [node name="LstProp" type="Node2D" parent="."]
 
-[node name="Tree" parent="LstProp" instance=ExtResource("3_ctuf2")]
-position = Vector2(104, 138)
-
-[node name="Tree2" parent="LstProp" instance=ExtResource("3_ctuf2")]
-position = Vector2(322, 208.185)
-
-[node name="Tree3" parent="LstProp" instance=ExtResource("3_ctuf2")]
-position = Vector2(319, 61.185)
-
 [node name="LstTrap" type="Node2D" parent="."]
 
 [node name="GlueTrap" parent="LstTrap" instance=ExtResource("4_1nxl1")]
 position = Vector2(202, 232)
 
 [node name="Patrol" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
-position = Vector2(75, 64)
 entity = NodePath("../HumanEnemy")
-loop_between_segments = true
+loop_between_segments = false
+pause_at_end = true
+speed = 30.0
+autostart = true
+lst_poi = Array[int]([0, 1])
 
-[node name="Path0" type="Path2D" parent="Patrol"]
-position = Vector2(97, 10)
-curve = SubResource("Curve2D_3qw2w")
-
-[node name="Path1" type="Path2D" parent="Patrol"]
-curve = SubResource("Curve2D_dg3t7")
+[node name="Path2D" type="Path2D" parent="Patrol"]
+curve = SubResource("Curve2D_stvnh")
 
 [node name="HumanEnemy" parent="." instance=ExtResource("6_6jlwx")]
-position = Vector2(136, 37)
+position = Vector2(152, 160)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(256, 144)

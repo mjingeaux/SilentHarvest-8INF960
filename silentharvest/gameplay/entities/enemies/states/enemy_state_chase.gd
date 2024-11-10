@@ -12,7 +12,6 @@ class_name EnemyStateChase extends EnemyState
 @export var next_state : EnemyState
 
 var _timer : float = 0.0
-var _direction : Vector2
 var _can_see_player : bool = false
 var _last_player_position : Vector2
 @onready var _player : Player = PlayerManager.player
@@ -28,26 +27,25 @@ func init() -> void:
 
 ## What happens when the enemy enters this state ?
 func enter() -> void:
+	super()
 	_timer = state_aggro_duration
 	enemy.update_animation(anim_name) 
-	
-	enemy.velocity = _direction * chase_speed
-	enemy.set_direction(_direction)
-	pass
 	
 
 ## What happens when the enemy exits this state ?
 func exit() -> void:
-	pass
+	super()
 	
 ## What happens during the _process update of this state ?
 func process(_delta : float) -> EnemyState:
+	#var new_dir : Vector2 = enemy.global_position.direction_to(PlayerManager.player.global_position)
+	var new_dir_vect : Vector2 = (PlayerManager.player.global_position - enemy.global_position).normalized()
+	var new_dir_angle : float = new_dir_vect.angle()
+	enemy.velocity = new_dir_vect * chase_speed
+	enemy.set_direction(rad_to_deg(new_dir_angle))
 	
-	var new_dir : Vector2 = enemy.global_position.direction_to(_player.global_position)
-	_direction = lerp(_direction,new_dir,turn_rate)
-	enemy.velocity = _direction * chase_speed
-	if enemy.set_direction(_direction):
-		enemy.update_animation(anim_name)
+	#TODO perform a raycast here
+	
 	if _can_see_player == false:
 		_timer -= _delta
 		if _timer <= 0:
@@ -55,16 +53,10 @@ func process(_delta : float) -> EnemyState:
 	else:
 		_timer = state_aggro_duration
 	return null
-
-## What happens during the _physics update of this state ?
-func physics(_delta : float) -> EnemyState:
-	return null
 	
 func _on_player_enter() -> void:
 	_can_see_player = true
 	state_machine.change_state(self)
-	pass
 
 func _on_player_exit() -> void:
 	_can_see_player = false
-	pass
