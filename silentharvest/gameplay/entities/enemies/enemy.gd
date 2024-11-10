@@ -85,27 +85,27 @@ func anim_direction() -> String:
 		return "side"
 		
 
-func play_poi(poi_id : GE.Epoi_type):
+func play_poi(poi_id : GlobalE.Epoi_type):
 	match poi_id:
-		GE.Epoi_type.wait_short:
+		GlobalE.Epoi_type.wait_short:
 			await get_tree().create_timer(.5).timeout
-		GE.Epoi_type.wait_long:
+		GlobalE.Epoi_type.wait_long:
 			await get_tree().create_timer(1.5).timeout
-		GE.Epoi_type.right_then_left_narrow:
+		GlobalE.Epoi_type.right_then_left_narrow:
 			pass
-		GE.Epoi_type.right_then_left_wide:
+		GlobalE.Epoi_type.right_then_left_wide:
 			pass
-		GE.Epoi_type.left_then_right_narrow:
+		GlobalE.Epoi_type.left_then_right_narrow:
 			pass
-		GE.Epoi_type.left_then_right_wide:
+		GlobalE.Epoi_type.left_then_right_wide:
 			pass
-		GE.Epoi_type.left_trick:
+		GlobalE.Epoi_type.left_trick:
 			pass
-		GE.Epoi_type.right_trick:
+		GlobalE.Epoi_type.right_trick:
 			pass
-		GE.Epoi_type.cw_full_turn:
+		GlobalE.Epoi_type.cw_full_turn:
 			pass
-		GE.Epoi_type.ccw_full_turn:
+		GlobalE.Epoi_type.ccw_full_turn:
 			pass
 	poi_finished.emit()
 

@@ -10,7 +10,7 @@ class_name Patrol extends Node2D
 @export var autostart := true
 
 @export_category("Points of Interest")
-@export var lst_poi : Array[GE.Epoi_type]
+@export var lst_poi : Array[GlobalE.Epoi_type]
 
 var path_follow_node : PathFollow2D
 var path_count := 0
@@ -117,7 +117,7 @@ func _play_entity_poi(id := 0):
 	paused = true
 	entity.play_poi(_get_poi_type(id))
 	
-func _get_poi_type(id : int) -> GE.Epoi_type:
+func _get_poi_type(id : int) -> GlobalE.Epoi_type:
 	assert(id < lst_poi.size())
 	return lst_poi[id]
 

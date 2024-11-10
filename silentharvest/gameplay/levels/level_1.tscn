@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://fehr3p1frps7"]
+[gd_scene load_steps=16 format=4 uid="uid://fehr3p1frps7"]
 
 [ext_resource type="Script" path="res://gameplay/levels/level_1.gd" id="1_ehrcc"]
 [ext_resource type="TileSet" uid="uid://4m1whi8xvife" path="res://assets/sprites/tilesets/grass.tres" id="2_27k8j"]
@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://011gh33qvxap" path="res://gameplay/behaviors/patrol/Patrol.tscn" id="5_i52hj"]
 [ext_resource type="PackedScene" uid="uid://cs1plvef6f8u1" path="res://gameplay/entities/enemies/HumanEnemy.tscn" id="6_6jlwx"]
 [ext_resource type="PackedScene" uid="uid://cv75k0dbr2h1x" path="res://gameplay/entities/items/item_pickup.tscn" id="7_jyymn"]
-[ext_resource type="Resource" uid="uid://cca0a5fiq6xcs" path="res://Assets/resources/apple.tres" id="8_me2hq"]
+[ext_resource type="Resource" uid="uid://cca0a5fiq6xcs" path="res://assets/resources/apple.tres" id="8_me2hq"]
 [ext_resource type="Script" path="res://gameplay/entities/items/item_data.gd" id="9_3d7do"]
-[ext_resource type="Texture2D" uid="uid://cv7x62xklc8ui" path="res://Assets/sprites/items/eggplant.png" id="10_qmwaa"]
-[ext_resource type="Texture2D" uid="uid://bqgr86oxg6ruj" path="res://Assets/sprites/items/carrot.png" id="11_cec04"]
+[ext_resource type="Texture2D" uid="uid://cv7x62xklc8ui" path="res://assets/sprites/items/eggplant.png" id="10_qmwaa"]
+[ext_resource type="Texture2D" uid="uid://bqgr86oxg6ruj" path="res://assets/sprites/items/carrot.png" id="11_cec04"]
 
 [sub_resource type="Curve2D" id="Curve2D_stvnh"]
 _data = {
@@ -59,10 +59,6 @@ position = Vector2(202, 232)
 
 [node name="Patrol" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
 entity = NodePath("../HumanEnemy")
-loop_between_segments = false
-pause_at_end = true
-speed = 30.0
-autostart = true
 lst_poi = Array[int]([0, 1])
 
 [node name="Path2D" type="Path2D" parent="Patrol"]
