@@ -91,22 +91,78 @@ func play_poi(poi_id : GlobalE.Epoi_type):
 			await get_tree().create_timer(.5).timeout
 		GlobalE.Epoi_type.wait_long:
 			await get_tree().create_timer(1.5).timeout
+			
 		GlobalE.Epoi_type.right_then_left_narrow:
-			pass
+			vision_area.angle_target_degree += 30
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
+			vision_area.angle_target_degree -= 60
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
+			
 		GlobalE.Epoi_type.right_then_left_wide:
-			pass
+			vision_area.angle_target_degree += 65
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
+			vision_area.angle_target_degree -= 130
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
+			
 		GlobalE.Epoi_type.left_then_right_narrow:
-			pass
+			vision_area.angle_target_degree -= 30
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
+			vision_area.angle_target_degree += 60
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
+			
 		GlobalE.Epoi_type.left_then_right_wide:
-			pass
+			vision_area.angle_target_degree -= 65
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
+			vision_area.angle_target_degree += 130
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
+			
 		GlobalE.Epoi_type.left_trick:
-			pass
+			vision_area.rotation_speed = vision_area.Erotation_speed.slow
+			vision_area.angle_target_degree -= 30
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.15).timeout
+			vision_area.rotation_speed = vision_area.Erotation_speed.default
+			vision_area.angle_target_degree += 20
+			await vision_area.rotation_completed
+			vision_area.rotation_speed = vision_area.Erotation_speed.fast
+			vision_area.angle_target_degree -= 60
+			await vision_area.rotation_completed
+			vision_area.rotation_speed = vision_area.Erotation_speed.default
+			await get_tree().create_timer(.7).timeout
+			
 		GlobalE.Epoi_type.right_trick:
-			pass
+			vision_area.rotation_speed = vision_area.Erotation_speed.slow
+			vision_area.angle_target_degree += 30
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.15).timeout
+			vision_area.rotation_speed = vision_area.Erotation_speed.default
+			vision_area.angle_target_degree -= 20
+			await vision_area.rotation_completed
+			vision_area.rotation_speed = vision_area.Erotation_speed.fast
+			vision_area.angle_target_degree += 60
+			await vision_area.rotation_completed
+			vision_area.rotation_speed = vision_area.Erotation_speed.default
+			await get_tree().create_timer(.7).timeout
+			
 		GlobalE.Epoi_type.cw_full_turn:
-			pass
+			for i in range(3):
+				vision_area.angle_target_degree += 120
+				await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
+			
 		GlobalE.Epoi_type.ccw_full_turn:
-			pass
+			for i in range(3):
+				vision_area.angle_target_degree -= 120
+				await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
 	poi_finished.emit()
 
 #func _wait(sec : float):

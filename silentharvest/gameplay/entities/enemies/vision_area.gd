@@ -5,7 +5,8 @@ enum Erotation_speed{
 	slow,
 	medium,
 	fast,
-	instant
+	instant,
+	default = slow,
 }
 
 # progress [0, 1] per second
@@ -19,7 +20,7 @@ var is_rotating = false
 var _rotation_progress : float # 0..1
 signal rotation_completed()
 
-@export var rotation_speed : Erotation_speed
+var rotation_speed : Erotation_speed = Erotation_speed.default
 
 signal player_entered()
 signal player_exited()
