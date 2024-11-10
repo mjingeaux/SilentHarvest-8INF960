@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6ytebyuhahwq"
-path="res://.godot/imported/test.png-9345e8a13a5ffc7f7c123bcf8dce3547.ctex"
+uid="uid://bpuss0ioum3c2"
+path="res://.godot/imported/corn.png-0e369b667d1fad1836494955ab0adc35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/test.png"
-dest_files=["res://.godot/imported/test.png-9345e8a13a5ffc7f7c123bcf8dce3547.ctex"]
+source_file="res://assets/corn.png"
+dest_files=["res://.godot/imported/corn.png-0e369b667d1fad1836494955ab0adc35.ctex"]
 
 [params]
 

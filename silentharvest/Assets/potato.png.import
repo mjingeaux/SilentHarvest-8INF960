@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmdens3l3hwme"
-path="res://.godot/imported/mcSpriteSheet.png-441a2550e7dbfc47c8bdd94f7c9d17c9.ctex"
+uid="uid://dqdipl7uw5n8n"
+path="res://.godot/imported/potato.png-64edac6e1173c57ce4289d7e66c57756.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mcSpriteSheet.png"
-dest_files=["res://.godot/imported/mcSpriteSheet.png-441a2550e7dbfc47c8bdd94f7c9d17c9.ctex"]
+source_file="res://Assets/potato.png"
+dest_files=["res://.godot/imported/potato.png-64edac6e1173c57ce4289d7e66c57756.ctex"]
 
 [params]
 

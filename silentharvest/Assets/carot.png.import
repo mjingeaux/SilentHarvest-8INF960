@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmdens3l3hwme"
-path="res://.godot/imported/mcSpriteSheet.png-441a2550e7dbfc47c8bdd94f7c9d17c9.ctex"
+uid="uid://cl80iwncoyxn3"
+path="res://.godot/imported/carot.png-7de59c021ed5bc25406798fdd471d528.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mcSpriteSheet.png"
-dest_files=["res://.godot/imported/mcSpriteSheet.png-441a2550e7dbfc47c8bdd94f7c9d17c9.ctex"]
+source_file="res://Assets/carot.png"
+dest_files=["res://.godot/imported/carot.png-7de59c021ed5bc25406798fdd471d528.ctex"]
 
 [params]
 
