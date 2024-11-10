@@ -1,10 +1,10 @@
 [gd_scene load_steps=22 format=3 uid="uid://cek825tx7ay7r"]
 
 [ext_resource type="Script" path="res://gameplay/entities/player/player.gd" id="1_44c6v"]
-[ext_resource type="Texture2D" uid="uid://bmc41qcaqh80a" path="res://Assets/mcSpriteSheet.png" id="2_sfsj4"]
+[ext_resource type="Texture2D" uid="uid://cmdens3l3hwme" path="res://Assets/mcSpriteSheet.png" id="2_sfsj4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbfn4"]
-size = Vector2(24, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uarug"]
+size = Vector2(14, 10)
 
 [sub_resource type="Animation" id="Animation_1odas"]
 length = 0.001
@@ -197,6 +197,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_lcmfw"]
 resource_name = "walk_down"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -204,7 +205,7 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(0, 10), Vector2i(1, 10), Vector2i(2, 10), Vector2i(3, 10)]
@@ -212,6 +213,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_rmmua"]
 resource_name = "walk_left"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -219,7 +221,7 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(0, 8), Vector2i(1, 8), Vector2i(2, 8), Vector2i(3, 8)]
@@ -227,6 +229,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_d26ji"]
 resource_name = "walk_right"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -234,7 +237,7 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(0, 7), Vector2i(1, 7), Vector2i(2, 7), Vector2i(3, 7)]
@@ -242,6 +245,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_n1vxk"]
 resource_name = "walk_up"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -249,7 +253,7 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(0, 9), Vector2i(1, 9), Vector2i(2, 9), Vector2i(3, 9)]
@@ -280,8 +284,8 @@ _data = {
 script = ExtResource("1_44c6v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 1)
-shape = SubResource("RectangleShape2D_lbfn4")
+position = Vector2(-1, 10)
+shape = SubResource("RectangleShape2D_uarug")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_sfsj4")
@@ -293,3 +297,6 @@ frame = 20
 libraries = {
 "": SubResource("AnimationLibrary_aiirj")
 }
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.135, 2.135)

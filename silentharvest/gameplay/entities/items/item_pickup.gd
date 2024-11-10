@@ -1,4 +1,3 @@
-@tool
 class_name ItemPickup extends Node2D 
 
 @export var item_data : ItemData : set = _set_item_data
