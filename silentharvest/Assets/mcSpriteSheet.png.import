@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dplw6m61d5t3y"
-path="res://.godot/imported/mcSpriteSheet.png-8bc413d0f3b2056ea213469e2bece5fb.ctex"
+uid="uid://cmdens3l3hwme"
+path="res://.godot/imported/mcSpriteSheet.png-441a2550e7dbfc47c8bdd94f7c9d17c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/mcSpriteSheet.png"
-dest_files=["res://.godot/imported/mcSpriteSheet.png-8bc413d0f3b2056ea213469e2bece5fb.ctex"]
+source_file="res://assets/mcSpriteSheet.png"
+dest_files=["res://.godot/imported/mcSpriteSheet.png-441a2550e7dbfc47c8bdd94f7c9d17c9.ctex"]
 
 [params]
 

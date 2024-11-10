@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3jp10ql71lfr"]
+[gd_scene load_steps=7 format=3 uid="uid://c3jp10ql71lfr"]
 
 [ext_resource type="Script" path="res://GUI/pause_menu/pause_menu.gd" id="1_rypip"]
-[ext_resource type="Texture2D" uid="uid://c7yrskitx27a" path="res://Assets/sprites/items/items.png" id="2_4fsgg"]
+[ext_resource type="Texture2D" uid="uid://c7yrskitx27a" path="res://assets/sprites/items/items.png" id="2_4fsgg"]
 [ext_resource type="Script" path="res://GUI/pause_menu/inventory/inventory_ui.gd" id="3_266bn"]
-[ext_resource type="Resource" uid="uid://b2jfiufsunu2q" path="res://Assets/resources/player_inventory.tres" id="4_kgxp0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4j3kl"]
 font_size = 28
@@ -50,7 +49,6 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 columns = 5
 script = ExtResource("3_266bn")
-data = ExtResource("4_kgxp0")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 anchors_preset = 8

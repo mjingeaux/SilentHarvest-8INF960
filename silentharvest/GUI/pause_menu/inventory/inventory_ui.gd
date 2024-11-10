@@ -2,11 +2,12 @@ class_name InventoryUI extends Control
 
 const INVENTORY_SLOT = preload("res://GUI/pause_menu/inventory/inventory_slot.tscn")
 
-@export var data : InventoryData
+var data : InventoryData
 
 func _ready() -> void:
 	Pause_Menu.shown.connect(update_inventory)
 	Pause_Menu.hidden.connect(clear_inventory)
+	data = PlayerManager.INVENTORY_DATA
 	clear_inventory()
 	pass
 
