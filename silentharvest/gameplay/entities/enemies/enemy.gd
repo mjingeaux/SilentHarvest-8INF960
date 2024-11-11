@@ -18,19 +18,21 @@ var _last_pos : Vector2
 @onready var sprite : Sprite2D = $Sprite2D 
 @onready var state_machine : EnemyStateMachine = $EnemyStateMachine
 @onready var vision_area : VisionArea = $VisionArea
+@onready var animation_tree : AnimationTree = $AnimationTree
 
 var first_state_entering := true
-
+var char_direction : Vector2 = Vector2.ZERO
 
 func _ready():
 	state_machine.initialize(self)
 	_last_pos = global_position
 
 func _process(delta):
-	pass
+	update_animation_parameters()
 
 
 func _physics_process(delta: float) -> void:
+	char_direction = velocity.normalized()
 	move_and_slide()
 	
 
@@ -59,6 +61,17 @@ func set_direction(angle_degree : float):
 		return
 	vision_area.angle_target_degree = angle_degree
 	
+func update_animation_parameters():
+	if(velocity == Vector2.ZERO):
+		animation_tree["parameters/conditions/is_resting"] = true
+		animation_tree["parameters/conditions/is_moving"] = false
+	else:
+		animation_tree["parameters/conditions/is_resting"] = false
+		animation_tree["parameters/conditions/is_moving"] = true
+	if(velocity != Vector2.ZERO):
+		animation_tree["parameters/Chase/blend_position"] = char_direction
+		animation_tree["parameters/Idle/blend_position"] = char_direction
+
 func update_animation(state : String) -> void:
 	if state == "chase":
 		var exclamation = preload("res://gameplay/entities/enemies/ExclamationMark.tscn").instantiate()
