@@ -301,3 +301,17 @@ libraries = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+
+[node name="VisibilityHotspots" type="Node" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="VisibilityHotspots"]
+position = Vector2(-3, 7)
+
+[node name="Marker2D2" type="Marker2D" parent="VisibilityHotspots"]
+position = Vector2(3, 12)
+
+[node name="Marker2D3" type="Marker2D" parent="VisibilityHotspots"]
+position = Vector2(-3, 12)
+
+[node name="Marker2D4" type="Marker2D" parent="VisibilityHotspots"]
+position = Vector2(3, 7)

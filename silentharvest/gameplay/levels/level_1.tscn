@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://gameplay/levels/level_1.gd" id="1_ehrcc"]
 [ext_resource type="TileSet" uid="uid://4m1whi8xvife" path="res://assets/sprites/tilesets/grass.tres" id="2_27k8j"]
-[ext_resource type="TileSet" uid="uid://cjr45nhgdnw5u" path="res://assets/sprites/tilesets/fence.tres" id="3_3tua8"]
+[ext_resource type="TileSet" uid="uid://baj6xmghe8plq" path="res://assets/sprites/tilesets/fence.tres" id="3_3tua8"]
 [ext_resource type="PackedScene" uid="uid://011gh33qvxap" path="res://gameplay/behaviors/patrol/Patrol.tscn" id="5_i52hj"]
 [ext_resource type="PackedScene" uid="uid://cs1plvef6f8u1" path="res://gameplay/entities/enemies/HumanEnemy.tscn" id="6_6jlwx"]
 [ext_resource type="PackedScene" uid="uid://cv75k0dbr2h1x" path="res://gameplay/entities/items/item_pickup.tscn" id="7_jyymn"]
