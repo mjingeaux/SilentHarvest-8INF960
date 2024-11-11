@@ -2,7 +2,7 @@ class_name EnemyStateChase extends EnemyState
 
 
 @export var anim_name : String = "chase"
-@export var chase_speed : float = 40.0
+@export var chase_speed : float = 130.0
 @export var turn_rate : float = 0.25
 
 
@@ -14,6 +14,7 @@ class_name EnemyStateChase extends EnemyState
 var _timer : float = 0.0
 var _can_see_player : bool = false
 var _last_player_position : Vector2
+var _start_chase := false
 @onready var _player : Player = PlayerManager.player
 
 
@@ -30,28 +31,30 @@ func enter() -> void:
 	super()
 	_timer = state_aggro_duration
 	enemy.update_animation(anim_name) 
-	
+	await get_tree().create_timer(.3).timeout
+	_start_chase = true
+
 
 ## What happens when the enemy exits this state ?
 func exit() -> void:
+	_start_chase = false
 	super()
 	
 ## What happens during the _process update of this state ?
 func process(_delta : float) -> EnemyState:
-	#var new_dir : Vector2 = enemy.global_position.direction_to(PlayerManager.player.global_position)
-	var new_dir_vect : Vector2 = (PlayerManager.player.global_position - enemy.global_position).normalized()
-	var new_dir_angle : float = new_dir_vect.angle()
-	enemy.velocity = new_dir_vect * chase_speed
-	enemy.set_direction(rad_to_deg(new_dir_angle))
-	
-	#TODO perform a raycast here
-	
-	if _can_see_player == false:
-		_timer -= _delta
-		if _timer <= 0:
-			return next_state
-	else:
-		_timer = state_aggro_duration
+	if (_start_chase):
+		#var new_dir : Vector2 = enemy.global_position.direction_to(PlayerManager.player.global_position)
+		var new_dir_vect : Vector2 = (PlayerManager.player.global_position - enemy.global_position).normalized()
+		var new_dir_angle : float = new_dir_vect.angle()
+		enemy.velocity = new_dir_vect * chase_speed
+		enemy.set_direction(rad_to_deg(new_dir_angle))
+		
+		if _can_see_player == false:
+			_timer -= _delta
+			if _timer <= 0:
+				return next_state
+		else:
+			_timer = state_aggro_duration
 	return null
 	
 func _on_player_enter() -> void:

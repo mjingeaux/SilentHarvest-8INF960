@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b1i3f7ia0ocj7" path="res://Assets/ennemySpriteSheet.png" id="8_kpm45"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd6u1"]
-size = Vector2(54, 23)
+size = Vector2(11, 5)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4f02c"]
 animation = &"run_left"
@@ -279,7 +279,7 @@ _data = {
 script = ExtResource("1_xs7d5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 18.5)
+position = Vector2(-0.5, 9.5)
 shape = SubResource("RectangleShape2D_wd6u1")
 
 [node name="EnemyStateMachine" type="Node" parent="."]
@@ -301,11 +301,11 @@ after_goto_state = NodePath("../Idle")
 [node name="VisionArea" parent="." instance=ExtResource("6_c8emu")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea"]
-position = Vector2(117, -11)
-polygon = PackedVector2Array(-93.248, 25.4167, -93.7766, -1.59661, 35.4728, -129.36, 35.5505, 152.684)
+position = Vector2(106, -11)
+polygon = PackedVector2Array(-98, 19, -98, 3, 14, -62, 29, -27, 34, 11, 27, 49, 10, 82)
 
 [node name="RangeVisualizer" type="Sprite2D" parent="VisionArea/CollisionPolygon2D"]
-position = Vector2(35.012, 11.25)
+position = Vector2(-73, 11)
 rotation = -0.785398
 texture = ExtResource("6_78c51")
 

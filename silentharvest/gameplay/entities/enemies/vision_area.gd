@@ -5,25 +5,27 @@ enum Erotation_speed{
 	slow,
 	medium,
 	fast,
-	instant
+	instant,
+	default = slow,
 }
+signal rotation_completed()
+signal player_entered()
+signal player_exited()
 
 # progress [0, 1] per second
 const SLOW_ROTATION 	= 1.3
 const MEDIUM_ROTATION 	= 2.5
 const FAST_ROTATION 	= 3.9
 
-var _angle_from_degree: float
 var angle_target_degree: float : set = _set_angle_target_degree
+var rotation_speed : Erotation_speed = Erotation_speed.default
+
+
+var _angle_from_degree: float
 var is_rotating = false
 var _rotation_progress : float # 0..1
-signal rotation_completed()
-
-@export var rotation_speed : Erotation_speed
-
-signal player_entered()
-signal player_exited()
-
+var _target : Node2D
+var _is_player_visible := false : set = _set_is_player_visible
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,17 +34,18 @@ func _ready() -> void:
 	var p = get_parent()
 	if p is Enemy:
 		p.direction_changed.connect(_on_direction_change)
-	pass # Replace with function body.
-
+		
 func _on_body_enter(_b : Node2D) -> void:
 	if _b is Player:
-		player_entered.emit()
-	pass
+		_target = _b
+		#_raycast.enabled = true
+		#player_entered.emit()
 	
 func _on_body_exit(_b : Node2D) -> void:
 	if _b is Player:
-		player_exited.emit()
-	pass
+		_target = null
+		#_raycast.enabled = false
+		#player_exited.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -56,6 +59,33 @@ func _process(delta: float) -> void:
 		else:
 			rotation = lerp_angle(deg_to_rad(_angle_from_degree), deg_to_rad(angle_target_degree), _rotation_progress)
 		
+	if (_target):
+		_is_player_visible = _raycast_target()
+		
+func _raycast_target():
+	var targets = _target.get_node("VisibilityHotspots").get_children()
+	var result: Dictionary
+	for t in targets:
+		var parent = get_parent() as Node2D
+		var space_state = get_world_2d().direct_space_state
+		var query = PhysicsRayQueryParameters2D.create(parent.global_position, t.global_position)
+		query.exclude = [self, parent]
+		query.collision_mask = 256
+		query.collide_with_areas = true
+		result = space_state.intersect_ray(query)
+		if (!result.is_empty()):
+			if (result.collider is Player):
+				return true
+	return false
+	
+func _set_is_player_visible(val : bool):
+	if (val != _is_player_visible):
+		_is_player_visible = val
+		if (val):
+			player_entered.emit()
+		else:
+			player_exited.emit()
+	
 
 func _get_rotation_speed():
 	match rotation_speed:
