@@ -60,17 +60,22 @@ func _process(delta: float) -> void:
 		else:
 			rotation = lerp_angle(deg_to_rad(_angle_from_degree), deg_to_rad(angle_target_degree), _rotation_progress)
 		
-	#if (_target):
-		#_raycast_target()
+	if (_target):
+		_raycast_target()
 		
 func _raycast_target():
 	var parent = get_parent() as Node2D
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(parent.global_position, _target.global_position)
-	query.exclude = [self, parent]
+	var dif = _target.global_position - parent.global_position
+	#query.exclude = [self, parent]
+	query.collision_mask = 256
+	query.collide_with_areas = true
+	query.collide_with_areas
 	var result = space_state.intersect_ray(query)
-	print(result.position)
-	return result.collider == _target
+	print("ok")
+	#print(result.position)
+	#return result.collider == _target
 	
 
 func _get_rotation_speed():
