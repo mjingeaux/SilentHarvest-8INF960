@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 PlayerManager="*res://globals/global_player_manager.gd"
 GlobalE="*res://globals/global_enums.gd"
 Pause_Menu="*res://GUI/pause_menu/pause_menu.tscn"
+Replace_Item="*res://GUI/inventory/replace_item.tscn"
 
 [file_customization]
 

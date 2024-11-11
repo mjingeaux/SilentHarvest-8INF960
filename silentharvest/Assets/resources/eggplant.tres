@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://cx4nvlu2jdg42"]
+
+[ext_resource type="Script" path="res://gameplay/entities/items/item_data.gd" id="1_73xbo"]
+[ext_resource type="Texture2D" uid="uid://cv7x62xklc8ui" path="res://Assets/sprites/items/eggplant.png" id="2_cror5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32mbl"]
+atlas = ExtResource("2_cror5")
+region = Rect2(0, 0, 24, 0)
+
+[resource]
+script = ExtResource("1_73xbo")
+name = "Eggplant"
+description = "It's an eggplant"
+texture = SubResource("AtlasTexture_32mbl")
+value = 5
