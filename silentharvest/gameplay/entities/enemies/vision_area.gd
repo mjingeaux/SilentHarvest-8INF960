@@ -61,6 +61,8 @@ func _process(delta: float) -> void:
 		
 	if (_target):
 		_is_player_visible = _raycast_target()
+	else:
+		_is_player_visible = false
 		
 func _raycast_target():
 	var targets = _target.get_node("VisibilityHotspots").get_children()

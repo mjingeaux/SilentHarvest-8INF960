@@ -47,7 +47,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_h60f0")
 [node name="Inventory" type="GridContainer" parent="PanelContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-columns = 5
+columns = 3
 script = ExtResource("3_266bn")
 
 [node name="GridContainer" type="GridContainer" parent="."]

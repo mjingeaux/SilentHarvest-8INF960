@@ -3,7 +3,7 @@ class_name InventoryUI extends Control
 
 
 const INVENTORY_SLOT = preload("res://GUI/inventory/inventory_slot.tscn")
-const ITEM_TO_ADD = preload("res://Assets/resources/item_to_add.tres")
+const ITEM_TO_ADD = preload("res://assets/resources/item_to_add.tres")
 
 var data : InventoryData
 
