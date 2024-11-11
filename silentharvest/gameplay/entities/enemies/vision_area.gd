@@ -8,22 +8,24 @@ enum Erotation_speed{
 	instant,
 	default = slow,
 }
+signal rotation_completed()
+signal player_entered()
+signal player_exited()
 
 # progress [0, 1] per second
 const SLOW_ROTATION 	= 1.3
 const MEDIUM_ROTATION 	= 2.5
 const FAST_ROTATION 	= 3.9
 
-var _angle_from_degree: float
 var angle_target_degree: float : set = _set_angle_target_degree
-var is_rotating = false
-var _rotation_progress : float # 0..1
-signal rotation_completed()
-
 var rotation_speed : Erotation_speed = Erotation_speed.default
 
-signal player_entered()
-signal player_exited()
+
+var _angle_from_degree: float
+var is_rotating = false
+var _rotation_progress : float # 0..1
+var _target : Node2D
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -33,17 +35,18 @@ func _ready() -> void:
 	var p = get_parent()
 	if p is Enemy:
 		p.direction_changed.connect(_on_direction_change)
-	pass # Replace with function body.
-
+		
 func _on_body_enter(_b : Node2D) -> void:
 	if _b is Player:
+		_target = _b
+		#_raycast.enabled = true
 		player_entered.emit()
-	pass
 	
 func _on_body_exit(_b : Node2D) -> void:
 	if _b is Player:
+		_target = null
+		#_raycast.enabled = false
 		player_exited.emit()
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -57,6 +60,18 @@ func _process(delta: float) -> void:
 		else:
 			rotation = lerp_angle(deg_to_rad(_angle_from_degree), deg_to_rad(angle_target_degree), _rotation_progress)
 		
+	#if (_target):
+		#_raycast_target()
+		
+func _raycast_target():
+	var parent = get_parent() as Node2D
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(parent.global_position, _target.global_position)
+	query.exclude = [self, parent]
+	var result = space_state.intersect_ray(query)
+	print(result.position)
+	return result.collider == _target
+	
 
 func _get_rotation_speed():
 	match rotation_speed:

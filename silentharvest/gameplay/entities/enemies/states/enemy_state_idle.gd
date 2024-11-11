@@ -7,9 +7,6 @@ class_name EnemyStateIdle extends EnemyState
 @export var state_duration_max : float = 1.5
 @export var after_idle_state : EnemyState
 
-var _timer : float = 0.0
-
-
 ## What happens when we initialize this state ?
 func init() -> void:
 	pass
@@ -19,7 +16,6 @@ func init() -> void:
 func enter() -> void:
 	super()
 	enemy.velocity = Vector2.ZERO
-	_timer = randf_range(state_duration_min,state_duration_max)
 	enemy.update_animation(anim_name) 
 	
 
@@ -29,7 +25,4 @@ func exit() -> void:
 	
 ## What happens during the _process update of this state ?
 func process(_delta : float) -> EnemyState:
-	_timer -= _delta
-	if _timer <= 0:
-		return after_idle_state
-	return null
+	return after_idle_state
