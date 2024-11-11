@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://bb22tqjrspa6a"]
+
+[ext_resource type="Script" path="res://GUI/inventory/replace_item.gd" id="1_3fwbg"]
+[ext_resource type="Texture2D" uid="uid://c7yrskitx27a" path="res://Assets/sprites/items/items.png" id="1_k5ogn"]
+[ext_resource type="Script" path="res://GUI/inventory/inventory_ui.gd" id="2_bqs13"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4i4fg"]
+atlas = ExtResource("1_k5ogn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_exb14"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = SubResource("AtlasTexture_4i4fg")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+
+[node name="ReplaceItem" type="CanvasLayer"]
+script = ExtResource("1_3fwbg")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_left = 435.0
+offset_top = 193.0
+offset_right = 714.0
+offset_bottom = 277.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_exb14")
+
+[node name="Inventory" type="GridContainer" parent="PanelContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+columns = 5
+script = ExtResource("2_bqs13")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 488.0
+offset_top = 138.0
+offset_right = 651.0
+offset_bottom = 161.0
+text = "Remplacer un objet ?"
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(32, 32)
+offset_left = 277.0
+offset_top = 205.0
+offset_right = 329.0
+offset_bottom = 257.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_exb14")
+
+[node name="NewItem" type="GridContainer" parent="PanelContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+script = ExtResource("2_bqs13")

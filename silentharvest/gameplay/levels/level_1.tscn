@@ -1,43 +1,20 @@
-[gd_scene load_steps=16 format=4 uid="uid://fehr3p1frps7"]
+[gd_scene load_steps=11 format=4 uid="uid://fehr3p1frps7"]
 
 [ext_resource type="Script" path="res://gameplay/levels/level_1.gd" id="1_ehrcc"]
-[ext_resource type="TileSet" uid="uid://4m1whi8xvife" path="res://assets/sprites/tilesets/grass.tres" id="2_27k8j"]
+[ext_resource type="TileSet" uid="uid://4m1whi8xvife" path="res://Assets/sprites/tilesets/grass.tres" id="2_27k8j"]
 [ext_resource type="PackedScene" uid="uid://bontrauqnjxcx" path="res://gameplay/entities/traps/GlueTrap.tscn" id="4_1nxl1"]
 [ext_resource type="PackedScene" uid="uid://011gh33qvxap" path="res://gameplay/behaviors/patrol/Patrol.tscn" id="5_i52hj"]
 [ext_resource type="PackedScene" uid="uid://cs1plvef6f8u1" path="res://gameplay/entities/enemies/HumanEnemy.tscn" id="6_6jlwx"]
 [ext_resource type="PackedScene" uid="uid://cv75k0dbr2h1x" path="res://gameplay/entities/items/item_pickup.tscn" id="7_jyymn"]
-[ext_resource type="Resource" uid="uid://cca0a5fiq6xcs" path="res://assets/resources/apple.tres" id="8_me2hq"]
-[ext_resource type="Script" path="res://gameplay/entities/items/item_data.gd" id="9_3d7do"]
-[ext_resource type="Texture2D" uid="uid://cv7x62xklc8ui" path="res://assets/sprites/items/eggplant.png" id="10_qmwaa"]
-[ext_resource type="Texture2D" uid="uid://bqgr86oxg6ruj" path="res://assets/sprites/items/carrot.png" id="11_cec04"]
+[ext_resource type="Resource" uid="uid://cca0a5fiq6xcs" path="res://Assets/resources/apple.tres" id="8_me2hq"]
+[ext_resource type="Resource" uid="uid://dcc4t208nuwxq" path="res://Assets/resources/carrot.tres" id="8_wjdc8"]
+[ext_resource type="Resource" uid="uid://cx4nvlu2jdg42" path="res://Assets/resources/eggplant.tres" id="9_lxaij"]
 
 [sub_resource type="Curve2D" id="Curve2D_stvnh"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 224, 32, 0, 0, 0, 0, 288, 32)
 }
 point_count = 2
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kpr2h"]
-atlas = ExtResource("10_qmwaa")
-region = Rect2(0, 0, 24, 0)
-
-[sub_resource type="Resource" id="Resource_j8sga"]
-script = ExtResource("9_3d7do")
-name = ""
-description = ""
-texture = SubResource("AtlasTexture_kpr2h")
-value = 0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ke66q"]
-atlas = ExtResource("11_cec04")
-region = Rect2(0, 0, 24, 0)
-
-[sub_resource type="Resource" id="Resource_fprmp"]
-script = ExtResource("9_3d7do")
-name = ""
-description = ""
-texture = SubResource("AtlasTexture_ke66q")
-value = 0
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ehrcc")
@@ -77,8 +54,8 @@ item_data = ExtResource("8_me2hq")
 
 [node name="ItemPickup2" parent="." instance=ExtResource("7_jyymn")]
 position = Vector2(399, 64)
-item_data = SubResource("Resource_j8sga")
+item_data = ExtResource("8_wjdc8")
 
 [node name="ItemPickup3" parent="." instance=ExtResource("7_jyymn")]
 position = Vector2(180, 154)
-item_data = SubResource("Resource_fprmp")
+item_data = ExtResource("9_lxaij")

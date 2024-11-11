@@ -15,4 +15,7 @@ func set_slot_data(value : SlotData) -> void:
 	slot_data = value
 	if slot_data == null:
 		return
+	if slot_data.item_data == null:
+		print("FOEIDHZIOFUH")
+		return
 	texture_rect.texture = slot_data.item_data.texture

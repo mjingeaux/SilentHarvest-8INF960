@@ -2,11 +2,14 @@ extends Node
 
 const PLAYER = preload("res://gameplay/entities/player/Player.tscn")
 const INVENTORY_DATA : InventoryData = preload("res://Assets/resources/player_inventory.tres")
+
+var ITEM_PICKUP = preload("res://gameplay/entities/items/item_pickup.tscn")
 var player : Player
 var is_player_in_scene := false
 var scene_containing_player : BaseLevel
 
 func _ready() -> void:
+	INVENTORY_DATA.full_inventory.connect(Replace_Item.show_menu)  
 	player = PLAYER.instantiate()
 
 
@@ -26,3 +29,9 @@ func remove_player_from_scene() -> bool:
 		return true
 	else:
 		return false
+		
+func drop_item(item : ItemData, position : Vector2) -> void:
+	var new_item_pickup = ITEM_PICKUP.instantiate()
+	new_item_pickup.item_data = item
+	new_item_pickup.global_position = position
+	scene_containing_player.add_child(new_item_pickup)

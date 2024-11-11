@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3jp10ql71lfr"]
 
 [ext_resource type="Script" path="res://GUI/pause_menu/pause_menu.gd" id="1_rypip"]
-[ext_resource type="Texture2D" uid="uid://c7yrskitx27a" path="res://assets/sprites/items/items.png" id="2_4fsgg"]
-[ext_resource type="Script" path="res://GUI/pause_menu/inventory/inventory_ui.gd" id="3_266bn"]
+[ext_resource type="Texture2D" uid="uid://c7yrskitx27a" path="res://Assets/sprites/items/items.png" id="2_4fsgg"]
+[ext_resource type="Script" path="res://GUI/inventory/inventory_ui.gd" id="3_266bn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4j3kl"]
 font_size = 28
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4i4fg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_v53i5"]
 atlas = ExtResource("2_4fsgg")
 region = Rect2(96, 0, 32, 32)
 
@@ -16,7 +16,7 @@ content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
-texture = SubResource("AtlasTexture_4i4fg")
+texture = SubResource("AtlasTexture_v53i5")
 texture_margin_left = 14.0
 texture_margin_top = 14.0
 texture_margin_right = 14.0
@@ -44,7 +44,7 @@ offset_right = 280.0
 offset_bottom = 208.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_h60f0")
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer"]
+[node name="Inventory" type="GridContainer" parent="PanelContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 columns = 5

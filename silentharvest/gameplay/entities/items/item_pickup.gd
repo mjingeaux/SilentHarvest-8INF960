@@ -10,14 +10,13 @@ var is_player_in_area : bool = false
 func _input(event) -> void:
 	if is_player_in_area and event.is_action_pressed("collect"):
 		if item_data:
-			if PlayerManager.INVENTORY_DATA.add_item(item_data) == true:
-				item_picked_up()
+			print(item_data.name)
+			PlayerManager.INVENTORY_DATA.add_item(item_data)
+			item_picked_up()
 	pass
 
 func _ready() -> void:
 	_update_texture()
-	if Engine.is_editor_hint():
-		return
 	area_2d.body_entered.connect(_on_body_entered)
 	area_2d.body_exited.connect(_on_body_exited)
 		
@@ -29,6 +28,7 @@ func _on_body_entered(b) -> void:
 func _on_body_exited(b) -> void:
 	if b is Player:
 		is_player_in_area = false
+		
 func item_picked_up() -> void:
 	area_2d.body_entered.disconnect(_on_body_entered)
 	audio_player_2d.play()
@@ -36,7 +36,7 @@ func item_picked_up() -> void:
 	await audio_player_2d.finished
 	queue_free()
 	pass
-
+	
 func _set_item_data(value : ItemData) -> void:
 	item_data = value
 	_update_texture()
