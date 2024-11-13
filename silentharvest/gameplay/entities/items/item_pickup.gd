@@ -22,11 +22,13 @@ func _ready() -> void:
 		
 func _on_body_entered(b) -> void:
 	if b is Player:
+		Pickup_Key.show()
 		is_player_in_area = true
 	pass
 
 func _on_body_exited(b) -> void:
 	if b is Player:
+		Pickup_Key.hide()
 		is_player_in_area = false
 		
 func item_picked_up() -> void:
