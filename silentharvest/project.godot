@@ -23,6 +23,10 @@ Pause_Menu="*res://GUI/pause_menu/pause_menu.tscn"
 Replace_Item="*res://GUI/inventory/replace_item.tscn"
 Pickup_Key="*res://GUI/HUD/pickup_key.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [file_customization]
 
 folder_colors={

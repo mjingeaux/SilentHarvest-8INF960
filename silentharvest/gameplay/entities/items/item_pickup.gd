@@ -13,6 +13,7 @@ func _input(event) -> void:
 			print(item_data.name)
 			PlayerManager.INVENTORY_DATA.add_item(item_data)
 			item_picked_up()
+			Pickup_Key.hide()
 	pass
 
 func _ready() -> void:
