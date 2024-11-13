@@ -7,7 +7,7 @@ signal replaced
 @onready var inventory: InventoryUI = $PanelContainer/Inventory
 @onready var new_item: InventoryUI = $PanelContainer2/NewItem
 
-const ITEM_TO_ADD = preload("res://Assets/resources/item_to_add.tres")
+const ITEM_TO_ADD = preload("res://assets/resources/item_to_add.tres")
 
 var is_paused : bool = false
 

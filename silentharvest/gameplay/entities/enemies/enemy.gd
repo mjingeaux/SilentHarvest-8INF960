@@ -18,19 +18,21 @@ var _last_pos : Vector2
 @onready var sprite : Sprite2D = $Sprite2D 
 @onready var state_machine : EnemyStateMachine = $EnemyStateMachine
 @onready var vision_area : VisionArea = $VisionArea
+@onready var animation_tree : AnimationTree = $AnimationTree
 
 var first_state_entering := true
-
+var char_direction : Vector2 = Vector2.ZERO
 
 func _ready():
 	state_machine.initialize(self)
 	_last_pos = global_position
 
 func _process(delta):
-	pass
+	update_animation_parameters()
 
 
 func _physics_process(delta: float) -> void:
+	char_direction = velocity.normalized()
 	move_and_slide()
 	
 
@@ -59,6 +61,24 @@ func set_direction(angle_degree : float):
 		return
 	vision_area.angle_target_degree = angle_degree
 	
+func update_animation_parameters():
+	if(velocity == Vector2.ZERO && false):
+		animation_tree["parameters/conditions/is_resting"] = true
+		animation_tree["parameters/conditions/is_moving"] = false
+		animation_tree["parameters/conditions/is_patroling"] = false
+	elif(velocity != Vector2.ZERO):
+		animation_tree["parameters/conditions/is_resting"] = false
+		animation_tree["parameters/conditions/is_moving"] = true
+		animation_tree["parameters/conditions/is_patroling"] = false
+	else:
+		animation_tree["parameters/conditions/is_resting"] = false
+		animation_tree["parameters/conditions/is_moving"] = false
+		animation_tree["parameters/conditions/is_patroling"] = true
+	if(velocity != Vector2.ZERO || true):
+		animation_tree["parameters/Chase/blend_position"] = char_direction
+		animation_tree["parameters/Idle/blend_position"] = char_direction
+		animation_tree["parameters/Patrol/blend_position"] = (global_position - _last_pos)
+
 func update_animation(state : String) -> void:
 	if state == "chase":
 		var exclamation = preload("res://gameplay/entities/enemies/ExclamationMark.tscn").instantiate()
@@ -91,22 +111,78 @@ func play_poi(poi_id : GlobalE.Epoi_type):
 			await get_tree().create_timer(.5).timeout
 		GlobalE.Epoi_type.wait_long:
 			await get_tree().create_timer(1.5).timeout
+			
 		GlobalE.Epoi_type.right_then_left_narrow:
-			pass
+			vision_area.angle_target_degree += 30
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
+			vision_area.angle_target_degree -= 60
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
+			
 		GlobalE.Epoi_type.right_then_left_wide:
-			pass
+			vision_area.angle_target_degree += 65
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
+			vision_area.angle_target_degree -= 130
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
+			
 		GlobalE.Epoi_type.left_then_right_narrow:
-			pass
+			vision_area.angle_target_degree -= 30
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
+			vision_area.angle_target_degree += 60
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
+			
 		GlobalE.Epoi_type.left_then_right_wide:
-			pass
+			vision_area.angle_target_degree -= 65
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
+			vision_area.angle_target_degree += 130
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
+			
 		GlobalE.Epoi_type.left_trick:
-			pass
+			vision_area.rotation_speed = vision_area.Erotation_speed.slow
+			vision_area.angle_target_degree -= 30
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.15).timeout
+			vision_area.rotation_speed = vision_area.Erotation_speed.default
+			vision_area.angle_target_degree += 20
+			await vision_area.rotation_completed
+			vision_area.rotation_speed = vision_area.Erotation_speed.fast
+			vision_area.angle_target_degree -= 60
+			await vision_area.rotation_completed
+			vision_area.rotation_speed = vision_area.Erotation_speed.default
+			await get_tree().create_timer(.7).timeout
+			
 		GlobalE.Epoi_type.right_trick:
-			pass
+			vision_area.rotation_speed = vision_area.Erotation_speed.slow
+			vision_area.angle_target_degree += 30
+			await vision_area.rotation_completed
+			await get_tree().create_timer(.15).timeout
+			vision_area.rotation_speed = vision_area.Erotation_speed.default
+			vision_area.angle_target_degree -= 20
+			await vision_area.rotation_completed
+			vision_area.rotation_speed = vision_area.Erotation_speed.fast
+			vision_area.angle_target_degree += 60
+			await vision_area.rotation_completed
+			vision_area.rotation_speed = vision_area.Erotation_speed.default
+			await get_tree().create_timer(.7).timeout
+			
 		GlobalE.Epoi_type.cw_full_turn:
-			pass
+			for i in range(3):
+				vision_area.angle_target_degree += 120
+				await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
+			
 		GlobalE.Epoi_type.ccw_full_turn:
-			pass
+			for i in range(3):
+				vision_area.angle_target_degree -= 120
+				await vision_area.rotation_completed
+			await get_tree().create_timer(.3).timeout
 	poi_finished.emit()
 
 #func _wait(sec : float):

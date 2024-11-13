@@ -1,27 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://drlbic8jcmk7x"]
+[gd_scene load_steps=6 format=3 uid="uid://drlbic8jcmk7x"]
 
 [ext_resource type="Script" path="res://gameplay/entities/props/base_prop.gd" id="1_midg7"]
-[ext_resource type="Texture2D" uid="uid://4oxrymhiy31k" path="res://icon.svg" id="2_fplj0"]
+[ext_resource type="Texture2D" uid="uid://cdj5ndfss3som" path="res://assets/sprites/tree.png" id="2_1aygj"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kumbu"]
-radius = 23.3333
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8f35"]
+size = Vector2(19, 6)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eil4q"]
+radius = 9.0
+height = 44.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ibjwx"]
+radius = 8.01561
 
 [node name="Tree" type="StaticBody2D"]
-modulate = Color(0, 0.73, 0.1095, 1)
 position = Vector2(0, -25.815)
-scale = Vector2(0.3, 0.3)
 script = ExtResource("1_midg7")
 
-[node name="Icon" type="Sprite2D" parent="."]
-modulate = Color(0, 0.73, 0.1095, 1)
-scale = Vector2(0.265625, 1.29688)
-texture = ExtResource("2_fplj0")
+[node name="BlockingArea" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 25.815)
+shape = SubResource("RectangleShape2D_c8f35")
 
-[node name="Icon2" type="Sprite2D" parent="."]
-modulate = Color(0, 0.73, 0.1095, 1)
-position = Vector2(0, -65)
-texture = ExtResource("2_fplj0")
+[node name="Tree" type="Sprite2D" parent="."]
+position = Vector2(-3, -1.185)
+texture = ExtResource("2_1aygj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 66.05)
-shape = SubResource("CircleShape2D_kumbu")
+[node name="FadingArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FadingArea"]
+position = Vector2(-1, -0.184999)
+shape = SubResource("CapsuleShape2D_eil4q")
+
+[node name="HidingArea" type="Area2D" parent="."]
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HidingArea"]
+position = Vector2(0, 17.815)
+shape = SubResource("CircleShape2D_ibjwx")
+
+[connection signal="body_entered" from="FadingArea" to="." method="_on_fading_area_body_entered"]
+[connection signal="body_exited" from="FadingArea" to="." method="_on_fading_area_body_exited"]

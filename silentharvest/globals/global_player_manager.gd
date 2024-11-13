@@ -1,7 +1,7 @@
 extends Node
 
 const PLAYER = preload("res://gameplay/entities/player/Player.tscn")
-const INVENTORY_DATA : InventoryData = preload("res://Assets/resources/player_inventory.tres")
+const INVENTORY_DATA : InventoryData = preload("res://assets/resources/player_inventory.tres")
 
 var ITEM_PICKUP = preload("res://gameplay/entities/items/item_pickup.tscn")
 var player : Player
