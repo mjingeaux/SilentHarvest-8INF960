@@ -1,10 +1,16 @@
-[gd_scene load_steps=22 format=3 uid="uid://cek825tx7ay7r"]
+[gd_scene load_steps=25 format=3 uid="uid://cek825tx7ay7r"]
 
 [ext_resource type="Script" path="res://gameplay/entities/player/player.gd" id="1_44c6v"]
-[ext_resource type="Texture2D" uid="uid://cmdens3l3hwme" path="res://assets/mcSpriteSheet.png" id="2_sfsj4"]
+[ext_resource type="Texture2D" uid="uid://cmdens3l3hwme" path="res://Assets/mcSpriteSheet.png" id="2_sfsj4"]
+[ext_resource type="Script" path="res://gameplay/entities/player/character_sprite.gd" id="3_w7w2b"]
+[ext_resource type="Shader" path="res://Assets/shaders/silhouette.gdshader" id="4_rj0xc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uarug"]
 size = Vector2(14, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cpvat"]
+shader = ExtResource("4_rj0xc")
+shader_parameter/silhouette_color = Color(0, 0, 0, 0.5)
 
 [sub_resource type="Animation" id="Animation_1odas"]
 length = 0.001
@@ -281,18 +287,26 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_layer = 257
 script = ExtResource("1_44c6v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 10)
+position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_uarug")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture = ExtResource("2_sfsj4")
+offset = Vector2(0, -12)
 hframes = 4
 vframes = 11
 frame = 20
+script = ExtResource("3_w7w2b")
+
+[node name="SilhouetteSprite" type="Sprite2D" parent="Sprite2D"]
+z_index = 100
+material = SubResource("ShaderMaterial_cpvat")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -305,13 +319,13 @@ zoom = Vector2(3, 3)
 [node name="VisibilityHotspots" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="VisibilityHotspots"]
-position = Vector2(-3, 7)
+position = Vector2(-3, -5)
 
 [node name="Marker2D2" type="Marker2D" parent="VisibilityHotspots"]
-position = Vector2(3, 12)
+position = Vector2(3, 0)
 
 [node name="Marker2D3" type="Marker2D" parent="VisibilityHotspots"]
-position = Vector2(-3, 12)
+position = Vector2(-3, 0)
 
 [node name="Marker2D4" type="Marker2D" parent="VisibilityHotspots"]
-position = Vector2(3, 7)
+position = Vector2(3, -5)

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2j865ktrhy3c"]
+
+[ext_resource type="Script" path="res://gameplay/entities/player/character_sprite.gd" id="1_mb6wk"]
+
+[node name="CharacterSprite" type="Sprite2D"]
+script = ExtResource("1_mb6wk")
+
+[node name="SilhouetteSprite" type="Sprite2D" parent="."]
+z_index = 100

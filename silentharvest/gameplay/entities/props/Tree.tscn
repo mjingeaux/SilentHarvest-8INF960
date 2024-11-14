@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://drlbic8jcmk7x"]
 
 [ext_resource type="Script" path="res://gameplay/entities/props/base_prop.gd" id="1_midg7"]
-[ext_resource type="Texture2D" uid="uid://cdj5ndfss3som" path="res://assets/sprites/tree.png" id="2_1aygj"]
+[ext_resource type="Texture2D" uid="uid://cdj5ndfss3som" path="res://Assets/sprites/tree.png" id="2_1aygj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c8f35"]
 size = Vector2(19, 6)
@@ -14,28 +14,31 @@ height = 44.0
 radius = 8.01561
 
 [node name="Tree" type="StaticBody2D"]
+y_sort_enabled = true
 position = Vector2(0, -25.815)
 script = ExtResource("1_midg7")
 
 [node name="BlockingArea" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 25.815)
+position = Vector2(-1.5, -3.185)
 shape = SubResource("RectangleShape2D_c8f35")
 
 [node name="Tree" type="Sprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(-3, -1.185)
 texture = ExtResource("2_1aygj")
+offset = Vector2(0, -30)
 
 [node name="FadingArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FadingArea"]
-position = Vector2(-1, -0.184999)
+position = Vector2(-1, -23.185)
 shape = SubResource("CapsuleShape2D_eil4q")
 
 [node name="HidingArea" type="Area2D" parent="."]
 collision_layer = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HidingArea"]
-position = Vector2(0, 17.815)
+position = Vector2(0, -9.185)
 shape = SubResource("CircleShape2D_ibjwx")
 
 [connection signal="body_entered" from="FadingArea" to="." method="_on_fading_area_body_entered"]
