@@ -10,9 +10,6 @@ var player : Player
 
 const DIR_4 = [Vector2.RIGHT,Vector2.DOWN,Vector2.LEFT,Vector2.UP]
 var cardinal_direction : Vector2 = Vector2.DOWN
-var _last_pos : Vector2
-
-
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D 
@@ -21,39 +18,21 @@ var _last_pos : Vector2
 @onready var animation_tree : AnimationTree = $AnimationTree
 
 var first_state_entering := true
-var char_direction : Vector2 = Vector2.ZERO
 
 func _ready():
 	state_machine.initialize(self)
-	_last_pos = global_position
 
 func _process(delta):
 	update_animation_parameters()
 
 
 func _physics_process(delta: float) -> void:
-	char_direction = velocity.normalized()
 	move_and_slide()
 	
 
-#func set_direction(_new_direction : Vector2) -> bool:
-	#direction = _new_direction
-	#if direction == Vector2.ZERO:
-		#return false
-	#var direction_id : int = int(round((direction + cardinal_direction * 0.1).angle()/TAU*DIR_4.size()))
-	#var new_dir = DIR_4[direction_id]
-	#if new_dir == cardinal_direction:
-		#return false
-	#
-	#cardinal_direction = new_dir
-	#direction_changed.emit(new_dir)
-	#sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
-	#return true
-
 func match_direction_to_displacement():
-	if (global_position != _last_pos):
-		var direction = rad_to_deg((global_position - _last_pos).angle())
-		_last_pos = global_position
+	if (velocity != Vector2.ZERO):
+		var direction = rad_to_deg(velocity.angle())
 		set_direction(direction)
 	
 func set_direction(angle_degree : float):
@@ -69,9 +48,8 @@ func update_animation_parameters():
 		animation_tree["parameters/conditions/is_resting"] = false
 		animation_tree["parameters/conditions/is_moving"] = true
 
-	if(velocity != Vector2.ZERO):
-		animation_tree["parameters/Chase/blend_position"] = char_direction
-		animation_tree["parameters/Idle/blend_position"] = char_direction
+		animation_tree["parameters/Chase/blend_position"] = velocity
+		animation_tree["parameters/Idle/blend_position"] = velocity
 
 func update_animation(state : String) -> void:
 	if state == "chase":
@@ -100,6 +78,7 @@ func anim_direction() -> String:
 		
 
 func play_poi(poi_id : GlobalE.Epoi_type):
+	velocity = Vector2.ZERO
 	match poi_id:
 		GlobalE.Epoi_type.wait_short:
 			await get_tree().create_timer(.5).timeout
