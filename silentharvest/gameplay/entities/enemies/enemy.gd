@@ -62,22 +62,16 @@ func set_direction(angle_degree : float):
 	vision_area.angle_target_degree = angle_degree
 	
 func update_animation_parameters():
-	if(velocity == Vector2.ZERO && false):
+	if(velocity == Vector2.ZERO):
 		animation_tree["parameters/conditions/is_resting"] = true
 		animation_tree["parameters/conditions/is_moving"] = false
-		animation_tree["parameters/conditions/is_patroling"] = false
-	elif(velocity != Vector2.ZERO):
-		animation_tree["parameters/conditions/is_resting"] = false
-		animation_tree["parameters/conditions/is_moving"] = true
-		animation_tree["parameters/conditions/is_patroling"] = false
 	else:
 		animation_tree["parameters/conditions/is_resting"] = false
-		animation_tree["parameters/conditions/is_moving"] = false
-		animation_tree["parameters/conditions/is_patroling"] = true
-	if(velocity != Vector2.ZERO || true):
+		animation_tree["parameters/conditions/is_moving"] = true
+
+	if(velocity != Vector2.ZERO):
 		animation_tree["parameters/Chase/blend_position"] = char_direction
 		animation_tree["parameters/Idle/blend_position"] = char_direction
-		animation_tree["parameters/Patrol/blend_position"] = (global_position - _last_pos)
 
 func update_animation(state : String) -> void:
 	if state == "chase":
