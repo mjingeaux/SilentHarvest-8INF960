@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cs1plvef6f8u1"]
+[gd_scene load_steps=35 format=3 uid="uid://cs1plvef6f8u1"]
 
 [ext_resource type="Script" path="res://gameplay/entities/enemies/human_enemy.gd" id="1_xs7d5"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/enemy_state_machine.gd" id="3_ym6pk"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_goto.gd" id="5_svj4v"]
 [ext_resource type="Texture2D" uid="uid://qc7thoqo4onh" path="res://assets/rangeVisualizer.png" id="6_78c51"]
 [ext_resource type="PackedScene" uid="uid://dh01ugaralit0" path="res://gameplay/entities/enemies/VisionArea.tscn" id="6_c8emu"]
+[ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_inspect.gd" id="6_lhcgx"]
 [ext_resource type="Texture2D" uid="uid://b1i3f7ia0ocj7" path="res://assets/ennemySpriteSheet.png" id="8_kpm45"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd6u1"]
@@ -255,11 +256,19 @@ after_idle_state = NodePath(".")
 [node name="Chase" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("vision_area", "next_state")]
 script = ExtResource("5_cki7o")
 vision_area = NodePath("../../VisionArea")
-next_state = NodePath("../Goto")
+next_state = NodePath("../GotoPatrol")
 
-[node name="Goto" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_goto_state")]
+[node name="GotoPatrol" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_goto_state")]
 script = ExtResource("5_svj4v")
 after_goto_state = NodePath("../Idle")
+
+[node name="GotoInspect" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_goto_state")]
+script = ExtResource("5_svj4v")
+after_goto_state = NodePath("../Inspect")
+
+[node name="Inspect" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_inspect_state")]
+script = ExtResource("6_lhcgx")
+after_inspect_state = NodePath("../GotoPatrol")
 
 [node name="VisionArea" parent="." instance=ExtResource("6_c8emu")]
 
@@ -271,9 +280,6 @@ polygon = PackedVector2Array(-98, 19, -98, 3, 14, -62, 29, -27, 34, 11, 27, 49, 
 position = Vector2(-73, 11)
 rotation = -0.785398
 texture = ExtResource("6_78c51")
-
-[node name="POI_Timer_TEMP" type="Timer" parent="."]
-one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1, 0.957)
@@ -295,6 +301,17 @@ libraries = {
 "": SubResource("AnimationLibrary_cff4s")
 }
 
+[node name="Label" type="Label" parent="."]
+offset_left = -66.0
+offset_top = -39.0
+offset_right = 70.0
+offset_bottom = -16.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SuspicionTimer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="state_entered" from="EnemyStateMachine/Idle" to="." method="_on_idle_state_entered"]
 [connection signal="state_exited" from="EnemyStateMachine/Idle" to="." method="_on_idle_state_exited"]
-[connection signal="timeout" from="POI_Timer_TEMP" to="." method="_on_poi_timer_temp_timeout"]

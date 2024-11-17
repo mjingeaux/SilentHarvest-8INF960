@@ -23,7 +23,6 @@ func init() -> void:
 	if vision_area:
 		vision_area.player_entered.connect(_on_player_enter)
 		vision_area.player_exited.connect(_on_player_exit)
-	pass
 	
 
 ## What happens when the enemy enters this state ?
@@ -33,6 +32,7 @@ func enter() -> void:
 	enemy.update_animation(anim_name) 
 	await get_tree().create_timer(.3).timeout
 	_start_chase = true
+	enemy.is_listening_noise = false
 
 
 ## What happens when the enemy exits this state ?
@@ -52,6 +52,8 @@ func process(_delta : float) -> EnemyState:
 		if _can_see_player == false:
 			_timer -= _delta
 			if _timer <= 0:
+				if (next_state is EnemyStateGoto):
+					next_state.destination = enemy.patrol_restart_pos
 				return next_state
 		else:
 			_timer = state_aggro_duration

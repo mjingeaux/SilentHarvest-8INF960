@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://cek825tx7ay7r"]
+[gd_scene load_steps=24 format=3 uid="uid://cek825tx7ay7r"]
 
 [ext_resource type="Script" path="res://gameplay/entities/player/player.gd" id="1_44c6v"]
 [ext_resource type="Texture2D" uid="uid://cmdens3l3hwme" path="res://assets/mcSpriteSheet.png" id="2_sfsj4"]
+[ext_resource type="Script" path="res://gameplay/behaviors/noise_emitter.gd" id="3_mjrld"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uarug"]
 size = Vector2(14, 10)
@@ -280,6 +281,9 @@ _data = {
 "walk_up": SubResource("Animation_n1vxk")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5owix"]
+radius = 240.252
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 257
 script = ExtResource("1_44c6v")
@@ -315,3 +319,10 @@ position = Vector2(-3, 12)
 
 [node name="Marker2D4" type="Marker2D" parent="VisibilityHotspots"]
 position = Vector2(3, 7)
+
+[node name="NoiseEmitter" type="Area2D" parent="."]
+script = ExtResource("3_mjrld")
+intensity = 0.8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoiseEmitter"]
+shape = SubResource("CircleShape2D_5owix")

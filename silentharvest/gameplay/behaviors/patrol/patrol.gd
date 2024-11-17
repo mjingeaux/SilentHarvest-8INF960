@@ -47,6 +47,7 @@ func start():
 	
 func pause():
 	paused = true
+	entity.patrol_restart_pos = entity.global_position - entity.position
 	
 func add_entity_to_path_follow_node():
 	if (entity.get_parent()):
