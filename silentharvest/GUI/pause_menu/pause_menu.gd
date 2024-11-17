@@ -4,12 +4,14 @@ signal shown
 signal hidden
 
 @onready var inventory: InventoryUI = $PanelContainer/Inventory
+@onready var scorelabel: Label = $ScoreLabel
 
 var is_paused : bool = false
 
 func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
 	shown.connect(inventory.update_inventory)
+	shown.connect(update_score_label)
 	hidden.connect(inventory.clear_inventory)
 	resume_game()
 	
@@ -43,3 +45,6 @@ func _on_btn_reprendre_pressed() -> void:
 func _on_btn_quitter_pressed() -> void:
 	get_tree().quit()
 	pass # Replace with function body.
+
+func update_score_label() -> void:
+	scorelabel.text = str(inventory.data.score)

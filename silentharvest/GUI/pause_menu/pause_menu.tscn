@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3jp10ql71lfr"]
+[gd_scene load_steps=8 format=3 uid="uid://c3jp10ql71lfr"]
 
 [ext_resource type="Script" path="res://GUI/pause_menu/pause_menu.gd" id="1_rypip"]
 [ext_resource type="Texture2D" uid="uid://c7yrskitx27a" path="res://Assets/sprites/items/items.png" id="2_4fsgg"]
 [ext_resource type="Script" path="res://GUI/inventory/inventory_ui.gd" id="3_266bn"]
+[ext_resource type="PackedScene" uid="uid://djg3tgvlklmbs" path="res://GUI/pause_menu/item_list.tscn" id="4_dsc0a"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4j3kl"]
 font_size = 28
@@ -34,20 +35,28 @@ offset_top = 58.0
 offset_right = 68.0
 offset_bottom = 103.0
 grow_horizontal = 2
-text = "[ Paused ]"
+text = "[ Pause ]"
 label_settings = SubResource("LabelSettings_4j3kl")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-offset_left = 91.0
-offset_top = 122.0
-offset_right = 369.0
-offset_bottom = 224.0
+custom_minimum_size = Vector2(535, 48)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -148.0
+offset_right = 290.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_h60f0")
 
 [node name="Inventory" type="GridContainer" parent="PanelContainer"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-columns = 3
+columns = 10
 script = ExtResource("3_266bn")
 
 [node name="GridContainer" type="GridContainer" parent="."]
@@ -72,6 +81,27 @@ text = "Reprendre"
 custom_minimum_size = Vector2(300, 75)
 layout_mode = 2
 text = "Quitter"
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -932.0
+offset_top = 100.0
+offset_right = -809.0
+offset_bottom = 172.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 50
+
+[node name="ItemList" parent="." instance=ExtResource("4_dsc0a")]
+anchors_preset = 11
+anchor_left = 1.0
+offset_left = -212.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [connection signal="pressed" from="GridContainer/Btn_Reprendre" to="." method="_on_btn_reprendre_pressed"]
 [connection signal="pressed" from="GridContainer/Btn_Quitter" to="." method="_on_btn_quitter_pressed"]

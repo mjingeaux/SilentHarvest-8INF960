@@ -5,6 +5,8 @@ signal item_added
 
 @export var slots : Array[SlotData]
 
+var score : int = 0
+
 func _init() -> void:
 	connect_slots()
 	pass
@@ -16,12 +18,14 @@ func add_item(item : ItemData) -> bool:
 			new_slot.item_data = item
 			slots[i] = new_slot
 			new_slot.changed.connect(slot_changed)
+			score += item.value
 			item_added.emit()
 			return true
 	full_inventory.emit(item)
 	return false
 
 func replace_item(item : ItemData, index: int,is_pickup_item : bool = false) -> void:
+	score += item.value - slots[index].item_data.value
 	if !is_pickup_item:
 		var position = PlayerManager.player.global_position
 		PlayerManager.drop_item(slots[index].item_data,position)

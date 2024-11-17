@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://djg3tgvlklmbs"]
+
+[ext_resource type="Texture2D" uid="uid://bqgr86oxg6ruj" path="res://Assets/sprites/items/carrot.png" id="1_xa0td"]
+[ext_resource type="Texture2D" uid="uid://d03no7tfi3cj7" path="res://Assets/sprites/items/corn.png" id="2_2aqpt"]
+[ext_resource type="Texture2D" uid="uid://cv7x62xklc8ui" path="res://Assets/sprites/items/eggplant.png" id="3_jkb4j"]
+[ext_resource type="Texture2D" uid="uid://di81e6fxeq2sq" path="res://Assets/sprites/items/potato.png" id="4_487pb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol1ds"]
+atlas = ExtResource("4_487pb")
+region = Rect2(24, 6, 24, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtnjl"]
+atlas = ExtResource("1_xa0td")
+region = Rect2(24, 0, 24, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udchs"]
+atlas = ExtResource("2_2aqpt")
+region = Rect2(24, 4, 24, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alogq"]
+atlas = ExtResource("3_jkb4j")
+region = Rect2(24, 6, 24, 0)
+
+[node name="ItemList" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -884.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="Potato" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_ol1ds")
+
+[node name="Label4" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 60
+text = "5
+"
+
+[node name="Carrot" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_vtnjl")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 60
+text = "10
+"
+
+[node name="Corn" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_udchs")
+
+[node name="Label2" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 60
+text = "15
+"
+
+[node name="Eggplant" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_alogq")
+
+[node name="Label3" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 60
+text = "25
+"
