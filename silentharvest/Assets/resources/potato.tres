@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://cqd7jtebv8s3y"]
+
+[ext_resource type="Script" path="res://gameplay/entities/items/item_data.gd" id="1_adqg7"]
+[ext_resource type="Texture2D" uid="uid://di81e6fxeq2sq" path="res://Assets/sprites/items/potato.png" id="2_s370v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vv8t"]
+atlas = ExtResource("2_s370v")
+region = Rect2(24, 0, 24, 0)
+
+[resource]
+script = ExtResource("1_adqg7")
+name = "Potato"
+description = "It's a potato"
+texture = SubResource("AtlasTexture_8vv8t")
+value = 5

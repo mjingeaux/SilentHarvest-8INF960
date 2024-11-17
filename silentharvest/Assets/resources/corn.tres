@@ -12,4 +12,4 @@ script = ExtResource("1_7ocmw")
 name = "Corn"
 description = "It's a corn"
 texture = SubResource("AtlasTexture_c73cb")
-value = 10
+value = 15
