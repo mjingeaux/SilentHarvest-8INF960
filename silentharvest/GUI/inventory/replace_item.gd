@@ -4,8 +4,8 @@ signal shown
 signal hidden
 signal replaced
 
-@onready var inventory: InventoryUI = $PanelContainer/Inventory
-@onready var new_item: InventoryUI = $PanelContainer2/NewItem
+@onready var inventory: InventoryUI = $HBoxContainer/PanelContainer/Inventory
+@onready var new_item: InventoryUI = $HBoxContainer/PanelContainer2/NewItem
 
 const ITEM_TO_ADD = preload("res://assets/resources/item_to_add.tres")
 
@@ -49,7 +49,6 @@ func resume_game() -> void:
 
 func replace_item(slot_index : int) -> void:
 	PlayerManager.INVENTORY_DATA.replace_item(new_item.data.slots[0].item_data,slot_index)
-
 	new_item.clear_inventory()
 	replaced.emit()
 	pass

@@ -2,7 +2,7 @@ class_name EnemyStateChase extends EnemyState
 
 
 @export var anim_name : String = "chase"
-@export var chase_speed : float = 130.0
+@export var chase_speed : float = 100.0
 @export var turn_rate : float = 0.25
 
 

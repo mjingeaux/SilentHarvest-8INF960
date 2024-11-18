@@ -28,6 +28,6 @@ func update_inventory() -> void:
 		var new_slot = INVENTORY_SLOT.instantiate()
 		add_child(new_slot)
 		new_slot.slot_data = s
-		if name == "Inventory" and get_parent().get_parent().name == "Replace_Item":
+		if name == "Inventory" and get_parent().get_parent().get_parent().name == "Replace_Item":
 			new_slot.pressed.connect(Replace_Item.replace_item.bind(data.slots.find(s)));
 	#get_child(0).grab_focus()

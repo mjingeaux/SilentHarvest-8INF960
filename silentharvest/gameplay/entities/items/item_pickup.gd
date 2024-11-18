@@ -10,7 +10,7 @@ var is_player_in_area : bool = false
 func _input(event) -> void:
 	if is_player_in_area and event.is_action_pressed("collect"):
 		if item_data:
-			print(item_data.name)
+			print(item_data.value)
 			PlayerManager.INVENTORY_DATA.add_item(item_data)
 			item_picked_up()
 			Pickup_Key.hide()

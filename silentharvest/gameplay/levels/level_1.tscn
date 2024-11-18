@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://fehr3p1frps7"]
+[gd_scene load_steps=18 format=4 uid="uid://fehr3p1frps7"]
 
 [ext_resource type="Script" path="res://gameplay/levels/level_1.gd" id="1_ehrcc"]
 [ext_resource type="TileSet" uid="uid://4m1whi8xvife" path="res://Assets/sprites/tilesets/grass.tres" id="2_27k8j"]
@@ -7,37 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://cs1plvef6f8u1" path="res://gameplay/entities/enemies/HumanEnemy.tscn" id="6_6jlwx"]
 [ext_resource type="PackedScene" uid="uid://cv75k0dbr2h1x" path="res://gameplay/entities/items/item_pickup.tscn" id="7_jyymn"]
 [ext_resource type="Resource" uid="uid://cca0a5fiq6xcs" path="res://Assets/resources/apple.tres" id="8_me2hq"]
-[ext_resource type="Script" path="res://gameplay/entities/items/item_data.gd" id="9_3d7do"]
-[ext_resource type="Texture2D" uid="uid://cv7x62xklc8ui" path="res://Assets/sprites/items/eggplant.png" id="10_qmwaa"]
-[ext_resource type="Texture2D" uid="uid://bqgr86oxg6ruj" path="res://Assets/sprites/items/carrot.png" id="11_cec04"]
 [ext_resource type="PackedScene" uid="uid://drlbic8jcmk7x" path="res://gameplay/entities/props/Tree.tscn" id="11_pi4f2"]
 [ext_resource type="Script" path="res://gameplay/behaviors/patrol/patrol.gd" id="12_tlapw"]
 [ext_resource type="Resource" uid="uid://brokmhnraf3iv" path="res://Assets/resources/corn.tres" id="13_yexcl"]
 [ext_resource type="Resource" uid="uid://dcc4t208nuwxq" path="res://Assets/resources/carrot.tres" id="14_jttek"]
 [ext_resource type="Resource" uid="uid://cx4nvlu2jdg42" path="res://Assets/resources/eggplant.tres" id="15_i5goh"]
 [ext_resource type="Resource" uid="uid://cqd7jtebv8s3y" path="res://Assets/resources/potato.tres" id="16_hvxg3"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kpr2h"]
-atlas = ExtResource("10_qmwaa")
-region = Rect2(0, 0, 24, 0)
-
-[sub_resource type="Resource" id="Resource_j8sga"]
-script = ExtResource("9_3d7do")
-name = ""
-description = ""
-texture = SubResource("AtlasTexture_kpr2h")
-value = 0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ke66q"]
-atlas = ExtResource("11_cec04")
-region = Rect2(0, 0, 24, 0)
-
-[sub_resource type="Resource" id="Resource_fprmp"]
-script = ExtResource("9_3d7do")
-name = ""
-description = ""
-texture = SubResource("AtlasTexture_ke66q")
-value = 0
 
 [sub_resource type="Curve2D" id="Curve2D_stvnh"]
 _data = {
@@ -88,11 +63,11 @@ item_data = ExtResource("8_me2hq")
 
 [node name="ItemPickup2" parent="lstItem" instance=ExtResource("7_jyymn")]
 position = Vector2(407, 1221)
-item_data = SubResource("Resource_j8sga")
+item_data = ExtResource("15_i5goh")
 
 [node name="ItemPickup3" parent="lstItem" instance=ExtResource("7_jyymn")]
 position = Vector2(847, 857)
-item_data = SubResource("Resource_fprmp")
+item_data = ExtResource("14_jttek")
 
 [node name="LstProp" type="Node2D" parent="."]
 position = Vector2(13, 36)
@@ -297,3 +272,27 @@ item_data = ExtResource("16_hvxg3")
 [node name="ItemPickup5" parent="." instance=ExtResource("7_jyymn")]
 position = Vector2(148, 155)
 item_data = ExtResource("16_hvxg3")
+
+[node name="ItemPickup6" parent="." instance=ExtResource("7_jyymn")]
+position = Vector2(98, 31)
+item_data = ExtResource("16_hvxg3")
+
+[node name="ItemPickup7" parent="." instance=ExtResource("7_jyymn")]
+position = Vector2(54, 39)
+item_data = ExtResource("14_jttek")
+
+[node name="ItemPickup8" parent="." instance=ExtResource("7_jyymn")]
+position = Vector2(54, 87)
+item_data = ExtResource("13_yexcl")
+
+[node name="ItemPickup9" parent="." instance=ExtResource("7_jyymn")]
+position = Vector2(63, 128)
+item_data = ExtResource("15_i5goh")
+
+[node name="ItemPickup10" parent="." instance=ExtResource("7_jyymn")]
+position = Vector2(114, 140)
+item_data = ExtResource("14_jttek")
+
+[node name="ItemPickup11" parent="." instance=ExtResource("7_jyymn")]
+position = Vector2(199, 161)
+item_data = ExtResource("15_i5goh")
