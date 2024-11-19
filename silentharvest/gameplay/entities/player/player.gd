@@ -1,4 +1,4 @@
-class_name Player extends CharacterBody2D
+class_name Player extends CharacterBody2D 
 
 const SPEED = 200
 const ACCELERATION = 75
@@ -6,6 +6,7 @@ const CROUCH_SPEED = 40
 const CROUCH_ACCELERATION = 20
 var LAST_DIRECTION = 0
 @onready var animation = $AnimationPlayer
+@onready var noise_emitter = $NoiseEmitter
 
 func crouching_movement(direction: Vector2) -> void:
 	velocity.x = move_toward(velocity.x, direction.x * CROUCH_SPEED, CROUCH_ACCELERATION)
@@ -67,11 +68,12 @@ func walking_animation() -> void:
 		elif(LAST_DIRECTION == 3):
 			animation.play("idle_up")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void: # switch to _process
 	var direction = Input.get_vector("left", "right","up","down")
 	if(Input.is_action_pressed("crouch")):
 		crouching_movement(direction)
 		crouching_animation()
+		noise_emitter.noise_update(delta)
 	else:
 		walking_movement(direction)
 		walking_animation()

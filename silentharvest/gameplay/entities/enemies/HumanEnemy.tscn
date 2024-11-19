@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cs1plvef6f8u1"]
+[gd_scene load_steps=35 format=3 uid="uid://cs1plvef6f8u1"]
 
 [ext_resource type="Script" path="res://gameplay/entities/enemies/human_enemy.gd" id="1_xs7d5"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/enemy_state_machine.gd" id="3_ym6pk"]
@@ -7,7 +7,8 @@
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_goto.gd" id="5_svj4v"]
 [ext_resource type="Texture2D" uid="uid://qc7thoqo4onh" path="res://Assets/rangeVisualizer.png" id="6_78c51"]
 [ext_resource type="PackedScene" uid="uid://dh01ugaralit0" path="res://gameplay/entities/enemies/VisionArea.tscn" id="6_c8emu"]
-[ext_resource type="Texture2D" uid="uid://b1i3f7ia0ocj7" path="res://Assets/ennemySpriteSheet.png" id="8_kpm45"]
+[ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_inspect.gd" id="6_lhcgx"]
+[ext_resource type="Texture2D" uid="uid://b1i3f7ia0ocj7" path="res://assets/ennemySpriteSheet.png" id="8_kpm45"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd6u1"]
 size = Vector2(11, 5)
@@ -58,29 +59,6 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_1dy41")
 blend_point_3/pos = Vector2(0, -0.1)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j6005"]
-animation = &"run_down"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kxhmx"]
-animation = &"run_up"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8hemq"]
-animation = &"run_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lvc3j"]
-animation = &"run_left"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_lso4f"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_j6005")
-blend_point_0/pos = Vector2(0, 0.1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_kxhmx")
-blend_point_1/pos = Vector2(0, -0.1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_8hemq")
-blend_point_2/pos = Vector2(0.1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_lvc3j")
-blend_point_3/pos = Vector2(-0.1, 0)
-blend_mode = 1
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bft7t"]
 advance_mode = 2
 advance_condition = &"is_resting"
@@ -93,27 +71,13 @@ advance_condition = &"is_moving"
 advance_mode = 2
 advance_condition = &"is_resting"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_26bq1"]
-advance_mode = 2
-advance_condition = &"is_moving"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cmlt8"]
-advance_mode = 2
-advance_condition = &"is_patroling"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6yte5"]
-advance_mode = 2
-advance_condition = &"is_patroling"
-
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_23gx7"]
 states/Chase/node = SubResource("AnimationNodeBlendSpace2D_hw8jj")
 states/Chase/position = Vector2(613, 100)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_50ein")
 states/Idle/position = Vector2(429, 100)
-states/Patrol/node = SubResource("AnimationNodeBlendSpace2D_lso4f")
-states/Patrol/position = Vector2(517, -13)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_bft7t"), "Idle", "Chase", SubResource("AnimationNodeStateMachineTransition_1bmmi"), "Chase", "Idle", SubResource("AnimationNodeStateMachineTransition_ms3pl"), "Patrol", "Chase", SubResource("AnimationNodeStateMachineTransition_26bq1"), "Chase", "Patrol", SubResource("AnimationNodeStateMachineTransition_cmlt8"), "Start", "Patrol", SubResource("AnimationNodeStateMachineTransition_6yte5")]
-graph_offset = Vector2(-20, -63)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_bft7t"), "Idle", "Chase", SubResource("AnimationNodeStateMachineTransition_1bmmi"), "Chase", "Idle", SubResource("AnimationNodeStateMachineTransition_ms3pl")]
+graph_offset = Vector2(-15, -74)
 
 [sub_resource type="Animation" id="Animation_guekd"]
 length = 0.001
@@ -293,11 +257,19 @@ after_idle_state = NodePath(".")
 [node name="Chase" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("vision_area", "next_state")]
 script = ExtResource("5_cki7o")
 vision_area = NodePath("../../VisionArea")
-next_state = NodePath("../Goto")
+next_state = NodePath("../GotoPatrol")
 
-[node name="Goto" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_goto_state")]
+[node name="GotoPatrol" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_goto_state")]
 script = ExtResource("5_svj4v")
 after_goto_state = NodePath("../Idle")
+
+[node name="GotoInspect" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_goto_state")]
+script = ExtResource("5_svj4v")
+after_goto_state = NodePath("../Inspect")
+
+[node name="Inspect" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_inspect_state")]
+script = ExtResource("6_lhcgx")
+after_inspect_state = NodePath("../GotoPatrol")
 
 [node name="VisionArea" parent="." instance=ExtResource("6_c8emu")]
 
@@ -309,9 +281,6 @@ polygon = PackedVector2Array(-98, 19, -98, 3, 14, -62, 29, -27, 34, 11, 27, 49, 
 position = Vector2(-73, 11)
 rotation = -0.785398
 texture = ExtResource("6_78c51")
-
-[node name="POI_Timer_TEMP" type="Timer" parent="."]
-one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -326,17 +295,38 @@ frame = 6
 tree_root = SubResource("AnimationNodeStateMachine_23gx7")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_moving = false
-parameters/conditions/is_patroling = false
 parameters/conditions/is_resting = false
 parameters/Chase/blend_position = Vector2(0, -0.0088495)
 parameters/Idle/blend_position = Vector2(0.00482321, 0.168142)
-parameters/Patrol/blend_position = Vector2(0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_cff4s")
 }
 
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -66.0
+offset_top = -39.0
+offset_right = 70.0
+offset_bottom = -16.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SuspicionTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -27.0
+offset_top = -15.0
+offset_right = 513.0
+offset_bottom = -5.0
+scale = Vector2(0.1, 0.1)
+max_value = 1.0
+step = 0.001
+value = 1.0
+show_percentage = false
+
 [connection signal="state_entered" from="EnemyStateMachine/Idle" to="." method="_on_idle_state_entered"]
 [connection signal="state_exited" from="EnemyStateMachine/Idle" to="." method="_on_idle_state_exited"]
-[connection signal="timeout" from="POI_Timer_TEMP" to="." method="_on_poi_timer_temp_timeout"]

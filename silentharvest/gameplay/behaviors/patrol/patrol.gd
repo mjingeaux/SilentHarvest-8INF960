@@ -47,6 +47,7 @@ func start():
 	
 func pause():
 	paused = true
+	entity.patrol_restart_pos = entity.global_position - entity.position
 	
 func add_entity_to_path_follow_node():
 	if (entity.get_parent()):
@@ -70,7 +71,10 @@ func _process(delta: float) -> void:
 	
 	entity.match_direction_to_displacement()
 	
+	var prev_pos = entity.global_position
 	path_follow_node.progress += speed * delta * step
+	var vel = entity.global_position - prev_pos
+	entity.velocity = vel
 	
 	if ((path_follow_node.progress_ratio >= 1. ||
 	 path_follow_node.progress_ratio <= 0.) &&

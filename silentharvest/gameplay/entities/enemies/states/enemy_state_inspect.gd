@@ -1,11 +1,10 @@
-class_name EnemyState extends Node
+class_name EnemyStateInspect extends EnemyState
 
-## Stores a reference to the enemy that this states belong to
-var enemy : Enemy
-var state_machine : EnemyStateMachine
+@export var anim_name : String = "idle"
 
-signal state_entered()
-signal state_exited()
+@export_category("AI")
+@export var after_inspect_state : EnemyState
+
 
 ## What happens when we initialize this state ?
 func init() -> void:
@@ -14,15 +13,16 @@ func init() -> void:
 
 ## What happens when the enemy enters this state ?
 func enter() -> void:
-	state_entered.emit()
-	enemy.is_listening_noise = true
+	super()
+	enemy.update_animation(anim_name) 
+	enemy.velocity = Vector2.ZERO
+	print("inspecting .... ")
 	
 
 ## What happens when the enemy exits this state ?
 func exit() -> void:
-	state_exited.emit()
-	
+	super()
+
 ## What happens during the _process update of this state ?
 func process(_delta : float) -> EnemyState:
-	return null
-	
+	return self

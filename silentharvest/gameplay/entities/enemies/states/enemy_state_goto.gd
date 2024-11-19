@@ -25,11 +25,15 @@ func exit() -> void:
 
 ## What happens during the _process update of this state ?
 func process(_delta : float) -> EnemyState:
-	enemy.velocity = destination - enemy.position
+	enemy.velocity = destination - enemy.global_position
 	enemy.match_direction_to_displacement()
 	if (enemy.velocity.length() < 3.):
-		enemy.position = destination
+		enemy.global_position = destination
 		return after_goto_state
 	else:
 		enemy.velocity = enemy.velocity.normalized() * goto_speed
 	return null
+	
+func goto(global_pos : Vector2):
+	destination = global_pos
+	state_machine.change_state(self)
