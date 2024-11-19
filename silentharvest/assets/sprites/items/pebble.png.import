@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqgr86oxg6ruj"
-path="res://.godot/imported/carrot.png-8314bab733c9169a31aefbe5963f520a.ctex"
+uid="uid://c427jon16uds6"
+path="res://.godot/imported/pebble.png-842c33a74e30f298082eb7180d2618d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/items/carrot.png"
-dest_files=["res://.godot/imported/carrot.png-8314bab733c9169a31aefbe5963f520a.ctex"]
+source_file="res://assets/sprites/items/pebble.png"
+dest_files=["res://.godot/imported/pebble.png-842c33a74e30f298082eb7180d2618d9.ctex"]
 
 [params]
 

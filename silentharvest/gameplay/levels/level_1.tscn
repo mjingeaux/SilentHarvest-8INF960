@@ -1,17 +1,18 @@
-[gd_scene load_steps=21 format=4 uid="uid://fehr3p1frps7"]
+[gd_scene load_steps=23 format=4 uid="uid://fehr3p1frps7"]
 
 [ext_resource type="Script" path="res://gameplay/levels/level_1.gd" id="1_ehrcc"]
-[ext_resource type="TileSet" uid="uid://4m1whi8xvife" path="res://Assets/sprites/tilesets/grass.tres" id="2_27k8j"]
-[ext_resource type="TileSet" uid="uid://baj6xmghe8plq" path="res://Assets/sprites/tilesets/fence.tres" id="3_3tua8"]
+[ext_resource type="TileSet" uid="uid://4m1whi8xvife" path="res://assets/sprites/tilesets/grass.tres" id="2_27k8j"]
+[ext_resource type="TileSet" uid="uid://baj6xmghe8plq" path="res://assets/sprites/tilesets/fence.tres" id="3_3tua8"]
 [ext_resource type="PackedScene" uid="uid://011gh33qvxap" path="res://gameplay/behaviors/patrol/Patrol.tscn" id="5_i52hj"]
 [ext_resource type="PackedScene" uid="uid://cs1plvef6f8u1" path="res://gameplay/entities/enemies/HumanEnemy.tscn" id="6_6jlwx"]
 [ext_resource type="PackedScene" uid="uid://cv75k0dbr2h1x" path="res://gameplay/entities/items/item_pickup.tscn" id="7_jyymn"]
-[ext_resource type="Resource" uid="uid://cca0a5fiq6xcs" path="res://Assets/resources/apple.tres" id="8_me2hq"]
+[ext_resource type="Resource" uid="uid://cca0a5fiq6xcs" path="res://assets/resources/apple.tres" id="8_me2hq"]
 [ext_resource type="Script" path="res://gameplay/entities/items/item_data.gd" id="9_3d7do"]
-[ext_resource type="Texture2D" uid="uid://cv7x62xklc8ui" path="res://Assets/sprites/items/eggplant.png" id="10_qmwaa"]
-[ext_resource type="Texture2D" uid="uid://bqgr86oxg6ruj" path="res://Assets/sprites/items/carrot.png" id="11_cec04"]
+[ext_resource type="Texture2D" uid="uid://cv7x62xklc8ui" path="res://assets/sprites/items/eggplant.png" id="10_qmwaa"]
+[ext_resource type="Texture2D" uid="uid://bqgr86oxg6ruj" path="res://assets/sprites/items/carrot.png" id="11_cec04"]
 [ext_resource type="PackedScene" uid="uid://drlbic8jcmk7x" path="res://gameplay/entities/props/Tree.tscn" id="11_pi4f2"]
 [ext_resource type="Script" path="res://gameplay/behaviors/patrol/patrol.gd" id="12_tlapw"]
+[ext_resource type="Script" path="res://gameplay/levels/navigation_region.gd" id="13_krvxk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kpr2h"]
 atlas = ExtResource("10_qmwaa")
@@ -58,6 +59,11 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 540, 1100, 0, 0, 0, 0, 540, 930)
 }
 point_count = 2
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_jad42"]
+vertices = PackedVector2Array(911.281, 373.609, 913.68, 451.953, 707.25, 451.039, 737.656, 366.633, 711.211, 294.742, 732.391, 292.773, 137, 49.9688, 538.883, 49.0234, 537.883, 135.07, 137, 319.039, 538, 320.953, 538, 259.18, 593.938, 258.141, 598.039, 239.742, 674, 134.07, 674, 212.641, 679, 242.313, 729.656, 214.656, 731.602, 241.758, 766, 286.648, 679, 288.703, 766, 246.672)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(10, 9, 8, 11), PackedInt32Array(12, 11, 8, 13), PackedInt32Array(13, 8, 14, 15), PackedInt32Array(16, 13, 15, 17, 18), PackedInt32Array(19, 5, 4, 20, 16, 18, 21)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(127, 40, 549, 39, 548, 125, 684, 124, 684, 203, 739, 205, 741, 233, 776, 238, 776, 295, 743, 301, 747, 357, 921, 364, 924, 462, 697, 461, 701, 303, 669, 297, 669, 252, 606, 250, 602, 268, 548, 269, 548, 331, 127, 329)])
 
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
@@ -278,3 +284,8 @@ lst_poi = Array[int]([1, 1])
 
 [node name="Path2D" type="Path2D" parent="lstPatrol/Patrol4"]
 curve = SubResource("Curve2D_vi8l4")
+
+[node name="NavigationRegion" type="NavigationRegion2D" parent="."]
+position = Vector2(-158, -75)
+navigation_polygon = SubResource("NavigationPolygon_jad42")
+script = ExtResource("13_krvxk")
