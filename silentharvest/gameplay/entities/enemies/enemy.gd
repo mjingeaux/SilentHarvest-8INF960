@@ -22,6 +22,7 @@ var cardinal_direction : Vector2 = Vector2.DOWN #TODO to delete
 @onready var animation_tree : AnimationTree = $AnimationTree
 @onready var sus_timer : Timer = $SuspicionTimer
 @onready var goto_inspect_state : EnemyStateGoto = $EnemyStateMachine/GotoInspect
+@onready var progress_bar : ProgressBar = $ProgressBar
 
 @onready var label : Label = $Label
 
@@ -101,7 +102,8 @@ func _set_suspicion_jauge(val : float):
 		add_suspicious_point( PlayerManager.player.global_position)
 	else:
 		suspicion_jauge = val
-	label.text = str(suspicion_jauge)
+	progress_bar.value = suspicion_jauge
+
 	
 func add_suspicious_point(global_pos : Vector2):
 	var inserted = false
