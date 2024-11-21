@@ -21,6 +21,7 @@ var cardinal_direction : Vector2 = Vector2.DOWN #TODO to delete
 @onready var vision_area : VisionArea = $VisionArea
 @onready var animation_tree : AnimationTree = $AnimationTree
 @onready var sus_timer : Timer = $SuspicionTimer
+@onready var poi_timer: Timer = $PoiTimer
 @onready var goto_inspect_state : EnemyStateGoto = $EnemyStateMachine/GotoInspect
 @onready var progress_bar : ProgressBar = $ProgressBar
 
@@ -31,16 +32,21 @@ var patrol_restart_pos : Vector2
 
 var _first_state_entering := true
 var _is_suspicion_decaying := false
-var _lst_suspicious_point : Array[Vector2]
+var lst_suspicious_point : Array[Vector2]
 
 
 func _ready():
 	state_machine.initialize(self)
 	sus_timer.timeout.connect(func () : _is_suspicion_decaying = true)
 	
-	goto_inspect_state.state_exited.connect(func (): _lst_suspicious_point.pop_front())
-
+	goto_inspect_state.state_exited.connect(func (): lst_suspicious_point.pop_front())
+	var nav_agent = $NavigationAgent
+	$EnemyStateMachine/Chase.navigation_agent = nav_agent
+	$EnemyStateMachine/GotoPatrol.navigation_agent = nav_agent
+	$EnemyStateMachine/GotoInspect.navigation_agent = nav_agent
+		
 func _process(delta):
+	label.text = str(lst_suspicious_point.size())
 	update_animation_parameters()
 	if (_is_suspicion_decaying):
 		suspicion_jauge -= delta / suspicion_decay_time
@@ -88,6 +94,15 @@ func _on_idle_state_entered() -> void:
 		return
 	entering_patrol.emit()
 	
+func _on_inspect_state_exited() -> void:
+	inspect_next_point()
+	
+func inspect_next_point():
+	if (lst_suspicious_point.is_empty()):
+		return false
+	goto_inspect_state.goto(lst_suspicious_point[0])
+	return true
+	
 func _set_suspicion_jauge(val : float):
 	if (val > suspicion_jauge):
 		_is_suspicion_decaying = false
@@ -108,17 +123,19 @@ func _set_suspicion_jauge(val : float):
 func add_suspicious_point(global_pos : Vector2):
 	var inserted = false
 	var dist = (global_position - global_pos).length()
-	for i in range(_lst_suspicious_point.size()):
-		var dist2 = (global_position - _lst_suspicious_point[i]).length()
+	for i in range(lst_suspicious_point.size()):
+		var dist2 = (global_position - lst_suspicious_point[i]).length()
 		if (dist < dist2):
-			_lst_suspicious_point.insert(i, global_pos)
+			lst_suspicious_point.insert(i, global_pos)
 			inserted = true
 			break
 	if (!inserted):
-		_lst_suspicious_point.append(global_pos)
+		lst_suspicious_point.append(global_pos)
 	
-	if (_lst_suspicious_point[0] == global_pos):
+	if (lst_suspicious_point[0] == global_pos):
 		goto_inspect_state.goto(global_pos)
+		goto_inspect_state.enter()
+
 
 func hear_noise(intensity : float, delta : float):
 	if (is_listening_noise):
@@ -128,47 +145,62 @@ func play_poi(poi_id : GlobalE.Epoi_type):
 	velocity = Vector2.ZERO
 	match poi_id:
 		GlobalE.Epoi_type.wait_short:
-			await get_tree().create_timer(.5).timeout
+			
+			poi_timer.start(.5)
+			await poi_timer.timeout
 		GlobalE.Epoi_type.wait_long:
-			await get_tree().create_timer(1.5).timeout
+			poi_timer.start(1.5)
+			await poi_timer.timeout
+			
 			
 		GlobalE.Epoi_type.right_then_left_narrow:
 			vision_area.angle_target_degree += 30
 			await vision_area.rotation_completed
-			await get_tree().create_timer(.3).timeout
+			poi_timer.start(.3)
+			await poi_timer.timeout
+			
 			vision_area.angle_target_degree -= 60
 			await vision_area.rotation_completed
-			await get_tree().create_timer(.3).timeout
+			poi_timer.start(.3)
+			await poi_timer.timeout
+			
 			
 		GlobalE.Epoi_type.right_then_left_wide:
 			vision_area.angle_target_degree += 65
 			await vision_area.rotation_completed
-			await get_tree().create_timer(.3).timeout
+			poi_timer.start(.3)
+			await poi_timer.timeout
 			vision_area.angle_target_degree -= 130
 			await vision_area.rotation_completed
-			await get_tree().create_timer(.3).timeout
+			poi_timer.start(.3)
+			await poi_timer.timeout
 			
 		GlobalE.Epoi_type.left_then_right_narrow:
 			vision_area.angle_target_degree -= 30
 			await vision_area.rotation_completed
-			await get_tree().create_timer(.3).timeout
+			poi_timer.start(.3)
+			await poi_timer.timeout
 			vision_area.angle_target_degree += 60
 			await vision_area.rotation_completed
-			await get_tree().create_timer(.3).timeout
+			poi_timer.start(.3)
+			await poi_timer.timeout
 			
 		GlobalE.Epoi_type.left_then_right_wide:
 			vision_area.angle_target_degree -= 65
 			await vision_area.rotation_completed
-			await get_tree().create_timer(.3).timeout
+			poi_timer.start(.3)
+			await poi_timer.timeout
 			vision_area.angle_target_degree += 130
 			await vision_area.rotation_completed
-			await get_tree().create_timer(.3).timeout
+			poi_timer.start(.3)
+			await poi_timer.timeout
 			
 		GlobalE.Epoi_type.left_trick:
 			vision_area.rotation_speed = vision_area.Erotation_speed.slow
 			vision_area.angle_target_degree -= 30
 			await vision_area.rotation_completed
-			await get_tree().create_timer(.15).timeout
+			poi_timer.start(.15)
+			await poi_timer.timeout
 			vision_area.rotation_speed = vision_area.Erotation_speed.default
 			vision_area.angle_target_degree += 20
 			await vision_area.rotation_completed
@@ -176,13 +208,15 @@ func play_poi(poi_id : GlobalE.Epoi_type):
 			vision_area.angle_target_degree -= 60
 			await vision_area.rotation_completed
 			vision_area.rotation_speed = vision_area.Erotation_speed.default
-			await get_tree().create_timer(.7).timeout
+			poi_timer.start(.7)
+			await poi_timer.timeout
 			
 		GlobalE.Epoi_type.right_trick:
 			vision_area.rotation_speed = vision_area.Erotation_speed.slow
 			vision_area.angle_target_degree += 30
 			await vision_area.rotation_completed
-			await get_tree().create_timer(.15).timeout
+			poi_timer.start(.15)
+			await poi_timer.timeout
 			vision_area.rotation_speed = vision_area.Erotation_speed.default
 			vision_area.angle_target_degree -= 20
 			await vision_area.rotation_completed
@@ -190,17 +224,25 @@ func play_poi(poi_id : GlobalE.Epoi_type):
 			vision_area.angle_target_degree += 60
 			await vision_area.rotation_completed
 			vision_area.rotation_speed = vision_area.Erotation_speed.default
-			await get_tree().create_timer(.7).timeout
+			poi_timer.start(.7)
+			await poi_timer.timeout
 			
 		GlobalE.Epoi_type.cw_full_turn:
 			for i in range(3):
 				vision_area.angle_target_degree += 120
 				await vision_area.rotation_completed
-			await get_tree().create_timer(.3).timeout
+			poi_timer.start(.3)
+			await poi_timer.timeout
+			
 			
 		GlobalE.Epoi_type.ccw_full_turn:
 			for i in range(3):
 				vision_area.angle_target_degree -= 120
 				await vision_area.rotation_completed
-			await get_tree().create_timer(.3).timeout
+			poi_timer.start(.3)
+			await poi_timer.timeout
+			
+	#avoid rotation only poi not to get paused when changing state
+	poi_timer.start(.1)
+	await poi_timer.timeout
 	poi_finished.emit()

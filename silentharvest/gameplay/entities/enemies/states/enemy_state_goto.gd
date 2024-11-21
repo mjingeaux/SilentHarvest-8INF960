@@ -1,12 +1,15 @@
 class_name EnemyStateGoto extends EnemyState
 
+@export var state_name : String = "GOTO"
+
 @export var anim_name : String = "chase"
 
 @export_category("AI")
 @export var destination := Vector2(0, 0)
 @export var after_goto_state : EnemyState
 @export var goto_speed : float = 40.0
-
+var navigation_agent : NavigationAgent2D
+var next_path_pos : Vector2
 
 ## What happens when we initialize this state ?
 func init() -> void:
@@ -17,17 +20,23 @@ func init() -> void:
 func enter() -> void:
 	super()
 	enemy.update_animation(anim_name) 
+	navigation_agent.target_position = destination
 	
 
 ## What happens when the enemy exits this state ?
 func exit() -> void:
 	super()
 
+func _physics_process(delta: float) -> void:
+	if (navigation_agent.is_navigation_finished()):
+		return
+	next_path_pos = navigation_agent.get_next_path_position()
+
 ## What happens during the _process update of this state ?
 func process(_delta : float) -> EnemyState:
-	enemy.velocity = destination - enemy.global_position
+	enemy.velocity = next_path_pos - enemy.global_position
 	enemy.match_direction_to_displacement()
-	if (enemy.velocity.length() < 3.):
+	if (enemy.global_position.distance_squared_to(destination) < 3.):
 		enemy.global_position = destination
 		return after_goto_state
 	else:

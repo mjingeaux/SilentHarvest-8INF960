@@ -1,6 +1,6 @@
 [gd_scene load_steps=35 format=3 uid="uid://cs1plvef6f8u1"]
 
-[ext_resource type="Script" path="res://gameplay/entities/enemies/human_enemy.gd" id="1_xs7d5"]
+[ext_resource type="Script" path="res://gameplay/entities/enemies/enemy.gd" id="1_nki0r"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/enemy_state_machine.gd" id="3_ym6pk"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_idle.gd" id="4_mrbuv"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_chase.gd" id="5_cki7o"]
@@ -241,7 +241,7 @@ _data = {
 
 [node name="HumanEnemy" type="CharacterBody2D"]
 y_sort_enabled = true
-script = ExtResource("1_xs7d5")
+script = ExtResource("1_nki0r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)
@@ -261,20 +261,26 @@ next_state = NodePath("../GotoPatrol")
 
 [node name="GotoPatrol" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_goto_state")]
 script = ExtResource("5_svj4v")
+state_name = "GOTO_P"
 after_goto_state = NodePath("../Idle")
 
 [node name="GotoInspect" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_goto_state")]
 script = ExtResource("5_svj4v")
+state_name = "GOTO_I"
 after_goto_state = NodePath("../Inspect")
 
 [node name="Inspect" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_inspect_state")]
 script = ExtResource("6_lhcgx")
 after_inspect_state = NodePath("../GotoPatrol")
 
+[node name="InspectTimer" type="Timer" parent="EnemyStateMachine/Inspect"]
+one_shot = true
+
 [node name="VisionArea" parent="." instance=ExtResource("6_c8emu")]
+position = Vector2(0, -17)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea"]
-position = Vector2(106, -23)
+position = Vector2(108, -10)
 polygon = PackedVector2Array(-98, 19, -98, 3, 14, -62, 29, -27, 34, 11, 27, 49, 10, 82)
 
 [node name="RangeVisualizer" type="Sprite2D" parent="VisionArea/CollisionPolygon2D"]
@@ -305,7 +311,6 @@ libraries = {
 }
 
 [node name="Label" type="Label" parent="."]
-visible = false
 offset_left = -66.0
 offset_top = -39.0
 offset_right = 70.0
@@ -317,16 +322,22 @@ vertical_alignment = 1
 [node name="SuspicionTimer" type="Timer" parent="."]
 wait_time = 2.0
 
+[node name="PoiTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -27.0
-offset_top = -15.0
+offset_top = -34.0
 offset_right = 513.0
-offset_bottom = -5.0
+offset_bottom = -24.0
 scale = Vector2(0.1, 0.1)
 max_value = 1.0
 step = 0.001
-value = 1.0
 show_percentage = false
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="."]
+debug_enabled = true
 
 [connection signal="state_entered" from="EnemyStateMachine/Idle" to="." method="_on_idle_state_entered"]
 [connection signal="state_exited" from="EnemyStateMachine/Idle" to="." method="_on_idle_state_exited"]

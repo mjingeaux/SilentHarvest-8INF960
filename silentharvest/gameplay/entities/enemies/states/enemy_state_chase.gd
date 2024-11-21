@@ -1,5 +1,6 @@
 class_name EnemyStateChase extends EnemyState
 
+@export var state_name : String = "CHASE"
 
 @export var anim_name : String = "chase"
 @export var chase_speed : float = 130.0
@@ -16,6 +17,7 @@ var _can_see_player : bool = false
 var _last_player_position : Vector2
 var _start_chase := false
 @onready var _player : Player = PlayerManager.player
+var navigation_agent : NavigationAgent2D
 
 
 ## What happens when we initialize this state ?
@@ -33,6 +35,7 @@ func enter() -> void:
 	await get_tree().create_timer(.3).timeout
 	_start_chase = true
 	enemy.is_listening_noise = false
+	enemy.lst_suspicious_point.clear()
 
 
 ## What happens when the enemy exits this state ?
@@ -40,10 +43,21 @@ func exit() -> void:
 	_start_chase = false
 	super()
 	
+#func _physics_process(delta: float) -> void:
+	#navigation_agent.target_position = _player.global_position
+	#if (navigation_agent.is_navigation_finished()):
+		#return
+	#
+	#var next_path_pos = navigation_agent.get_next_path_position()
+	#enemy.velocity = enemy.global_position.direction_to(next_path_pos) * chase_speed
+	#
+	#var player_direction := _player.global_position - enemy.global_position
+	#enemy.set_direction(rad_to_deg(player_direction.angle()))
+	
 ## What happens during the _process update of this state ?
 func process(_delta : float) -> EnemyState:
 	if (_start_chase):
-		#var new_dir : Vector2 = enemy.global_position.direction_to(PlayerManager.player.global_position)
+		
 		var new_dir_vect : Vector2 = (PlayerManager.player.global_position - enemy.global_position).normalized()
 		var new_dir_angle : float = new_dir_vect.angle()
 		enemy.velocity = new_dir_vect * chase_speed

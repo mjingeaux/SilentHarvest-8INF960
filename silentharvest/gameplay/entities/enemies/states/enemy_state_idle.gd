@@ -1,5 +1,7 @@
 class_name EnemyStateIdle extends EnemyState
 
+@export var state_name : String = "PATROL"
+
 @export var anim_name : String = "idle"
 
 @export_category("AI")
@@ -18,7 +20,6 @@ func enter() -> void:
 	enemy.velocity = Vector2.ZERO
 	enemy.update_animation(anim_name) 
 	
-
 ## What happens when the enemy exits this state ?
 func exit() -> void:
 	super()

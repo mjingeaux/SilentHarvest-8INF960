@@ -44,9 +44,12 @@ func _ready() -> void:
 	
 func start():
 	paused = false
+	entity.poi_timer.paused = false
+	
 	
 func pause():
 	paused = true
+	entity.poi_timer.paused = true
 	entity.patrol_restart_pos = entity.global_position - entity.position
 	
 func add_entity_to_path_follow_node():
@@ -107,10 +110,13 @@ func _next_state():
 			else:
 				state = pingpong(state, max_state)
 			
-	if (state % 2 == 1): #path
+	if (_is_state_path()): #path
 		_start_path((state-1) / 2)
 	else: #poi
 		_play_entity_poi(state / 2)
+		
+func _is_state_path() -> bool:
+	return state % 2 == 1
 		
 func _start_path(path_id := 0):
 	paused = false
@@ -129,7 +135,11 @@ func on_entity_finished_poi():
 	_next_state()
 
 func _on_entity_entering_patrol():
-	start()
+	if (_is_state_path()):
+		start()
+	else:
+		entity.poi_timer.paused = false
+		
 	
 func _on_entity_exiting_patrol():
 	pause()
