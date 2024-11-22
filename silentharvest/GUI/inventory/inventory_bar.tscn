@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://du66a3op7neng"]
+
+[ext_resource type="Texture2D" uid="uid://c7yrskitx27a" path="res://Assets/sprites/items/items.png" id="1_snavj"]
+[ext_resource type="Script" path="res://GUI/inventory/inventory_ui.gd" id="2_r3j5f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tuj3"]
+atlas = ExtResource("1_snavj")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h60f0"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = SubResource("AtlasTexture_7tuj3")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+
+[node name="InventoryBar" type="PanelContainer"]
+custom_minimum_size = Vector2(535, 48)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -267.5
+offset_top = -147.0
+offset_right = 267.5
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_h60f0")
+
+[node name="Inventory" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+columns = 10
+script = ExtResource("2_r3j5f")

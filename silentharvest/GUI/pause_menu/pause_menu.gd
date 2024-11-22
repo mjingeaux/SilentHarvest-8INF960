@@ -3,16 +3,13 @@ class_name PauseMenu extends CanvasLayer
 signal shown
 signal hidden
 
-@onready var inventory: InventoryUI = $PanelContainer/Inventory
 @onready var scorelabel: Label = $ScoreLabel
 
 var is_paused : bool = false
 
 func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
-	shown.connect(inventory.update_inventory)
 	shown.connect(update_score_label)
-	hidden.connect(inventory.clear_inventory)
 	resume_game()
 	
 func pause_game() -> void:
@@ -27,6 +24,7 @@ func resume_game() -> void:
 	is_paused = false
 	hide()
 	hidden.emit()
+	
 	pass
 	
 func _unhandled_input(event: InputEvent) -> void:
@@ -47,4 +45,4 @@ func _on_btn_quitter_pressed() -> void:
 	pass # Replace with function body.
 
 func update_score_label() -> void:
-	scorelabel.text = str(inventory.data.score)
+	scorelabel.text = str(PlayerManager.INVENTORY_DATA.score)
