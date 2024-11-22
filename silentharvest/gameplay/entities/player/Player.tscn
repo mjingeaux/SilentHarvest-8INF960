@@ -323,16 +323,7 @@ zoom = Vector2(3, 3)
 [node name="VisibilityHotspots" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="VisibilityHotspots"]
-position = Vector2(-3, -5)
-
-[node name="Marker2D2" type="Marker2D" parent="VisibilityHotspots"]
-position = Vector2(3, 0)
-
-[node name="Marker2D3" type="Marker2D" parent="VisibilityHotspots"]
-position = Vector2(-3, 0)
-
-[node name="Marker2D4" type="Marker2D" parent="VisibilityHotspots"]
-position = Vector2(3, 7)
+position = Vector2(0, -3)
 
 [node name="NoiseEmitter" type="Area2D" parent="."]
 script = ExtResource("3_mjrld")

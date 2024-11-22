@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://pleh7sbv35xa"]
+
+[ext_resource type="Script" path="res://gameplay/entities/props/base_prop.gd" id="1_f86f4"]
+[ext_resource type="Texture2D" uid="uid://c4l18krurrsn7" path="res://assets/sprites/props.png" id="2_8whi6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ibjwx"]
+radius = 7.0
+
+[node name="Jar" type="StaticBody2D"]
+y_sort_enabled = true
+position = Vector2(0, -1)
+script = ExtResource("1_f86f4")
+
+[node name="BlockingArea" type="CollisionPolygon2D" parent="."]
+position = Vector2(-1.5, -3.185)
+polygon = PackedVector2Array(-5.5, 0.185, 1.5, -3.815, 8.5, 0.185, 1.5, 4)
+
+[node name="Jar" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 19)
+texture = ExtResource("2_8whi6")
+offset = Vector2(0, -30)
+region_enabled = true
+region_rect = Rect2(48, 29, 16, 24)
+
+[node name="HidingArea" type="Area2D" parent="."]
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HidingArea"]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_ibjwx")

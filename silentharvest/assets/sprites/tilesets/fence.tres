@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://baj6xmghe8plq"]
 
-[ext_resource type="Texture2D" uid="uid://vwpinmunb5kc" path="res://assets/sprites/fence.png" id="1_5p800"]
+[ext_resource type="Texture2D" uid="uid://d1e1djya887ks" path="res://assets/sprites/fence_darker.png" id="1_1gvvw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ga5x"]
-texture = ExtResource("1_5p800")
+texture = ExtResource("1_1gvvw")
 1:1/0 = 0
 1:1/0/terrain_set = 0
 1:1/0/terrain = 0
