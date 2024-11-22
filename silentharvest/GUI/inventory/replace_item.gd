@@ -4,8 +4,8 @@ signal shown
 signal hidden
 signal replaced
 
-@onready var inventory: InventoryUI = $PanelContainer/Inventory
-@onready var new_item: InventoryUI = $PanelContainer2/NewItem
+@onready var inventory: InventoryUI = $HBoxContainer/PanelContainer/Inventory
+@onready var new_item: InventoryUI = $HBoxContainer/PanelContainer2/NewItem
 
 const ITEM_TO_ADD = preload("res://assets/resources/item_to_add.tres")
 
@@ -14,8 +14,9 @@ var is_paused : bool = false
 func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
 	shown.connect(inventory.update_inventory)
-	hidden.connect(inventory.clear_inventory)
+	#hidden.connect(inventory.clear_inventory)
 	replaced.connect(resume_game)
+	#inventory.create_inventory()
 	hide()
 	
 	
@@ -29,7 +30,6 @@ func show_menu(item_to_add : ItemData):
 		print("GO HERE INSTEAD")
 		new_item.data.replace_item(item_to_add,0,true)
 		ITEM_TO_ADD.replace_item(item_to_add,0,true)
-	new_item.clear_inventory()
 	new_item.update_inventory()
 	pause_game()
 
@@ -49,8 +49,7 @@ func resume_game() -> void:
 
 func replace_item(slot_index : int) -> void:
 	PlayerManager.INVENTORY_DATA.replace_item(new_item.data.slots[0].item_data,slot_index)
-
-	new_item.clear_inventory()
+	#new_item.clear_inventory()
 	replaced.emit()
 	pass
 	

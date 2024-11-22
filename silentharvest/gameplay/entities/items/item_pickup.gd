@@ -10,9 +10,9 @@ var is_player_in_area : bool = false
 func _input(event) -> void:
 	if is_player_in_area and event.is_action_pressed("collect"):
 		if item_data:
-			print(item_data.name)
-			PlayerManager.INVENTORY_DATA.add_item(item_data)
+			PlayerManager.INVENTORY_DATA.score = PlayerManager.INVENTORY_DATA.add_item(item_data)
 			item_picked_up()
+			Pickup_Key.hide()
 	pass
 
 func _ready() -> void:
@@ -22,11 +22,13 @@ func _ready() -> void:
 		
 func _on_body_entered(b) -> void:
 	if b is Player:
+		Pickup_Key.show()
 		is_player_in_area = true
 	pass
 
 func _on_body_exited(b) -> void:
 	if b is Player:
+		Pickup_Key.hide()
 		is_player_in_area = false
 		
 func item_picked_up() -> void:
@@ -35,6 +37,8 @@ func item_picked_up() -> void:
 	visible = false
 	await audio_player_2d.finished
 	queue_free()
+	#Inventory_Hud.inventory.clear_inventory()
+	Inventory_Hud.inventory.update_inventory()
 	pass
 	
 func _set_item_data(value : ItemData) -> void:

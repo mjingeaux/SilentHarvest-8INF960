@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk4v84awijxur"]
+
+[ext_resource type="Script" path="res://GUI/HUD/inventory_hud.gd" id="1_6l1y8"]
+[ext_resource type="PackedScene" uid="uid://du66a3op7neng" path="res://GUI/inventory/inventory_bar.tscn" id="1_eumk8"]
+
+[node name="InventoryHud" type="CanvasLayer"]
+script = ExtResource("1_6l1y8")
+
+[node name="InventoryBar" parent="." instance=ExtResource("1_eumk8")]

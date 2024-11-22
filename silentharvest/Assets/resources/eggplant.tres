@@ -12,4 +12,4 @@ script = ExtResource("1_73xbo")
 name = "Eggplant"
 description = "It's an eggplant"
 texture = SubResource("AtlasTexture_32mbl")
-value = 5
+value = 25
