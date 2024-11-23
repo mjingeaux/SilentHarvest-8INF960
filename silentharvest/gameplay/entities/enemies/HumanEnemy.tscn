@@ -338,7 +338,7 @@ step = 0.001
 show_percentage = false
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="."]
-path_desired_distance = 0.1
+path_desired_distance = 1.0
 target_desired_distance = 5.0
 debug_enabled = true
 
