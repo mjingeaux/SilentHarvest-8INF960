@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc1ilns8dtgd0"]
+
+[ext_resource type="Script" path="res://gameplay/entities/props/base_prop.gd" id="1_oxyru"]
+[ext_resource type="Texture2D" uid="uid://fblkuck61dp7" path="res://assets/sprites/props.png" id="2_g0gqw"]
+
+[node name="CrateL" type="StaticBody2D"]
+y_sort_enabled = true
+position = Vector2(0, 7)
+collision_layer = 257
+script = ExtResource("1_oxyru")
+
+[node name="BlockingArea" type="CollisionPolygon2D" parent="."]
+position = Vector2(-8, 0)
+polygon = PackedVector2Array(-12, 0, -2, -17, 28, -11, 21, 6)
+
+[node name="CrateL" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("2_g0gqw")
+offset = Vector2(0, -18.38)
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 49)

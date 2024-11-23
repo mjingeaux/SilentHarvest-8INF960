@@ -2,6 +2,7 @@ class_name Enemy extends CharacterBody2D
 
 signal direction_changed( _new_direction : Vector2)
 signal poi_finished()
+signal inspect_finished()
 
 signal entering_patrol()
 signal exiting_patrol()
@@ -24,6 +25,7 @@ var cardinal_direction : Vector2 = Vector2.DOWN #TODO to delete
 @onready var poi_timer: Timer = $PoiTimer
 @onready var goto_inspect_state : EnemyStateGoto = $EnemyStateMachine/GotoInspect
 @onready var progress_bar : ProgressBar = $ProgressBar
+@onready var inspect_timer: Timer = $EnemyStateMachine/Inspect/InspectTimer
 
 @onready var label : Label = $Label
 
@@ -246,3 +248,19 @@ func play_poi(poi_id : GlobalE.Epoi_type):
 	poi_timer.start(.1)
 	await poi_timer.timeout
 	poi_finished.emit()
+
+
+func play_poi_inspect():
+	velocity = Vector2.ZERO
+	vision_area.angle_target_degree += 65
+	await vision_area.rotation_completed
+	inspect_timer.start(.3)
+	await inspect_timer.timeout
+	vision_area.angle_target_degree -= 130
+	await vision_area.rotation_completed
+	inspect_timer.start(.3)
+	await inspect_timer.timeout
+	inspect_finished.emit()
+	
+func interupt_inspect():
+	poi_timer.stop()

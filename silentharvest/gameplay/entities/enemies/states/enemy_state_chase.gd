@@ -3,7 +3,7 @@ class_name EnemyStateChase extends EnemyState
 @export var state_name : String = "CHASE"
 
 @export var anim_name : String = "chase"
-@export var chase_speed : float = 100.0
+@export var chase_speed : float = 120.0
 @export var turn_rate : float = 0.25
 
 
@@ -30,6 +30,7 @@ func init() -> void:
 ## What happens when the enemy enters this state ?
 func enter() -> void:
 	super()
+	_start_chase = false
 	_timer = state_aggro_duration
 	enemy.update_animation(anim_name) 
 	await get_tree().create_timer(.3).timeout
@@ -40,35 +41,31 @@ func enter() -> void:
 
 ## What happens when the enemy exits this state ?
 func exit() -> void:
-	_start_chase = false
 	super()
 	
-#func _physics_process(delta: float) -> void:
-	#navigation_agent.target_position = _player.global_position
-	#if (navigation_agent.is_navigation_finished()):
-		#return
-	#
-	#var next_path_pos = navigation_agent.get_next_path_position()
-	#enemy.velocity = enemy.global_position.direction_to(next_path_pos) * chase_speed
-	#
-	#var player_direction := _player.global_position - enemy.global_position
-	#enemy.set_direction(rad_to_deg(player_direction.angle()))
+func _physics_process(delta: float) -> void:
+	if (_start_chase):
+		var direction_vec = enemy.global_position.direction_to(navigation_agent.get_next_path_position())
+		enemy.velocity = direction_vec * chase_speed
+		navigation_agent.target_position = PlayerManager.player.global_position
 	
 ## What happens during the _process update of this state ?
 func process(_delta : float) -> EnemyState:
 	if (_start_chase):
-		
-		var new_dir_vect : Vector2 = (PlayerManager.player.global_position - enemy.global_position).normalized()
+		var player_pos = PlayerManager.player.global_position
+		var new_dir_vect : Vector2 = (player_pos - enemy.global_position)
 		var new_dir_angle : float = new_dir_vect.angle()
-		enemy.velocity = new_dir_vect * chase_speed
+		
 		enemy.set_direction(rad_to_deg(new_dir_angle))
 		
-		if _can_see_player == false:
+		if !_can_see_player:
 			_timer -= _delta
 			if _timer <= 0:
-				if (next_state is EnemyStateGoto):
-					next_state.destination = enemy.patrol_restart_pos
-				return next_state
+				enemy.add_suspicious_point(player_pos)
+				
+				#if (next_state is EnemyStateGoto):
+					#next_state.destination = enemy.patrol_restart_pos
+				#return next_state
 		else:
 			_timer = state_aggro_duration
 	return null

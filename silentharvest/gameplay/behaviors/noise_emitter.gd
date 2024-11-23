@@ -19,7 +19,7 @@ func _ready():
 func noise_update(delta : float):
 	for recepter in _lst_recepter_in_range:
 		var dist := 1. - (recepter.global_position - global_position).length() / zone_radius
-		dist *= dist #change distance impact to quadratic
+		#dist *= dist #change distance impact to quadratic
 		
 		recepter.hear_noise(dist * intensity, delta)
 	

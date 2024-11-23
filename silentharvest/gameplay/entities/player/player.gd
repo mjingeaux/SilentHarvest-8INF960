@@ -7,6 +7,7 @@ const CROUCH_ACCELERATION = 20
 var LAST_DIRECTION = 0
 @onready var animation = $AnimationPlayer
 @onready var noise_emitter = $NoiseEmitter
+@onready var noise_emitter_sneak: NoiseEmitter = $NoiseEmitterSneak
 
 func crouching_movement(direction: Vector2) -> void:
 	velocity.x = move_toward(velocity.x, direction.x * CROUCH_SPEED, CROUCH_ACCELERATION)
@@ -73,9 +74,12 @@ func _physics_process(delta: float) -> void: # switch to _process
 	if(Input.is_action_pressed("crouch")):
 		crouching_movement(direction)
 		crouching_animation()
-		noise_emitter.noise_update(delta)
+		if (velocity != Vector2.ZERO):
+			noise_emitter_sneak.noise_update(delta)
 	else:
 		walking_movement(direction)
 		walking_animation()
+		if (velocity != Vector2.ZERO):
+			noise_emitter.noise_update(delta)
 
 	move_and_slide()
