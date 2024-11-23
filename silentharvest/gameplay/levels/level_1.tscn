@@ -111,132 +111,6 @@ position = Vector2(13, 36)
 [node name="Tree" parent="LstProp" instance=ExtResource("11_pi4f2")]
 position = Vector2(264, 108.185)
 
-[node name="Tree2" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(346, 173)
-
-[node name="Tree3" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(610, 418)
-
-[node name="Tree4" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(99, 53)
-
-[node name="Tree5" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(64, 167)
-
-[node name="Tree6" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(206, -23)
-
-[node name="Tree7" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(138, 735)
-
-[node name="Tree8" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(174, 674.185)
-
-[node name="Tree9" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(191, 705)
-
-[node name="Tree10" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(198, 572)
-
-[node name="Tree11" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(488, 569)
-
-[node name="Tree12" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(731, 367)
-
-[node name="Tree13" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(-22, 428)
-
-[node name="Tree14" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(191, 417)
-
-[node name="Tree15" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(-74, 845)
-
-[node name="Tree16" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(290, 1025)
-
-[node name="Tree17" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(215, 1081)
-
-[node name="Tree18" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(404, 654)
-
-[node name="Tree24" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(799, 988)
-
-[node name="Tree25" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(775, 1102)
-
-[node name="Tree26" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(816, 1079)
-
-[node name="Tree27" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(816, 1079)
-
-[node name="Tree28" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(777, 984)
-
-[node name="Tree37" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(751, 915)
-
-[node name="Tree38" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(763, 826)
-
-[node name="Tree39" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(678, 787)
-
-[node name="Tree40" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(687, 886)
-
-[node name="Tree41" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(714, 827)
-
-[node name="Tree42" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(670, 945)
-
-[node name="Tree43" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(670, 945)
-
-[node name="Tree29" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(828, 922)
-
-[node name="Tree30" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(709, 994)
-
-[node name="Tree31" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(657, 1070)
-
-[node name="Tree32" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(866, 1183)
-
-[node name="Tree33" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(915, 1093)
-
-[node name="Tree34" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(946, 1027)
-
-[node name="Tree35" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(916, 966)
-
-[node name="Tree36" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(969, 953)
-
-[node name="Tree20" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(834, 992)
-
-[node name="Tree23" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(791, 1006)
-
-[node name="Tree22" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(818, 1018)
-
-[node name="Tree21" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(849, 1034)
-
-[node name="Tree19" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(777, 1026)
-
 [node name="LstTrap" type="Node2D" parent="."]
 
 [node name="HumanEnemy" parent="." instance=ExtResource("6_6jlwx")]
@@ -298,16 +172,16 @@ script = ExtResource("13_krvxk")
 position = Vector2(357, 506)
 
 [node name="Jar2" parent="." instance=ExtResource("10_1aw8l")]
-position = Vector2(369, 516)
+position = Vector2(219, 171)
 
 [node name="Jar3" parent="." instance=ExtResource("10_1aw8l")]
 position = Vector2(275, 490)
 
 [node name="CrateL" parent="." instance=ExtResource("15_ddx6h")]
-position = Vector2(435, 576)
+position = Vector2(119, 152)
 
 [node name="CrateS" parent="." instance=ExtResource("16_ffs3m")]
-position = Vector2(516, 555)
+position = Vector2(174, 154)
 
 [node name="Well" parent="." instance=ExtResource("17_nprw7")]
-position = Vector2(192, 874)
+position = Vector2(52, 116)

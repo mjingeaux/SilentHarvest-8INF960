@@ -7,7 +7,7 @@ class_name EnemyStateGoto extends EnemyState
 @export_category("AI")
 @export var destination := Vector2(0, 0)
 @export var after_goto_state : EnemyState
-@export var goto_speed : float = 40.0
+@export var goto_speed : float = 70.0
 var navigation_agent : NavigationAgent2D
 var next_path_pos : Vector2
 

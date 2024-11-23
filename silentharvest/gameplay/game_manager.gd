@@ -5,7 +5,7 @@ class_name GameManager extends Node
 var active_level : BaseLevel
 
 func _ready() -> void:
-	#setup_screen()
+	setup_screen()
 	process_mode = PROCESS_MODE_ALWAYS
 	load_level(0)
 
