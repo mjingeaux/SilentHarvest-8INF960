@@ -25,6 +25,7 @@ func _ready() -> void:
 	path_follow_node = PathFollow2D.new()
 	path_follow_node.loop = false
 	path_follow_node.rotates = false
+	path_follow_node.y_sort_enabled = true
 	
 	entity.global_position = Vector2.ZERO
 	add_entity_to_path_follow_node.call_deferred()
@@ -37,6 +38,7 @@ func _ready() -> void:
 		var c = get_child(id)
 		if (c is Path2D):
 			path_count += 1
+			c.y_sort_enabled = true
 			
 	_start_path()
 	paused = !autostart

@@ -27,7 +27,7 @@ func enter() -> void:
 func exit() -> void:
 	super()
 
-func _physics_process(delta: float) -> void:
+func physics_process(delta: float) -> void:
 	if (navigation_agent.is_navigation_finished()):
 		return
 	next_path_pos = navigation_agent.get_next_path_position()

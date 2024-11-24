@@ -1,44 +1,25 @@
-[gd_scene load_steps=27 format=4 uid="uid://fehr3p1frps7"]
+[gd_scene load_steps=26 format=4 uid="uid://fehr3p1frps7"]
 
 [ext_resource type="Script" path="res://gameplay/levels/level_1.gd" id="1_ehrcc"]
 [ext_resource type="TileSet" uid="uid://4m1whi8xvife" path="res://assets/sprites/tilesets/grass.tres" id="2_27k8j"]
-[ext_resource type="TileSet" uid="uid://baj6xmghe8plq" path="res://assets/sprites/tilesets/fence.tres" id="3_3tua8"]
+[ext_resource type="TileSet" uid="uid://h4a7s5ybiam1" path="res://assets/sprites/tilesets/fence.tres" id="3_3tua8"]
 [ext_resource type="PackedScene" uid="uid://011gh33qvxap" path="res://gameplay/behaviors/patrol/Patrol.tscn" id="5_i52hj"]
 [ext_resource type="PackedScene" uid="uid://cs1plvef6f8u1" path="res://gameplay/entities/enemies/HumanEnemy.tscn" id="6_6jlwx"]
 [ext_resource type="PackedScene" uid="uid://cv75k0dbr2h1x" path="res://gameplay/entities/items/item_pickup.tscn" id="7_jyymn"]
 [ext_resource type="Resource" uid="uid://cca0a5fiq6xcs" path="res://assets/resources/apple.tres" id="8_me2hq"]
-[ext_resource type="Script" path="res://gameplay/entities/items/item_data.gd" id="9_3d7do"]
+[ext_resource type="Texture2D" uid="uid://cdj5ndfss3som" path="res://assets/sprites/tree.png" id="9_r8xlo"]
 [ext_resource type="PackedScene" uid="uid://pleh7sbv35xa" path="res://gameplay/entities/props/Jar.tscn" id="10_1aw8l"]
-[ext_resource type="Texture2D" uid="uid://cv7x62xklc8ui" path="res://assets/sprites/items/eggplant.png" id="10_qmwaa"]
-[ext_resource type="Texture2D" uid="uid://bqgr86oxg6ruj" path="res://assets/sprites/items/carrot.png" id="11_cec04"]
+[ext_resource type="Texture2D" uid="uid://fblkuck61dp7" path="res://assets/sprites/props.png" id="10_f73xh"]
 [ext_resource type="PackedScene" uid="uid://drlbic8jcmk7x" path="res://gameplay/entities/props/Tree.tscn" id="11_pi4f2"]
 [ext_resource type="Script" path="res://gameplay/behaviors/patrol/patrol.gd" id="12_tlapw"]
 [ext_resource type="Script" path="res://gameplay/levels/navigation_region.gd" id="13_krvxk"]
+[ext_resource type="Resource" uid="uid://brokmhnraf3iv" path="res://assets/resources/corn.tres" id="13_yexcl"]
+[ext_resource type="Resource" uid="uid://dcc4t208nuwxq" path="res://assets/resources/carrot.tres" id="14_jttek"]
 [ext_resource type="PackedScene" uid="uid://dc1ilns8dtgd0" path="res://gameplay/entities/props/CrateL.tscn" id="15_ddx6h"]
+[ext_resource type="Resource" uid="uid://cx4nvlu2jdg42" path="res://assets/resources/eggplant.tres" id="15_i5goh"]
 [ext_resource type="PackedScene" uid="uid://dkr0n04a3fpii" path="res://gameplay/entities/props/CrateS.tscn" id="16_ffs3m"]
+[ext_resource type="Resource" uid="uid://cqd7jtebv8s3y" path="res://assets/resources/potato.tres" id="16_hvxg3"]
 [ext_resource type="PackedScene" uid="uid://cdc1c2b0bx2om" path="res://gameplay/entities/props/Well.tscn" id="17_nprw7"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kpr2h"]
-atlas = ExtResource("10_qmwaa")
-region = Rect2(0, 0, 24, 0)
-
-[sub_resource type="Resource" id="Resource_j8sga"]
-script = ExtResource("9_3d7do")
-name = ""
-description = ""
-texture = SubResource("AtlasTexture_kpr2h")
-value = 0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ke66q"]
-atlas = ExtResource("11_cec04")
-region = Rect2(0, 0, 24, 0)
-
-[sub_resource type="Resource" id="Resource_fprmp"]
-script = ExtResource("9_3d7do")
-name = ""
-description = ""
-texture = SubResource("AtlasTexture_ke66q")
-value = 0
 
 [sub_resource type="Curve2D" id="Curve2D_stvnh"]
 _data = {
@@ -65,6 +46,7 @@ _data = {
 point_count = 2
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jad42"]
+resource_local_to_scene = true
 vertices = PackedVector2Array(451, 564, 497.531, 564, 496.813, 579.953, 451, 565.141, 738, 244, 704, 291.656, 674, 292.656, 674, 244.188, 678, 211, 738, 211, 404, 868.922, 284.094, 869.906, 284.898, 788.063, 434, 789.07, 498, 677, 498, 869.828, 438, 868.828, 434, 677, 133, 820.828, 73, 821.828, 73, 805, 133, 805, 603, 242.797, 603, 259.828, 543, 258.828, 543.117, 131, 644, 1221.92, 524, 1222.91, 524, 949, 918, 372, 918, 451.953, 738.281, 451.18, 738, 372, 543, 324, 133.031, 324, 133.961, 49.9688, 542.117, 49.0234, 678, 131, 1054, 1350.01, 524, 1350.98, 524, 1254, 644, 1254, 768, 244, 768, 292, 738, 292, 704, 597.063, 738.008, 660.953, 542.109, 596.023, 528, 659.953, 536.141, 602, 518.859, 602, 528, 677, 438, 886, 404, 886, 404, 677, 404, 661.078, 284, 1094, 284, 901, 378, 901, 378, 917, 464, 917, 464, 901, 738.031, 901, 915, 1254, 915, 885, 1054, 885, 498, 1189.89, 498, 1222, 133, 1222, 408, 1188.89, 133, 869, 73, 869, 73, 853, 133, 853, 404, 596, 404, 580, 434, 580, 434, 576, 440.141, 576, 258.023, 659.922, 133, 596, 256.977, 1094, 408, 949, 739.031, 1254)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8, 9), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(14, 15, 16, 13, 17), PackedInt32Array(18, 19, 20, 21), PackedInt32Array(22, 23, 24, 25), PackedInt32Array(26, 27, 28), PackedInt32Array(29, 30, 31, 32), PackedInt32Array(33, 34, 35, 36, 24), PackedInt32Array(24, 36, 25), PackedInt32Array(22, 25, 37, 8, 7), PackedInt32Array(38, 39, 40, 41), PackedInt32Array(4, 42, 43, 44, 5), PackedInt32Array(45, 5, 44, 32), PackedInt32Array(45, 32, 31, 46), PackedInt32Array(47, 45, 46, 48, 49), PackedInt32Array(50, 49, 48, 14, 17), PackedInt32Array(48, 51, 14), PackedInt32Array(16, 52, 53, 10, 13), PackedInt32Array(17, 54, 55), PackedInt32Array(56, 57, 58, 59), PackedInt32Array(60, 61, 62, 28), PackedInt32Array(63, 64, 65, 38), PackedInt32Array(66, 67, 68, 69), PackedInt32Array(70, 71, 72, 73), PackedInt32Array(74, 75, 76, 17), PackedInt32Array(76, 77, 78), PackedInt32Array(3, 2, 50, 17, 78), PackedInt32Array(76, 78, 17), PackedInt32Array(74, 17, 55), PackedInt32Array(74, 55, 79, 80), PackedInt32Array(21, 80, 79, 81), PackedInt32Array(18, 21, 81), PackedInt32Array(73, 18, 81), PackedInt32Array(70, 73, 81), PackedInt32Array(68, 70, 81), PackedInt32Array(69, 68, 81, 56), PackedInt32Array(82, 69, 56, 59), PackedInt32Array(82, 59, 60, 28), PackedInt32Array(28, 62, 83, 26), PackedInt32Array(41, 26, 83), PackedInt32Array(38, 41, 83), PackedInt32Array(38, 83, 63)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(124, 40, 552, 39, 553, 121, 688, 121, 688, 201, 748, 201, 748, 234, 778, 234, 778, 302, 748, 302, 748, 362, 928, 362, 928, 462, 748.277, 461.222, 748, 671, 538, 670, 538, 687, 508, 687, 508, 880, 448, 879, 448, 896, 394, 896, 394, 879, 274, 880, 275, 778, 424, 779, 424, 687, 394, 687, 394, 671, 268, 670, 267, 1084, 274, 1084, 274, 891, 388, 891, 388, 907, 454, 907, 454, 891, 748, 891, 749, 1244, 905, 1244, 905, 875, 1064, 875, 1064, 1360, 514, 1361, 514, 1244, 634, 1244, 634, 1232, 514, 1233, 514, 959, 418, 959, 418, 1179, 508, 1180, 508, 1232, 123, 1232, 123, 879, 63, 879, 63, 843, 123, 843, 123, 831, 63, 832, 63, 795, 123, 795, 123, 586, 394, 586, 394, 570, 424, 570, 424, 566, 436, 566, 441, 561, 441, 554, 508, 554, 507, 576, 523, 592, 532, 592, 538, 586, 694, 587, 694, 461, 694, 302, 664, 303, 664, 254, 613, 253, 613, 270, 553, 269, 553, 334, 123, 334)])
@@ -98,20 +80,303 @@ item_data = ExtResource("8_me2hq")
 
 [node name="ItemPickup2" parent="lstItem" instance=ExtResource("7_jyymn")]
 position = Vector2(407, 1221)
-item_data = SubResource("Resource_j8sga")
+item_data = ExtResource("15_i5goh")
 
 [node name="ItemPickup3" parent="lstItem" instance=ExtResource("7_jyymn")]
 position = Vector2(847, 857)
-item_data = SubResource("Resource_fprmp")
+item_data = ExtResource("14_jttek")
 
 [node name="LstProp" type="Node2D" parent="."]
 y_sort_enabled = true
 position = Vector2(13, 36)
 
 [node name="Tree" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(264, 108.185)
+position = Vector2(308, 138)
 
-[node name="LstTrap" type="Node2D" parent="."]
+[node name="Jar" parent="LstProp" instance=ExtResource("10_1aw8l")]
+position = Vector2(192, 8)
+
+[node name="CrateL" parent="LstProp" instance=ExtResource("15_ddx6h")]
+position = Vector2(26, 142)
+
+[node name="CrateS" parent="LstProp" instance=ExtResource("16_ffs3m")]
+position = Vector2(84, 136)
+
+[node name="Well" parent="LstProp" instance=ExtResource("17_nprw7")]
+position = Vector2(169, 127)
+
+[node name="Landscape" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="LsTree" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-21.5, -98)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree2" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-70.5, -74.6667)
+scale = Vector2(0.895833, 0.895833)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree3" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-83, -100)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree4" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-127, -60)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree5" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-141, -110)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree6" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-92, -126)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree7" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-49, -147)
+scale = Vector2(1.125, 1.125)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree8" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-86.5, -157.333)
+scale = Vector2(1.10417, 1.10417)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree9" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-123, -149.667)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree10" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-186, -127)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree11" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-162, -99)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree12" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-207, -77.6667)
+scale = Vector2(0.833333, 0.833333)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree13" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-243, -122)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree14" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-216, -157)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree15" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-161, -169.667)
+scale = Vector2(1.20833, 1.20833)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree16" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(71, -101)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree17" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(9.00002, -151)
+scale = Vector2(1.20833, 1.20833)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree18" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-147, -195)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree19" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(50, -176)
+scale = Vector2(1.24, 1.24)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree20" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(98, -169)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree21" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(29, -116)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree22" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(73, -139)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree23" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(126, -159)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree24" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(106, -116)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree30" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(148, -129)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree31" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(209, -113)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree32" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(260, -140)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree33" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(200, -146)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree34" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(292, -111)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree35" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(345, -111)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree36" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(250, -94)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree37" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(177, -97)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree38" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(309, -146)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree39" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(368, -137)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree40" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(379, -89)
+scale = Vector2(0.854167, 0.854167)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree41" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(417, -105)
+scale = Vector2(0.708333, 0.708333)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree42" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(483, -129)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree43" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(413, -134)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree44" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(409, -169)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree45" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(350, -173)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree46" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(293, -179)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsTree47" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(229, -178)
+texture = ExtResource("9_r8xlo")
+
+[node name="LsCrateL" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-120, 18)
+texture = ExtResource("10_f73xh")
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 49)
+
+[node name="LsCrateL2" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(7, 281)
+texture = ExtResource("10_f73xh")
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 49)
+
+[node name="LsCrateL3" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(41.25, 299.482)
+scale = Vector2(0.817073, 0.817073)
+texture = ExtResource("10_f73xh")
+region_enabled = true
+region_rect = Rect2(0, 0, 41, 49)
+
+[node name="LsCrateS" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-56.5, 29)
+texture = ExtResource("10_f73xh")
+region_enabled = true
+region_rect = Rect2(44, 0, 24, 28)
+
+[node name="LsJar" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-100.5, 42)
+texture = ExtResource("10_f73xh")
+region_enabled = true
+region_rect = Rect2(48, 29, 16, 24)
+
+[node name="LsWell" type="Sprite2D" parent="Landscape"]
+y_sort_enabled = true
+position = Vector2(-92, -29)
+texture = ExtResource("10_f73xh")
+region_enabled = true
+region_rect = Rect2(70, 3, 50, 69)
 
 [node name="HumanEnemy" parent="." instance=ExtResource("6_6jlwx")]
 position = Vector2(-25, -269)
@@ -129,6 +394,7 @@ position = Vector2(-50, -538)
 position = Vector2(763, 1066)
 
 [node name="lstPatrol" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Patrol" parent="lstPatrol" node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
 entity = NodePath("../../HumanEnemy")
@@ -168,20 +434,46 @@ position = Vector2(-158, -75)
 navigation_polygon = SubResource("NavigationPolygon_jad42")
 script = ExtResource("13_krvxk")
 
-[node name="Jar" parent="." instance=ExtResource("10_1aw8l")]
-position = Vector2(357, 506)
+[node name="ItemPickup" parent="." instance=ExtResource("7_jyymn")]
+position = Vector2(157, 35)
+item_data = ExtResource("13_yexcl")
 
-[node name="Jar2" parent="." instance=ExtResource("10_1aw8l")]
-position = Vector2(219, 171)
+[node name="ItemPickup2" parent="." instance=ExtResource("7_jyymn")]
+position = Vector2(180, 74)
+item_data = ExtResource("14_jttek")
 
-[node name="Jar3" parent="." instance=ExtResource("10_1aw8l")]
-position = Vector2(275, 490)
+[node name="ItemPickup3" parent="." instance=ExtResource("7_jyymn")]
+position = Vector2(226, 75)
+item_data = ExtResource("15_i5goh")
 
-[node name="CrateL" parent="." instance=ExtResource("15_ddx6h")]
-position = Vector2(119, 152)
+[node name="ItemPickup4" parent="." instance=ExtResource("7_jyymn")]
+position = Vector2(188, 127)
+item_data = ExtResource("16_hvxg3")
 
-[node name="CrateS" parent="." instance=ExtResource("16_ffs3m")]
-position = Vector2(174, 154)
+[node name="ItemPickup5" parent="." instance=ExtResource("7_jyymn")]
+position = Vector2(148, 155)
+item_data = ExtResource("16_hvxg3")
 
-[node name="Well" parent="." instance=ExtResource("17_nprw7")]
-position = Vector2(52, 116)
+[node name="ItemPickup6" parent="." instance=ExtResource("7_jyymn")]
+position = Vector2(98, 31)
+item_data = ExtResource("16_hvxg3")
+
+[node name="ItemPickup7" parent="." instance=ExtResource("7_jyymn")]
+position = Vector2(54, 39)
+item_data = ExtResource("14_jttek")
+
+[node name="ItemPickup8" parent="." instance=ExtResource("7_jyymn")]
+position = Vector2(54, 87)
+item_data = ExtResource("13_yexcl")
+
+[node name="ItemPickup9" parent="." instance=ExtResource("7_jyymn")]
+position = Vector2(63, 128)
+item_data = ExtResource("15_i5goh")
+
+[node name="ItemPickup10" parent="." instance=ExtResource("7_jyymn")]
+position = Vector2(114, 140)
+item_data = ExtResource("14_jttek")
+
+[node name="ItemPickup11" parent="." instance=ExtResource("7_jyymn")]
+position = Vector2(199, 161)
+item_data = ExtResource("15_i5goh")

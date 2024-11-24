@@ -6,7 +6,7 @@ class_name BaseProp extends StaticBody2D
 
 
 func _ready() -> void:
-	pass
+	collision_layer = collision_layer | 256
 	
 	
 func _process(delta: float) -> void:

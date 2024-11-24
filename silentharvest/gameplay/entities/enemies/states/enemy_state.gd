@@ -21,8 +21,7 @@ func enter() -> void:
 ## What happens when the enemy exits this state ?
 func exit() -> void:
 	state_exited.emit()
-	
+
 ## What happens during the _process update of this state ?
 func process(_delta : float) -> EnemyState:
 	return null
-	

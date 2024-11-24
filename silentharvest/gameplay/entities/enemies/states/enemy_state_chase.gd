@@ -43,7 +43,7 @@ func enter() -> void:
 func exit() -> void:
 	super()
 	
-func _physics_process(delta: float) -> void:
+func physics_process(delta: float) -> void:
 	if (_start_chase):
 		var direction_vec = enemy.global_position.direction_to(navigation_agent.get_next_path_position())
 		enemy.velocity = direction_vec * chase_speed

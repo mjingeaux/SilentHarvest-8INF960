@@ -14,6 +14,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	change_state(curr_state.process(delta))
 	
+func _physics_process(delta: float) -> void:
+	if (curr_state is EnemyStateChase or curr_state is EnemyStateGoto):
+		curr_state.physics_process(delta)
+	
 func initialize(_enemy : Enemy) -> void:
 	states = []
 	
