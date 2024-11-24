@@ -22,35 +22,52 @@ texture_margin_bottom = 14.0
 [node name="ReplaceItem" type="CanvasLayer"]
 script = ExtResource("1_3fwbg")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-offset_left = 435.0
-offset_top = 193.0
-offset_right = 714.0
-offset_bottom = 277.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_exb14")
-
-[node name="Inventory" type="GridContainer" parent="PanelContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-columns = 5
-script = ExtResource("2_bqs13")
-
 [node name="Label" type="Label" parent="."]
-offset_left = 488.0
-offset_top = 138.0
-offset_right = 651.0
-offset_bottom = 161.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.5
+offset_top = -139.5
+offset_right = 81.5
+offset_bottom = -116.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Remplacer un objet ?"
 
-[node name="PanelContainer2" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(32, 32)
-offset_left = 277.0
-offset_top = 205.0
-offset_right = 329.0
-offset_bottom = 257.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_exb14")
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -26.0
+offset_right = 202.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="NewItem" type="GridContainer" parent="PanelContainer2"]
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_exb14")
+
+[node name="NewItem" type="GridContainer" parent="HBoxContainer/PanelContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+script = ExtResource("2_bqs13")
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_exb14")
+
+[node name="Inventory" type="GridContainer" parent="HBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+columns = 10
 script = ExtResource("2_bqs13")

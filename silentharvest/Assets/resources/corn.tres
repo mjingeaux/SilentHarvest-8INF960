@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://gameplay/entities/items/item_data.gd" id="1_7ocmw"]
 [ext_resource type="Texture2D" uid="uid://d03no7tfi3cj7" path="res://assets/sprites/items/corn.png" id="2_aiaja"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_32mbl"]
-atlas = ExtResource("2_s6wcy")
-region = Rect2(192, 0, 32, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_c73cb"]
+atlas = ExtResource("2_aiaja")
+region = Rect2(24, 0, 24, 0)
 
 [resource]
 script = ExtResource("1_7ocmw")
 name = "Corn"
 description = "It's a corn"
-texture = SubResource("AtlasTexture_32mbl")
-value = 5
+texture = SubResource("AtlasTexture_c73cb")
+value = 15

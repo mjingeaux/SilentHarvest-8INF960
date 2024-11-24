@@ -5,8 +5,9 @@
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_idle.gd" id="4_mrbuv"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_chase.gd" id="5_cki7o"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_goto.gd" id="5_svj4v"]
-[ext_resource type="Texture2D" uid="uid://qc7thoqo4onh" path="res://assets/rangeVisualizer.png" id="6_78c51"]
+[ext_resource type="Texture2D" uid="uid://qc7thoqo4onh" path="res://Assets/rangeVisualizer.png" id="6_78c51"]
 [ext_resource type="PackedScene" uid="uid://dh01ugaralit0" path="res://gameplay/entities/enemies/VisionArea.tscn" id="6_c8emu"]
+
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_inspect.gd" id="6_lhcgx"]
 [ext_resource type="Texture2D" uid="uid://b1i3f7ia0ocj7" path="res://assets/ennemySpriteSheet.png" id="8_kpm45"]
 

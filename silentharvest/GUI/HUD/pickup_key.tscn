@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://i6wijxc0d6vu"]
+
+[ext_resource type="Script" path="res://GUI/HUD/pickup_key.gd" id="1_3onqs"]
+[ext_resource type="Texture2D" uid="uid://xe4n818le3p8" path="res://addons/controller_icons/assets/key/e.png" id="1_so1t6"]
+
+[node name="PickupKey" type="CanvasLayer"]
+script = ExtResource("1_3onqs")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -73.0
+offset_right = -48.0
+offset_bottom = -33.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="E" type="Sprite2D" parent="PanelContainer"]
+position = Vector2(15, 14)
+texture = ExtResource("1_so1t6")
