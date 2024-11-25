@@ -88,22 +88,21 @@ item_data = ExtResource("14_jttek")
 
 [node name="LstProp" type="Node2D" parent="."]
 y_sort_enabled = true
-position = Vector2(13, 36)
 
 [node name="Tree" parent="LstProp" instance=ExtResource("11_pi4f2")]
-position = Vector2(29, -4)
-
-[node name="Jar" parent="LstProp" instance=ExtResource("10_1aw8l")]
-position = Vector2(192, 8)
+position = Vector2(42, 32)
 
 [node name="CrateL" parent="LstProp" instance=ExtResource("15_ddx6h")]
-position = Vector2(246, 151)
+position = Vector2(259, 187)
 
 [node name="CrateS" parent="LstProp" instance=ExtResource("16_ffs3m")]
-position = Vector2(315, 144)
+position = Vector2(328, 180)
 
 [node name="Well" parent="LstProp" instance=ExtResource("17_nprw7")]
-position = Vector2(169, 127)
+position = Vector2(182, 163)
+
+[node name="Jar" parent="LstProp" instance=ExtResource("10_1aw8l")]
+position = Vector2(209, 140)
 
 [node name="Landscape" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -467,7 +466,7 @@ position = Vector2(54, 87)
 item_data = ExtResource("13_yexcl")
 
 [node name="ItemPickup9" parent="." instance=ExtResource("7_jyymn")]
-position = Vector2(63, 128)
+position = Vector2(61, 156)
 item_data = ExtResource("15_i5goh")
 
 [node name="ItemPickup10" parent="." instance=ExtResource("7_jyymn")]

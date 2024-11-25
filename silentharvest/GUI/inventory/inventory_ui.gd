@@ -35,9 +35,16 @@ func update_inventory() -> void:
 		children[i].slot_data = data.slots[i]
 		if name == "Inventory":
 			if get_parent().get_parent().get_parent().name == "Replace_Item":
-				children[i].pressed.connect(Replace_Item.replace_item.bind(i))
+				if (children[i].pressed.is_connected(drop_item)):
+					children[i].pressed.disconnect(drop_item)
+				if (!children[i].pressed.is_connected(Replace_Item.replace_item)):
+					children[i].pressed.connect(Replace_Item.replace_item.bind(i))
+					
 			else :
-				children[i].pressed.connect(drop_item.bind(i))
+				if (children[i].pressed.is_connected(Replace_Item.replace_item)):
+					children[i].pressed.disconnect(Replace_Item.replace_item)
+				if (!children[i].pressed.is_connected(drop_item)):
+					children[i].pressed.connect(drop_item.bind(i))
 		
 func drop_item(index : int) -> void:
 	data.replace_item(null,index)

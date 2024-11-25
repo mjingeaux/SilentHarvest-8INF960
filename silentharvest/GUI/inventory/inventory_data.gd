@@ -23,14 +23,15 @@ func add_item(item : ItemData) -> int:
 			print("THE SCORE IS UPDATED")
 			print(score)
 			return score
-	print("NEVER GO THERE")
+	printerr("NEVER GO THERE")
 	full_inventory.emit(item)
 	return score
 
 func replace_item(item : ItemData, index: int,is_pickup_item : bool = false) -> void:
 	if item == null:
-		score -= slots[index].item_data.value
-		slots[index] = null
+		if (slots[index] != null):
+			score -= slots[index].item_data.value
+			slots[index] = null
 	else :
 		score += item.value - slots[index].item_data.value
 		if !is_pickup_item:

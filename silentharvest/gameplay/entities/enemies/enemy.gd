@@ -27,8 +27,6 @@ var cardinal_direction : Vector2 = Vector2.DOWN #TODO to delete
 @onready var progress_bar : ProgressBar = $ProgressBar
 @onready var inspect_timer: Timer = $EnemyStateMachine/Inspect/InspectTimer
 
-@onready var label : Label = $Label
-
 var is_listening_noise := true
 var patrol_restart_pos : Vector2
 
@@ -48,7 +46,6 @@ func _ready():
 	$EnemyStateMachine/GotoInspect.navigation_agent = nav_agent
 		
 func _process(delta):
-	label.text = str(lst_suspicious_point.size())
 	update_animation_parameters()
 	if (_is_suspicion_decaying):
 		suspicion_jauge -= delta / suspicion_decay_time
