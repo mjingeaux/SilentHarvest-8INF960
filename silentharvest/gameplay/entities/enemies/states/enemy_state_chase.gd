@@ -33,6 +33,7 @@ func enter() -> void:
 	_start_chase = false
 	_timer = state_aggro_duration
 	enemy.update_animation(anim_name) 
+	enemy.vision_area.rotation_speed = VisionArea.Erotation_speed.fast
 	await get_tree().create_timer(.3).timeout
 	_start_chase = true
 	enemy.is_listening_noise = false
@@ -42,12 +43,13 @@ func enter() -> void:
 ## What happens when the enemy exits this state ?
 func exit() -> void:
 	super()
+	enemy.vision_area.rotation_speed = VisionArea.Erotation_speed.default
 	
 func physics_process(delta: float) -> void:
 	if (_start_chase):
+		navigation_agent.target_position = PlayerManager.player.global_position
 		var direction_vec = enemy.global_position.direction_to(navigation_agent.get_next_path_position())
 		enemy.velocity = direction_vec * chase_speed
-		navigation_agent.target_position = PlayerManager.player.global_position
 	
 ## What happens during the _process update of this state ?
 func process(_delta : float) -> EnemyState:
