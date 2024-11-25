@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://cmdens3l3hwme" path="res://assets/mcSpriteSheet.png" id="2_sfsj4"]
 [ext_resource type="Script" path="res://gameplay/behaviors/noise_emitter.gd" id="3_mjrld"]
 [ext_resource type="Script" path="res://gameplay/entities/player/character_sprite.gd" id="3_w7w2b"]
-[ext_resource type="Shader" path="res://Assets/shaders/silhouette.gdshader" id="4_rj0xc"]
+[ext_resource type="Shader" path="res://assets/shaders/silhouette.gdshader" id="4_fm06f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uarug"]
 size = Vector2(14, 10)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cpvat"]
-shader = ExtResource("4_rj0xc")
+shader = ExtResource("4_fm06f")
 shader_parameter/silhouette_color = Color(0, 0, 0, 0.5)
 
 [sub_resource type="Animation" id="Animation_1odas"]
