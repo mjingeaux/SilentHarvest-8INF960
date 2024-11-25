@@ -15,7 +15,8 @@ func parse_2d_collisionshapes(root_node: Node2D):
 		if node is BaseProp:
 			var area : CollisionPolygon2D = node.get_node("BlockingArea")
 			var collisionpolygon_transform: Transform2D = area.get_global_transform()
+			var self_transform: Transform2D = get_global_transform()
 			var collisionpolygon: PackedVector2Array = area.polygon
-			var cp = collisionpolygon_transform * collisionpolygon
+			var cp = collisionpolygon_transform * collisionpolygon * self_transform
 			geometry_data.add_obstruction_outline(cp)
 			#new_navigation_polygon.add_outline(cp)
