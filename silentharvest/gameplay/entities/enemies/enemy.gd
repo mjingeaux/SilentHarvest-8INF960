@@ -261,3 +261,8 @@ func play_poi_inspect():
 	
 func interupt_inspect():
 	poi_timer.stop()
+
+
+func _on_defeat_zone_body_entered(body: Node2D) -> void:
+	if (body is Player):
+		get_node("/root/GameManager").load_level(2)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://1j8jl6xory57"]
+[gd_scene load_steps=5 format=3 uid="uid://1j8jl6xory57"]
 
 [ext_resource type="Script" path="res://gameplay/game_manager.gd" id="1_cnmgr"]
 [ext_resource type="PackedScene" uid="uid://fehr3p1frps7" path="res://gameplay/levels/level_1.tscn" id="2_ruspc"]
 [ext_resource type="PackedScene" uid="uid://c3jp10ql71lfr" path="res://GUI/pause_menu/pause_menu.tscn" id="3_pxpiu"]
+[ext_resource type="PackedScene" uid="uid://87g4wsndngl3" path="res://gameplay/levels/game_over.tscn" id="4_rjl78"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_cnmgr")
-lst_levels = Array[PackedScene]([ExtResource("2_ruspc"), ExtResource("3_pxpiu")])
+lst_levels = Array[PackedScene]([ExtResource("2_ruspc"), ExtResource("3_pxpiu"), ExtResource("4_rjl78")])

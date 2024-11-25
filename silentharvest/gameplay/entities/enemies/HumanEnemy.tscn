@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cs1plvef6f8u1"]
+[gd_scene load_steps=36 format=3 uid="uid://cs1plvef6f8u1"]
 
 [ext_resource type="Script" path="res://gameplay/entities/enemies/enemy.gd" id="1_nki0r"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/enemy_state_machine.gd" id="3_ym6pk"]
@@ -12,6 +12,8 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i1cqg"]
 radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_688nn"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4f02c"]
 animation = &"run_left"
@@ -288,6 +290,13 @@ position = Vector2(-73, 11)
 rotation = -0.785398
 texture = ExtResource("6_78c51")
 
+[node name="DefeatZone" type="Area2D" parent="."]
+position = Vector2(0, -17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DefeatZone"]
+position = Vector2(0, 17)
+shape = SubResource("CircleShape2D_688nn")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
 scale = Vector2(1, 0.957)
@@ -334,3 +343,4 @@ debug_enabled = true
 
 [connection signal="state_entered" from="EnemyStateMachine/Idle" to="." method="_on_idle_state_entered"]
 [connection signal="state_exited" from="EnemyStateMachine/Idle" to="." method="_on_idle_state_exited"]
+[connection signal="body_entered" from="DefeatZone" to="." method="_on_defeat_zone_body_entered"]
