@@ -280,6 +280,7 @@ one_shot = true
 
 [node name="VisionArea" parent="." instance=ExtResource("6_c8emu")]
 position = Vector2(0, -17)
+metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea"]
 position = Vector2(108, -10)
@@ -339,7 +340,6 @@ show_percentage = false
 [node name="NavigationAgent" type="NavigationAgent2D" parent="."]
 path_desired_distance = 1.0
 target_desired_distance = 5.0
-debug_enabled = true
 
 [connection signal="state_entered" from="EnemyStateMachine/Idle" to="." method="_on_idle_state_entered"]
 [connection signal="state_exited" from="EnemyStateMachine/Idle" to="." method="_on_idle_state_exited"]
