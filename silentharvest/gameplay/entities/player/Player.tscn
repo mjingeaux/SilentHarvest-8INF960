@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://cek825tx7ay7r"]
 
 [ext_resource type="Script" path="res://gameplay/entities/player/player.gd" id="1_44c6v"]
-[ext_resource type="Texture2D" uid="uid://cmdens3l3hwme" path="res://Assets/mcSpriteSheet.png" id="2_sfsj4"]
+[ext_resource type="Texture2D" uid="uid://cmdens3l3hwme" path="res://assets/mcSpriteSheet.png" id="2_sfsj4"]
 [ext_resource type="Script" path="res://gameplay/behaviors/noise_emitter.gd" id="3_mjrld"]
 [ext_resource type="Script" path="res://gameplay/entities/player/character_sprite.gd" id="3_w7w2b"]
 [ext_resource type="Shader" path="res://assets/shaders/silhouette.gdshader" id="4_fm06f"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqgr86oxg6ruj"
-path="res://.godot/imported/carrot.png-8314bab733c9169a31aefbe5963f520a.ctex"
+uid="uid://qdawqfsq65yn"
+path="res://.godot/imported/jauge_outer.png-48e15168e43efd2c0a4f9412d197ac37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/items/carrot.png"
-dest_files=["res://.godot/imported/carrot.png-8314bab733c9169a31aefbe5963f520a.ctex"]
+source_file="res://assets/sprites/jauge_outer.png"
+dest_files=["res://.godot/imported/jauge_outer.png-48e15168e43efd2c0a4f9412d197ac37.ctex"]
 
 [params]
 

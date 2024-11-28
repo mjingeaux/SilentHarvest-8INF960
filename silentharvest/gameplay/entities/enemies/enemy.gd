@@ -13,6 +13,9 @@ var suspicion_jauge := 0. : set = _set_suspicion_jauge
 #time in seconds it would need to decrease suspicion from 1 to 0
 @export_range(.1, 10., .1) var suspicion_decay_time := 4.
 
+@export var min_jauge_color : Color = Color("da863e")
+@export var max_jauge_color : Color = Color("a53030")
+
 const DIR_4 = [Vector2.RIGHT,Vector2.DOWN,Vector2.LEFT,Vector2.UP]
 var cardinal_direction : Vector2 = Vector2.DOWN #TODO to delete
 
@@ -24,7 +27,8 @@ var cardinal_direction : Vector2 = Vector2.DOWN #TODO to delete
 @onready var sus_timer : Timer = $SuspicionTimer
 @onready var poi_timer: Timer = $PoiTimer
 @onready var goto_inspect_state : EnemyStateGoto = $EnemyStateMachine/GotoInspect
-@onready var progress_bar : ProgressBar = $ProgressBar
+@onready var progress_bar : TextureProgressBar = $JaugeScaler/ProgressBar
+@onready var jauge_scaler: Node2D = $JaugeScaler
 @onready var inspect_timer: Timer = $EnemyStateMachine/Inspect/InspectTimer
 
 var is_listening_noise := true
@@ -117,6 +121,9 @@ func _set_suspicion_jauge(val : float):
 	else:
 		suspicion_jauge = val
 	progress_bar.value = suspicion_jauge
+	progress_bar.tint_progress = min_jauge_color.lerp(max_jauge_color, progress_bar.value * 2 - .5)
+	var scaling = 1 + progress_bar.value * .5
+	jauge_scaler.scale = Vector2(scaling, scaling)
 
 	
 func add_suspicious_point(global_pos : Vector2):
