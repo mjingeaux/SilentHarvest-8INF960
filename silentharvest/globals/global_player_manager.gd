@@ -20,6 +20,7 @@ func add_player_to_scene(dest_scene : BaseLevel) -> void:
 		dest_scene.add_player(player)
 		
 	scene_containing_player = dest_scene
+	player.global_position = Vector2i(0,0)
 
 func remove_player_from_scene() -> bool:
 	if (is_player_in_scene):
