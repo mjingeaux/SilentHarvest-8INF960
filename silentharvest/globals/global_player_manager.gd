@@ -35,3 +35,8 @@ func drop_item(item : ItemData, position : Vector2) -> void:
 	new_item_pickup.item_data = item
 	new_item_pickup.global_position = position
 	scene_containing_player.add_child(new_item_pickup)
+	
+func clear_inventory() -> void:
+	for i in INVENTORY_DATA.slots.size():
+		INVENTORY_DATA.slots[i] = null
+	INVENTORY_DATA.score = 0
