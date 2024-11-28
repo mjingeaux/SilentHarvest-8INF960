@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bb22tqjrspa6a"]
 
 [ext_resource type="Script" path="res://GUI/inventory/replace_item.gd" id="1_3fwbg"]
-[ext_resource type="Texture2D" uid="uid://c7yrskitx27a" path="res://assets/sprites/items/items.png" id="1_k5ogn"]
+[ext_resource type="Texture2D" uid="uid://c7yrskitx27a" path="res://Assets/sprites/items/items.png" id="1_k5ogn"]
 [ext_resource type="Script" path="res://GUI/inventory/inventory_ui.gd" id="2_bqs13"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4i4fg"]
