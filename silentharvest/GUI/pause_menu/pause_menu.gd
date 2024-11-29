@@ -28,7 +28,7 @@ func resume_game() -> void:
 	pass
 	
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed("pause") and PlayerManager.scene_id == 0:
 		if is_paused:
 			resume_game()
 		else:
