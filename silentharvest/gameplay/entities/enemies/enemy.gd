@@ -275,7 +275,7 @@ func play_poi_inspect():
 	inspect_finished.emit()
 	
 func interupt_inspect():
-	poi_timer.stop()
+	inspect_timer.stop()
 
 
 func _on_defeat_zone_body_entered(body: Node2D) -> void:
