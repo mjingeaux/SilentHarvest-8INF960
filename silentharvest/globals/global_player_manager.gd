@@ -7,6 +7,8 @@ var player : Player
 var is_player_in_scene := false
 var scene_containing_player : BaseLevel
 
+var can_die := false
+
 func _ready() -> void:
 	INVENTORY_DATA.full_inventory.connect(Replace_Item.show_menu)  
 	player = PLAYER.instantiate()

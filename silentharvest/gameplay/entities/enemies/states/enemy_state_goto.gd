@@ -21,16 +21,12 @@ func enter() -> void:
 	super()
 	if (after_goto_state.state_name == "INSPECT"):
 		enemy.update_animation("?", true)
-	else:
-		print("truc")
 	navigation_agent.target_position = destination
 	
 
 ## What happens when the enemy exits this state ?
 func exit() -> void:
 	super()
-	if (after_goto_state.state_name != "INSPECT"):
-		print("truc")
 	enemy.update_animation("?", false)
 
 func physics_process(delta: float) -> void:

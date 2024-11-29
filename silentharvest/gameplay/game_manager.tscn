@@ -8,3 +8,8 @@
 [node name="GameManager" type="Node"]
 script = ExtResource("1_cnmgr")
 lst_levels = Array[PackedScene]([ExtResource("2_ruspc"), ExtResource("3_pxpiu"), ExtResource("4_rjl78")])
+
+[node name="TransitionSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.356863)
+top_level = true
+z_index = 999

@@ -280,4 +280,5 @@ func interupt_inspect():
 
 func _on_defeat_zone_body_entered(body: Node2D) -> void:
 	if (body is Player):
-		get_node("/root/GameManager").load_level(2)
+		if (PlayerManager.can_die):
+			get_node("/root/GameManager").load_level(2)
