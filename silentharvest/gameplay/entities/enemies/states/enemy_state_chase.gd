@@ -32,7 +32,7 @@ func enter() -> void:
 	super()
 	_start_chase = false
 	_timer = state_aggro_duration
-	enemy.update_animation(anim_name) 
+	enemy.update_animation("!", true) 
 	enemy.vision_area.rotation_speed = VisionArea.Erotation_speed.fast
 	await get_tree().create_timer(.3).timeout
 	_start_chase = true
@@ -43,6 +43,8 @@ func enter() -> void:
 ## What happens when the enemy exits this state ?
 func exit() -> void:
 	super()
+	enemy.update_animation("!", false) 
+	enemy.update_animation("?", true) 
 	enemy.vision_area.rotation_speed = VisionArea.Erotation_speed.default
 	
 func physics_process(delta: float) -> void:

@@ -19,12 +19,14 @@ func init() -> void:
 ## What happens when the enemy enters this state ?
 func enter() -> void:
 	super()
-	enemy.update_animation(anim_name) 
+	if (after_goto_state.state_name == "INSPECT"):
+		enemy.update_animation("?", true)
 	navigation_agent.target_position = destination
 	
 
 ## What happens when the enemy exits this state ?
 func exit() -> void:
+	enemy.update_animation("?", false)
 	super()
 
 func physics_process(delta: float) -> void:

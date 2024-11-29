@@ -24,6 +24,7 @@ var cardinal_direction : Vector2 = Vector2.DOWN #TODO to delete
 @onready var state_machine : EnemyStateMachine = $EnemyStateMachine
 @onready var vision_area : VisionArea = $VisionArea
 @onready var animation_tree : AnimationTree = $AnimationTree
+@onready var expression_player: AnimationPlayer = $ExpressionPlayer
 @onready var sus_timer : Timer = $SuspicionTimer
 @onready var poi_timer: Timer = $PoiTimer
 @onready var goto_inspect_state : EnemyStateGoto = $EnemyStateMachine/GotoInspect
@@ -48,7 +49,9 @@ func _ready():
 	$EnemyStateMachine/Chase.navigation_agent = nav_agent
 	$EnemyStateMachine/GotoPatrol.navigation_agent = nav_agent
 	$EnemyStateMachine/GotoInspect.navigation_agent = nav_agent
-		
+	$"lost".visible = false
+	$"found".visible = false
+	
 func _process(delta):
 	update_animation_parameters()
 	if (_is_suspicion_decaying):
@@ -80,14 +83,19 @@ func update_animation_parameters():
 		animation_tree["parameters/Chase/blend_position"] = velocity
 		animation_tree["parameters/Idle/blend_position"] = velocity
 
-func update_animation(state : String) -> void:
-	if state == "chase":
-		var exclamation = preload("res://gameplay/entities/enemies/ExclamationMark.tscn").instantiate()
-		add_child(exclamation)
-		await get_tree().create_timer(0.5).timeout
-		remove_child(exclamation)
-	#animation_player.play(state+"_"+anim_direction())
-
+func update_animation(anim : String, activate : bool) -> void:
+	if (activate):
+		if (anim == "?"):
+			expression_player.play("in?")
+		elif (anim == "!"):
+			expression_player.play("in!")
+	else:
+		if (anim == "?"):
+			$lost.visible = false
+		elif (anim == "!"):
+			$found.visible = false
+		
+		
 func _on_idle_state_exited() -> void:
 	exiting_patrol.emit()
 
