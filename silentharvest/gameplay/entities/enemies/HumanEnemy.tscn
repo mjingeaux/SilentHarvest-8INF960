@@ -1,13 +1,15 @@
-[gd_scene load_steps=44 format=3 uid="uid://cs1plvef6f8u1"]
+[gd_scene load_steps=46 format=3 uid="uid://cs1plvef6f8u1"]
 
 [ext_resource type="Script" path="res://gameplay/entities/enemies/enemy.gd" id="1_nki0r"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/enemy_state_machine.gd" id="3_ym6pk"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_idle.gd" id="4_mrbuv"]
+[ext_resource type="AudioStream" uid="uid://bx4kkwcfswjp4" path="res://assets/sounds/680303__deltacode__jump.wav" id="5_bqeuc"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_chase.gd" id="5_cki7o"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_goto.gd" id="5_svj4v"]
 [ext_resource type="Texture2D" uid="uid://qc7thoqo4onh" path="res://assets/rangeVisualizer.png" id="6_78c51"]
 [ext_resource type="PackedScene" uid="uid://dh01ugaralit0" path="res://gameplay/entities/enemies/VisionArea.tscn" id="6_c8emu"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_inspect.gd" id="6_lhcgx"]
+[ext_resource type="AudioStream" uid="uid://6m5322mqlkm0" path="res://assets/sounds/humm.ogg" id="7_bsaap"]
 [ext_resource type="Texture2D" uid="uid://b1i3f7ia0ocj7" path="res://assets/ennemySpriteSheet.png" id="8_kpm45"]
 [ext_resource type="Texture2D" uid="uid://qdawqfsq65yn" path="res://assets/sprites/jauge_outer.png" id="10_oeypm"]
 [ext_resource type="Texture2D" uid="uid://bu3prwkud736u" path="res://assets/sprites/jauge_inner.png" id="11_qp3aq"]
@@ -376,6 +378,9 @@ script = ExtResource("5_cki7o")
 vision_area = NodePath("../../VisionArea")
 next_state = NodePath("../GotoPatrol")
 
+[node name="Hoey" type="AudioStreamPlayer" parent="EnemyStateMachine/Chase"]
+stream = ExtResource("5_bqeuc")
+
 [node name="GotoPatrol" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_goto_state")]
 script = ExtResource("5_svj4v")
 state_name = "GOTO_P"
@@ -386,6 +391,9 @@ script = ExtResource("5_svj4v")
 state_name = "GOTO_I"
 after_goto_state = NodePath("../Inspect")
 goto_speed = 55.0
+
+[node name="Humm" type="AudioStreamPlayer" parent="EnemyStateMachine/GotoInspect"]
+stream = ExtResource("7_bsaap")
 
 [node name="Inspect" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_inspect_state")]
 script = ExtResource("6_lhcgx")

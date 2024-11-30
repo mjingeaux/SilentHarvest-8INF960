@@ -340,7 +340,7 @@ position = Vector2(747, 296)
 position = Vector2(760, 305)
 
 [node name="Jar58" parent="LstProp" instance=ExtResource("10_1aw8l")]
-position = Vector2(303, 232)
+position = Vector2(38, 1100)
 
 [node name="Jar59" parent="LstProp" instance=ExtResource("10_1aw8l")]
 position = Vector2(761, 382)
@@ -1699,6 +1699,7 @@ lst_poi = Array[int]([1, 1])
 curve = SubResource("Curve2D_vi8l4")
 
 [node name="NavigationRegion" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(-158, -75)
 navigation_polygon = SubResource("NavigationPolygon_jad42")
 script = ExtResource("13_krvxk")

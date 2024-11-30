@@ -4,6 +4,7 @@ signal shown
 signal hidden
 
 @onready var scorelabel: Label = $ScoreLabel
+@onready var hover_sound: AudioStreamPlayer = $AudioStreamPlayer
 
 var is_paused : bool = false
 
@@ -17,15 +18,14 @@ func pause_game() -> void:
 	is_paused = true
 	show()
 	shown.emit()
-	pass
+	AudioServer.set_bus_effect_enabled(1, 0, true)
 
 func resume_game() -> void:
 	get_tree().paused = false
 	is_paused = false
 	hide()
 	hidden.emit()
-	
-	pass
+	AudioServer.set_bus_effect_enabled(1, 0, false)
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -46,3 +46,10 @@ func _on_btn_quitter_pressed() -> void:
 
 func update_score_label() -> void:
 	scorelabel.text = str(PlayerManager.INVENTORY_DATA.score)
+
+
+func _on_btn_reprendre_mouse_entered() -> void:
+	hover_sound.play()
+
+func _on_btn_quitter_mouse_entered() -> void:
+	hover_sound.play()

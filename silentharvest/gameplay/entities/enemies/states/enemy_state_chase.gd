@@ -17,6 +17,7 @@ var _can_see_player : bool = false
 var _last_player_position : Vector2
 var _start_chase := false
 @onready var _player : Player = PlayerManager.player
+@onready var sound_hoey: AudioStreamPlayer = $Hoey
 var navigation_agent : NavigationAgent2D
 
 
@@ -38,6 +39,7 @@ func enter() -> void:
 	_start_chase = true
 	enemy.is_listening_noise = false
 	enemy.lst_suspicious_point.clear()
+	sound_hoey.play()
 
 
 ## What happens when the enemy exits this state ?

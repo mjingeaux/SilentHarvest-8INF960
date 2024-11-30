@@ -5,6 +5,7 @@ class_name GameManager extends Node
 var active_level : BaseLevel
 var can_player_loose := true
 @onready var transition_sprite: Sprite2D = $TransitionSprite
+@onready var music: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
 	setup_screen()
@@ -45,6 +46,9 @@ func load_level(level_nb : int) -> void:
 	get_tree().root.add_child.call_deferred(new_level)
 	active_level = new_level
 	
+	
+	
+		
 
 
 func setup_screen():
