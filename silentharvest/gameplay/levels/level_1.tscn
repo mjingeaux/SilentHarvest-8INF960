@@ -1776,7 +1776,6 @@ lst_poi = Array[int]([0, 0])
 curve = SubResource("Curve2D_feic8")
 
 [node name="NavigationRegion" type="NavigationRegion2D" parent="."]
-visible = false
 position = Vector2(-158, -75)
 navigation_polygon = SubResource("NavigationPolygon_jad42")
 script = ExtResource("13_krvxk")
