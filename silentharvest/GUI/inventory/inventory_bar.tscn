@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://du66a3op7neng"]
 
-[ext_resource type="Texture2D" uid="uid://c7yrskitx27a" path="res://assets/sprites/items/items.png" id="1_snavj"]
+[ext_resource type="Texture2D" uid="uid://c7yrskitx27a" path="res://Assets/sprites/items/items.png" id="1_snavj"]
 [ext_resource type="Script" path="res://GUI/inventory/inventory_ui.gd" id="2_r3j5f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7tuj3"]
