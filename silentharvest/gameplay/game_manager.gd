@@ -4,6 +4,7 @@ class_name GameManager extends Node
 
 var active_level : BaseLevel
 var can_player_loose := true
+var first_attempt := true
 @onready var transition_sprite: Sprite2D = $TransitionSprite
 @onready var music: AudioStreamPlayer = $AudioStreamPlayer
 
@@ -35,8 +36,6 @@ func load_level(level_nb : int) -> void:
 		var tween = get_tree().create_tween()
 		tween.tween_property(sprite, "modulate", Color(1, 1, 1, 0), 1)
 	
-	#tween.tween_callback($Sprite.queue_free)
-		
 	if (active_level):
 		get_tree().root.remove_child.call_deferred(active_level)
 		PlayerManager.remove_player_from_scene()
@@ -46,9 +45,10 @@ func load_level(level_nb : int) -> void:
 	get_tree().root.add_child.call_deferred(new_level)
 	active_level = new_level
 	
-	
-	
-		
+	if (level_nb == 0 && first_attempt):
+		first_attempt = false
+		new_level is Level_1
+		new_level.tuto_entered = false
 
 
 func setup_screen():

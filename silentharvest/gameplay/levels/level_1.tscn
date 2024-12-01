@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://fehr3p1frps7"]
+[gd_scene load_steps=25 format=4 uid="uid://fehr3p1frps7"]
 
 [ext_resource type="Script" path="res://gameplay/levels/level_1.gd" id="1_ehrcc"]
 [ext_resource type="TileSet" uid="uid://4m1whi8xvife" path="res://assets/sprites/tilesets/grass.tres" id="2_27k8j"]
@@ -49,6 +49,9 @@ vertices = PackedVector2Array(447, 560, 501.727, 560, 500.891, 578.367, 447, 563
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 13, 14, 15, 16), PackedInt32Array(16, 15, 17), PackedInt32Array(18, 16, 17, 19, 20), PackedInt32Array(20, 21, 22, 18), PackedInt32Array(22, 23, 24, 25, 18), PackedInt32Array(26, 18, 25, 27), PackedInt32Array(27, 25, 28, 29), PackedInt32Array(28, 30, 31, 32), PackedInt32Array(29, 28, 32, 33), PackedInt32Array(34, 29, 33, 4, 35), PackedInt32Array(7, 35, 4), PackedInt32Array(6, 36, 37, 11, 38), PackedInt32Array(37, 39, 40, 8, 11), PackedInt32Array(38, 41, 42, 43, 44, 45), PackedInt32Array(46, 47, 48, 49), PackedInt32Array(50, 51, 52, 53), PackedInt32Array(54, 55, 56, 57), PackedInt32Array(54, 57, 58, 59), PackedInt32Array(58, 60, 61), PackedInt32Array(59, 58, 61), PackedInt32Array(52, 59, 61, 62), PackedInt32Array(62, 63, 53, 52), PackedInt32Array(50, 53, 64, 49), PackedInt32Array(46, 49, 64, 65), PackedInt32Array(66, 67, 68, 65), PackedInt32Array(46, 65, 68, 69), PackedInt32Array(70, 69, 68, 71, 72), PackedInt32Array(71, 73, 74, 72), PackedInt32Array(70, 72, 75), PackedInt32Array(75, 76, 77, 78), PackedInt32Array(70, 75, 78), PackedInt32Array(70, 78, 79), PackedInt32Array(70, 79, 43, 42), PackedInt32Array(43, 80, 44), PackedInt32Array(44, 81, 45), PackedInt32Array(3, 2, 7, 6, 38, 45)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(124, 40, 552, 39, 553, 121, 688, 121, 688, 201, 748, 201, 748, 234, 778, 234, 778, 309, 749, 309, 748, 362, 929, 362, 929, 470, 749, 470, 748, 678, 538, 679, 538, 695, 508, 694, 508, 887, 448, 887, 448, 903, 394, 903, 393, 887, 274, 887, 275, 778, 424, 779, 424, 694, 393, 694, 393, 679, 268, 678, 267, 1084, 274, 1084, 274, 891, 388, 891, 388, 907, 454, 907, 454, 891, 748, 891, 749, 1244, 905, 1244, 905, 875, 1064, 875, 1064, 1368, 514, 1368, 514, 1244, 634, 1244, 634, 1240, 514, 1240, 514, 963, 419, 963, 418, 1179, 508, 1180, 508, 1240, 123, 1240, 122, 887, 63, 887, 63, 843, 123, 843, 123, 839, 63, 839, 63, 795, 123, 795, 123, 586, 394, 586, 394, 570, 424, 570, 424, 566, 436, 566, 441, 561, 441, 554, 508, 554, 507, 576, 523, 592, 532, 592, 538, 586, 694, 587, 694, 461, 694, 310, 664, 310, 663, 277, 553, 277, 553, 341, 123, 341)])
 agent_radius = 6.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6ihe"]
+size = Vector2(169, 345)
 
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
@@ -1704,3 +1707,11 @@ position = Vector2(-158, -75)
 navigation_polygon = SubResource("NavigationPolygon_jad42")
 script = ExtResource("13_krvxk")
 metadata/_edit_lock_ = true
+
+[node name="TutoZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutoZone"]
+position = Vector2(331, 116)
+shape = SubResource("RectangleShape2D_h6ihe")
+
+[connection signal="body_entered" from="TutoZone" to="." method="_on_tuto_zone_body_entered"]
