@@ -1,13 +1,16 @@
-[gd_scene load_steps=28 format=3 uid="uid://cek825tx7ay7r"]
+[gd_scene load_steps=31 format=3 uid="uid://cek825tx7ay7r"]
 
 [ext_resource type="Script" path="res://gameplay/entities/player/player.gd" id="1_44c6v"]
-[ext_resource type="Texture2D" uid="uid://cmdens3l3hwme" path="res://Assets/mcSpriteSheet.png" id="2_sfsj4"]
+[ext_resource type="Texture2D" uid="uid://cmdens3l3hwme" path="res://assets/mcSpriteSheet.png" id="2_sfsj4"]
 [ext_resource type="Script" path="res://gameplay/behaviors/noise_emitter.gd" id="3_mjrld"]
 [ext_resource type="Script" path="res://gameplay/entities/player/character_sprite.gd" id="3_w7w2b"]
 [ext_resource type="Shader" path="res://assets/shaders/silhouette.gdshader" id="4_fm06f"]
+[ext_resource type="AudioStream" uid="uid://da7gdx0mimw37" path="res://assets/sounds/grass.ogg" id="6_vlbhe"]
+[ext_resource type="AudioStream" uid="uid://bcb403ooiuvsu" path="res://assets/sounds/grass_slow.ogg" id="7_8l74t"]
+[ext_resource type="AudioStream" uid="uid://b5cepnaff11ab" path="res://assets/sounds/711443__f3ather__object-falling-on-grass.wav" id="8_lp2h8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uarug"]
-size = Vector2(14, 10)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ujmaf"]
+radius = 6.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cpvat"]
 shader = ExtResource("4_fm06f")
@@ -299,8 +302,7 @@ collision_layer = 257
 script = ExtResource("1_44c6v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -2)
-shape = SubResource("RectangleShape2D_uarug")
+shape = SubResource("CircleShape2D_ujmaf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -343,3 +345,15 @@ intensity = 0.3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoiseEmitterSneak"]
 shape = SubResource("CircleShape2D_2wur0")
 debug_color = Color(0, 0.595, 0.7, 0.0392157)
+
+[node name="GrassSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_vlbhe")
+volume_db = 4.0
+parameters/looping = false
+
+[node name="GrassSoundSlow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_8l74t")
+parameters/looping = false
+
+[node name="DropItem" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_lp2h8")

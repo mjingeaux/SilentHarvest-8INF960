@@ -1,14 +1,20 @@
-[gd_scene load_steps=36 format=3 uid="uid://cs1plvef6f8u1"]
+[gd_scene load_steps=46 format=3 uid="uid://cs1plvef6f8u1"]
 
 [ext_resource type="Script" path="res://gameplay/entities/enemies/enemy.gd" id="1_nki0r"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/enemy_state_machine.gd" id="3_ym6pk"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_idle.gd" id="4_mrbuv"]
+[ext_resource type="AudioStream" uid="uid://bx4kkwcfswjp4" path="res://assets/sounds/680303__deltacode__jump.wav" id="5_bqeuc"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_chase.gd" id="5_cki7o"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_goto.gd" id="5_svj4v"]
-[ext_resource type="Texture2D" uid="uid://qc7thoqo4onh" path="res://Assets/rangeVisualizer.png" id="6_78c51"]
+[ext_resource type="Texture2D" uid="uid://qc7thoqo4onh" path="res://assets/rangeVisualizer.png" id="6_78c51"]
 [ext_resource type="PackedScene" uid="uid://dh01ugaralit0" path="res://gameplay/entities/enemies/VisionArea.tscn" id="6_c8emu"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/states/enemy_state_inspect.gd" id="6_lhcgx"]
-[ext_resource type="Texture2D" uid="uid://b1i3f7ia0ocj7" path="res://Assets/ennemySpriteSheet.png" id="8_kpm45"]
+[ext_resource type="AudioStream" uid="uid://6m5322mqlkm0" path="res://assets/sounds/humm.ogg" id="7_bsaap"]
+[ext_resource type="Texture2D" uid="uid://b1i3f7ia0ocj7" path="res://assets/ennemySpriteSheet.png" id="8_kpm45"]
+[ext_resource type="Texture2D" uid="uid://qdawqfsq65yn" path="res://assets/sprites/jauge_outer.png" id="10_oeypm"]
+[ext_resource type="Texture2D" uid="uid://bu3prwkud736u" path="res://assets/sprites/jauge_inner.png" id="11_qp3aq"]
+[ext_resource type="Texture2D" uid="uid://c75xstld3rxgv" path="res://assets/sprites/expression1.png" id="12_3w2ba"]
+[ext_resource type="Texture2D" uid="uid://lew24t41vs8p" path="res://assets/sprites/expression2.png" id="13_cery1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i1cqg"]
 radius = 6.0
@@ -241,6 +247,118 @@ _data = {
 "run_up": SubResource("Animation_624tv")
 }
 
+[sub_resource type="Animation" id="Animation_1uw8p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../found:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../found:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../lost:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../lost:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_nnucu"]
+resource_name = "in!"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../found:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.025, 0.025), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../found:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_b6xnx"]
+resource_name = "in?"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../lost:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.025, 0.025), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../lost:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ug7sl"]
+_data = {
+"RESET": SubResource("Animation_1uw8p"),
+"in!": SubResource("Animation_nnucu"),
+"in?": SubResource("Animation_b6xnx")
+}
+
 [node name="HumanEnemy" type="CharacterBody2D"]
 y_sort_enabled = true
 script = ExtResource("1_nki0r")
@@ -260,6 +378,9 @@ script = ExtResource("5_cki7o")
 vision_area = NodePath("../../VisionArea")
 next_state = NodePath("../GotoPatrol")
 
+[node name="Hoey" type="AudioStreamPlayer" parent="EnemyStateMachine/Chase"]
+stream = ExtResource("5_bqeuc")
+
 [node name="GotoPatrol" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_goto_state")]
 script = ExtResource("5_svj4v")
 state_name = "GOTO_P"
@@ -270,6 +391,9 @@ script = ExtResource("5_svj4v")
 state_name = "GOTO_I"
 after_goto_state = NodePath("../Inspect")
 goto_speed = 55.0
+
+[node name="Humm" type="AudioStreamPlayer" parent="EnemyStateMachine/GotoInspect"]
+stream = ExtResource("7_bsaap")
 
 [node name="Inspect" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_inspect_state")]
 script = ExtResource("6_lhcgx")
@@ -300,7 +424,6 @@ shape = SubResource("CircleShape2D_688nn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
-scale = Vector2(1, 0.957)
 texture = ExtResource("8_kpm45")
 offset = Vector2(0, -12)
 hframes = 4
@@ -327,19 +450,40 @@ wait_time = 2.0
 wait_time = 2.0
 one_shot = true
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -27.0
-offset_top = -34.0
-offset_right = 513.0
-offset_bottom = -24.0
-scale = Vector2(0.1, 0.1)
+[node name="JaugeScaler" type="Node2D" parent="."]
+position = Vector2(0, -32)
+
+[node name="ProgressBar" type="TextureProgressBar" parent="JaugeScaler"]
+offset_left = -11.0
+offset_top = -1.0
+offset_right = 11.0
+offset_bottom = 2.0
 max_value = 1.0
 step = 0.001
-show_percentage = false
+texture_under = ExtResource("10_oeypm")
+texture_progress = ExtResource("11_qp3aq")
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="."]
-path_desired_distance = 1.0
+path_desired_distance = 3.0
 target_desired_distance = 5.0
+debug_enabled = true
+
+[node name="lost" type="Sprite2D" parent="."]
+position = Vector2(0, -40)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("12_3w2ba")
+offset = Vector2(0, -26.5)
+
+[node name="found" type="Sprite2D" parent="."]
+position = Vector2(-1, -72)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("13_cery1")
+
+[node name="ExpressionPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationPlayer")
+libraries = {
+"": SubResource("AnimationLibrary_ug7sl")
+}
 
 [connection signal="state_entered" from="EnemyStateMachine/Idle" to="." method="_on_idle_state_entered"]
 [connection signal="state_exited" from="EnemyStateMachine/Idle" to="." method="_on_idle_state_exited"]

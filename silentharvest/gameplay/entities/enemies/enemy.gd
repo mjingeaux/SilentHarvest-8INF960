@@ -13,6 +13,9 @@ var suspicion_jauge := 0. : set = _set_suspicion_jauge
 #time in seconds it would need to decrease suspicion from 1 to 0
 @export_range(.1, 10., .1) var suspicion_decay_time := 4.
 
+@export var min_jauge_color : Color = Color("da863e")
+@export var max_jauge_color : Color = Color("a53030")
+
 const DIR_4 = [Vector2.RIGHT,Vector2.DOWN,Vector2.LEFT,Vector2.UP]
 var cardinal_direction : Vector2 = Vector2.DOWN #TODO to delete
 
@@ -21,10 +24,12 @@ var cardinal_direction : Vector2 = Vector2.DOWN #TODO to delete
 @onready var state_machine : EnemyStateMachine = $EnemyStateMachine
 @onready var vision_area : VisionArea = $VisionArea
 @onready var animation_tree : AnimationTree = $AnimationTree
+@onready var expression_player: AnimationPlayer = $ExpressionPlayer
 @onready var sus_timer : Timer = $SuspicionTimer
 @onready var poi_timer: Timer = $PoiTimer
 @onready var goto_inspect_state : EnemyStateGoto = $EnemyStateMachine/GotoInspect
-@onready var progress_bar : ProgressBar = $ProgressBar
+@onready var progress_bar : TextureProgressBar = $JaugeScaler/ProgressBar
+@onready var jauge_scaler: Node2D = $JaugeScaler
 @onready var inspect_timer: Timer = $EnemyStateMachine/Inspect/InspectTimer
 
 var is_listening_noise := true
@@ -44,7 +49,9 @@ func _ready():
 	$EnemyStateMachine/Chase.navigation_agent = nav_agent
 	$EnemyStateMachine/GotoPatrol.navigation_agent = nav_agent
 	$EnemyStateMachine/GotoInspect.navigation_agent = nav_agent
-		
+	$"lost".visible = false
+	$"found".visible = false
+	
 func _process(delta):
 	update_animation_parameters()
 	if (_is_suspicion_decaying):
@@ -76,14 +83,19 @@ func update_animation_parameters():
 		animation_tree["parameters/Chase/blend_position"] = velocity
 		animation_tree["parameters/Idle/blend_position"] = velocity
 
-func update_animation(state : String) -> void:
-	if state == "chase":
-		var exclamation = preload("res://gameplay/entities/enemies/ExclamationMark.tscn").instantiate()
-		add_child(exclamation)
-		await get_tree().create_timer(0.5).timeout
-		remove_child(exclamation)
-	#animation_player.play(state+"_"+anim_direction())
-
+func update_animation(anim : String, activate : bool) -> void:
+	if (activate):
+		if (anim == "?"):
+			expression_player.play("in?")
+		elif (anim == "!"):
+			expression_player.play("in!")
+	else:
+		if (anim == "?"):
+			$lost.visible = false
+		elif (anim == "!"):
+			$found.visible = false
+		
+		
 func _on_idle_state_exited() -> void:
 	exiting_patrol.emit()
 
@@ -117,6 +129,9 @@ func _set_suspicion_jauge(val : float):
 	else:
 		suspicion_jauge = val
 	progress_bar.value = suspicion_jauge
+	progress_bar.tint_progress = min_jauge_color.lerp(max_jauge_color, progress_bar.value * 2 - .5)
+	var scaling = 1 + progress_bar.value * .5
+	jauge_scaler.scale = Vector2(scaling, scaling)
 
 	
 func add_suspicious_point(global_pos : Vector2):
@@ -260,9 +275,10 @@ func play_poi_inspect():
 	inspect_finished.emit()
 	
 func interupt_inspect():
-	poi_timer.stop()
+	inspect_timer.stop()
 
 
 func _on_defeat_zone_body_entered(body: Node2D) -> void:
 	if (body is Player):
-		get_node("/root/GameManager").load_level(2)
+		if (PlayerManager.can_die):
+			get_node("/root/GameManager").load_level(2)

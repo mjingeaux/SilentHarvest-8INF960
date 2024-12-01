@@ -10,6 +10,7 @@ class_name EnemyStateGoto extends EnemyState
 @export var goto_speed : float = 70.0
 var navigation_agent : NavigationAgent2D
 var next_path_pos : Vector2
+@onready var sound_humm: AudioStreamPlayer = $"../GotoInspect/Humm"
 
 ## What happens when we initialize this state ?
 func init() -> void:
@@ -19,13 +20,16 @@ func init() -> void:
 ## What happens when the enemy enters this state ?
 func enter() -> void:
 	super()
-	enemy.update_animation(anim_name) 
+	if (after_goto_state.state_name == "INSPECT"):
+		enemy.update_animation("?", true)
+		sound_humm.play()
 	navigation_agent.target_position = destination
 	
 
 ## What happens when the enemy exits this state ?
 func exit() -> void:
 	super()
+	enemy.update_animation("?", false)
 
 func physics_process(delta: float) -> void:
 	if (navigation_agent.is_navigation_finished()):

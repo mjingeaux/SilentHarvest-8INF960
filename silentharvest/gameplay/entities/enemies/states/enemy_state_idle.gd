@@ -18,7 +18,6 @@ func init() -> void:
 func enter() -> void:
 	super()
 	enemy.velocity = Vector2.ZERO
-	enemy.update_animation(anim_name) 
 	
 ## What happens when the enemy exits this state ?
 func exit() -> void:

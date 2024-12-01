@@ -8,6 +8,9 @@ var LAST_DIRECTION = 0
 @onready var animation = $AnimationPlayer
 @onready var noise_emitter = $NoiseEmitter
 @onready var noise_emitter_sneak: NoiseEmitter = $NoiseEmitterSneak
+@onready var grass_sound: AudioStreamPlayer = $GrassSound
+@onready var grass_sound_slow: AudioStreamPlayer = $GrassSoundSlow
+@onready var sound_drop_item: AudioStreamPlayer = $DropItem
 
 func crouching_movement(direction: Vector2) -> void:
 	velocity.x = move_toward(velocity.x, direction.x * CROUCH_SPEED, CROUCH_ACCELERATION)
@@ -76,10 +79,25 @@ func _physics_process(delta: float) -> void: # switch to _process
 		crouching_animation()
 		if (velocity != Vector2.ZERO):
 			noise_emitter_sneak.noise_update(delta)
+			
+			if (!grass_sound_slow.playing):
+				grass_sound.stop()
+				grass_sound_slow.play()
+		else:
+			grass_sound_slow.stop()
+			grass_sound.stop()
+		
 	else:
 		walking_movement(direction)
 		walking_animation()
 		if (velocity != Vector2.ZERO):
 			noise_emitter.noise_update(delta)
+			
+			if (!grass_sound.playing):
+				grass_sound.play()
+				grass_sound_slow.stop()
+		else:
+			grass_sound_slow.stop()
+			grass_sound.stop()
 
 	move_and_slide()

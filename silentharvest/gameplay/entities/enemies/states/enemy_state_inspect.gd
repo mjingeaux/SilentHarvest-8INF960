@@ -17,7 +17,7 @@ func init() -> void:
 ## What happens when the enemy enters this state ?
 func enter() -> void:
 	super()
-	enemy.update_animation(anim_name) 
+	enemy.update_animation("?", true) 
 	enemy.velocity = Vector2.ZERO
 	enemy.play_poi_inspect()
 	_return_state = self
@@ -26,6 +26,7 @@ func enter() -> void:
 func exit() -> void:
 	super()
 	enemy.interupt_inspect()
+	enemy.update_animation("?", false)
 
 ## What happens during the _process update of this state ?
 func process(_delta : float) -> EnemyState:
