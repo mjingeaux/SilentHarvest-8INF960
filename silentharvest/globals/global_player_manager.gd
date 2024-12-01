@@ -6,6 +6,7 @@ var ITEM_PICKUP = preload("res://gameplay/entities/items/item_pickup.tscn")
 var player : Player
 var is_player_in_scene := false
 var scene_containing_player : BaseLevel
+var scene_id : int
 
 var can_die := false
 
