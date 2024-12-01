@@ -2,12 +2,12 @@ class_name Patrol extends Node2D
 
 @export var entity : Enemy
 
-
 @export_category("Patrol")
 @export var loop_between_segments := false
 @export var pause_at_end := true
 @export var speed := 30.
 @export var autostart := true
+@export var single_point_patrol := false
 
 @export_category("Points of Interest")
 @export var lst_poi : Array[GlobalE.Epoi_type]
@@ -40,6 +40,11 @@ func _ready() -> void:
 			path_count += 1
 			c.y_sort_enabled = true
 			
+	if (path_count == 1):
+		var path : Path2D = get_child(0)
+		if (path.curve.point_count == 1):
+			single_point_patrol = true
+	
 	_start_path()
 	paused = !autostart
 	
@@ -72,7 +77,6 @@ func _change_patrol_segment(path_id : int):
 func _process(delta: float) -> void:
 	if (paused ):
 		return
-	
 	
 	entity.match_direction_to_displacement()
 	
@@ -110,7 +114,7 @@ func _next_state():
 			if (!pause_at_end):
 				state = clampi(state, min_state, max_state)
 			else:
-				state = pingpong(state, max_state)
+					state = pingpong(state, max_state)
 			
 	if (_is_state_path()): #path
 		_start_path((state-1) / 2)

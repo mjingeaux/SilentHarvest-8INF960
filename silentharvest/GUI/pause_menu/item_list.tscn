@@ -1,9 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdxlqncacqula"]
+[gd_scene load_steps=11 format=3 uid="uid://bdxlqncacqula"]
 
 [ext_resource type="Texture2D" uid="uid://bqgr86oxg6ruj" path="res://assets/sprites/items/carrot.png" id="1_xa0td"]
+[ext_resource type="LabelSettings" uid="uid://dr24kbavns0e8" path="res://assets/resources/text_size_item_list.tres" id="2_0sdxw"]
 [ext_resource type="Texture2D" uid="uid://d03no7tfi3cj7" path="res://assets/sprites/items/corn.png" id="2_2aqpt"]
 [ext_resource type="Texture2D" uid="uid://cv7x62xklc8ui" path="res://assets/sprites/items/eggplant.png" id="3_jkb4j"]
 [ext_resource type="Texture2D" uid="uid://di81e6fxeq2sq" path="res://assets/sprites/items/potato.png" id="4_487pb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1edy"]
+bg_color = Color(0, 0, 0, 0.458824)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ol1ds"]
 atlas = ExtResource("4_487pb")
@@ -29,6 +37,7 @@ offset_right = -939.0
 offset_bottom = -233.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l1edy")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 2
@@ -48,6 +57,7 @@ size_flags_vertical = 6
 theme_override_font_sizes/font_size = 45
 text = "5
 "
+label_settings = ExtResource("2_0sdxw")
 
 [node name="Carrot" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
@@ -63,6 +73,7 @@ size_flags_vertical = 6
 theme_override_font_sizes/font_size = 45
 text = "10
 "
+label_settings = ExtResource("2_0sdxw")
 
 [node name="Corn" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
@@ -78,6 +89,7 @@ size_flags_vertical = 6
 theme_override_font_sizes/font_size = 45
 text = "15
 "
+label_settings = ExtResource("2_0sdxw")
 
 [node name="Eggplant" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
@@ -93,3 +105,4 @@ size_flags_vertical = 6
 theme_override_font_sizes/font_size = 45
 text = "25
 "
+label_settings = ExtResource("2_0sdxw")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://GUI/pause_menu/pause_menu.gd" id="1_rypip"]
 [ext_resource type="AudioStream" uid="uid://brqrq42tpm7n5" path="res://assets/sounds/menu_hover.wav" id="3_17dli"]
-[ext_resource type="PackedScene" path="res://GUI/pause_menu/item_list.tscn" id="4_dsc0a"]
+[ext_resource type="PackedScene" uid="uid://bdxlqncacqula" path="res://GUI/pause_menu/item_list.tscn" id="4_dsc0a"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4j3kl"]
 font_size = 28
@@ -61,10 +61,10 @@ anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -182.0
-offset_top = -211.0
-offset_right = 0.0
-offset_bottom = 211.0
+offset_left = -200.0
+offset_top = -220.0
+offset_right = -18.0
+offset_bottom = 202.0
 grow_horizontal = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

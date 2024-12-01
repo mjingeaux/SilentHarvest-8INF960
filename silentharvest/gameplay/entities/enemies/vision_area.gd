@@ -27,6 +27,8 @@ var _rotation_progress : float # 0..1
 var _target : Node2D
 var _is_player_visible := false : set = _set_is_player_visible
 
+@onready var _shape : CollisionPolygon2D = get_child(0)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	body_entered.connect(_on_body_enter)
@@ -68,16 +70,18 @@ func _raycast_target():
 	var targets = _target.get_node("VisibilityHotspots").get_children()
 	var result: Dictionary
 	for t in targets:
-		var parent = get_parent() as Node2D
-		var space_state = get_world_2d().direct_space_state
-		var query = PhysicsRayQueryParameters2D.create(parent.global_position, t.global_position)
-		query.exclude = [self, parent]
-		query.collision_mask = 256
-		query.collide_with_areas = true
-		result = space_state.intersect_ray(query)
-		if (!result.is_empty()):
-			if (result.collider is Player):
-				return true
+		var poly = _shape.global_transform * _shape.polygon
+		if (Geometry2D.is_point_in_polygon(t.global_position, poly)):
+			var parent = get_parent() as Node2D
+			var space_state = get_world_2d().direct_space_state
+			var query = PhysicsRayQueryParameters2D.create(parent.global_position, t.global_position)
+			query.exclude = [self, parent]
+			query.collision_mask = 256
+			query.collide_with_areas = true
+			result = space_state.intersect_ray(query)
+			if (!result.is_empty()):
+				if (result.collider is Player):
+					return true
 	return false
 	
 func _set_is_player_visible(val : bool):
