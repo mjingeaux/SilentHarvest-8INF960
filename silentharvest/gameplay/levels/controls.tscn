@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvx4rma48j2bj"]
+[gd_scene load_steps=10 format=3 uid="uid://jfq8hpqhtkju"]
 
 [ext_resource type="Script" path="res://gameplay/levels/controls.gd" id="1_ajlam"]
-[ext_resource type="Texture2D" uid="uid://c8m7hga3dfnjj" path="res://Assets/keyboard_arrows.png" id="2_vpnbt"]
-[ext_resource type="Texture2D" uid="uid://bjpavai638ngc" path="res://Assets/keyboard_zqsd.png" id="3_5trjb"]
+[ext_resource type="Texture2D" uid="uid://c8m7hga3dfnjj" path="res://assets/keyboard_arrows.png" id="2_vpnbt"]
+[ext_resource type="Texture2D" uid="uid://bjpavai638ngc" path="res://assets/keyboard_zqsd.png" id="3_5trjb"]
 [ext_resource type="Texture2D" uid="uid://xe4n818le3p8" path="res://addons/controller_icons/assets/key/e.png" id="4_ovk1p"]
 [ext_resource type="Texture2D" uid="uid://bvan6ddb77ca3" path="res://addons/controller_icons/assets/key/shift.png" id="5_shfcs"]
 [ext_resource type="Texture2D" uid="uid://dhwug5n7wvn8b" path="res://addons/controller_icons/assets/key/0.png" id="6_hn5jw"]
 [ext_resource type="Texture2D" uid="uid://b8vuy7l8npt6w" path="res://addons/controller_icons/assets/mouse/left.png" id="7_ncptq"]
+[ext_resource type="AudioStream" uid="uid://brqrq42tpm7n5" path="res://assets/sounds/menu_hover.wav" id="8_hxrrr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ciqxv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -15,8 +16,8 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 script = ExtResource("1_ajlam")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_right = 1149.0
-offset_bottom = 651.0
+offset_right = 1122.0
+offset_bottom = 635.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -46,8 +47,8 @@ stretch_mode = 4
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/move"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "                         Se déplacer"
+theme_override_font_sizes/font_size = 25
+text = "                         Se deplacer"
 
 [node name="pickup" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -63,7 +64,7 @@ stretch_mode = 4
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/pickup"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 25
 text = "                           Ramasser un objet "
 horizontal_alignment = 2
 
@@ -92,9 +93,10 @@ stretch_mode = 4
 
 [node name="Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/crouch"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
-text = "[right]                        [font_size=25](Maintenir) [/font_size] S'accroupir [/right]"
+text = "[right]                        [font_size=1
+5](Maintenir) [/font_size] S'accroupir [/right]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -114,9 +116,11 @@ stretch_mode = 4
 
 [node name="Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/drop"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
-text = "[right]   [font_size=25] (Sur un objet de l'inventaire) [/font_size] Déposer un objet [/right]
+text = "[right]   [font_size=15
+
+] (Sur un objet de l'inventaire) [/font_size] Déposer un objet [/right]
 "
 fit_content = true
 scroll_active = false
@@ -129,6 +133,11 @@ alignment = 1
 [node name="btn_retour" type="Button" parent="HBoxContainer/VBoxContainer/Container"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ciqxv")
 text = "Retour   "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_hxrrr")
+
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/Container/btn_retour" to="." method="_on_btn_retour_mouse_entered"]

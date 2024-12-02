@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://2gr5pglniw2h"]
+[gd_scene load_steps=5 format=3 uid="uid://2gr5pglniw2h"]
 
 [ext_resource type="Script" path="res://gameplay/levels/start_menu.gd" id="1_g5rg3"]
+[ext_resource type="AudioStream" uid="uid://brqrq42tpm7n5" path="res://assets/sounds/menu_hover.wav" id="2_6insx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3ln8"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -14,9 +15,12 @@ script = ExtResource("1_g5rg3")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -26,7 +30,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0.541176, 0, 1)
 theme_override_font_sizes/font_size = 120
-text = "SILENT HARVEST
+text = "SILENT
+    HARVEST
 "
 
 [node name="MenuOptions" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
@@ -37,6 +42,7 @@ alignment = 1
 
 [node name="Btn_newgame" type="Button" parent="CanvasLayer/VBoxContainer/MenuOptions"]
 layout_mode = 2
+size_flags_vertical = 10
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_v3ln8")
 text = "Nouvelle Partie    "
@@ -44,6 +50,7 @@ alignment = 0
 
 [node name="Btn_commandes" type="Button" parent="CanvasLayer/VBoxContainer/MenuOptions"]
 layout_mode = 2
+size_flags_vertical = 6
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_v3ln8")
 text = "Commandes"
@@ -51,7 +58,15 @@ alignment = 0
 
 [node name="Btn_quitter" type="Button" parent="CanvasLayer/VBoxContainer/MenuOptions"]
 layout_mode = 2
+size_flags_vertical = 2
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_70afi")
 text = "Quitter"
 alignment = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6insx")
+
+[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer/MenuOptions/Btn_newgame" to="." method="_on_btn_newgame_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer/MenuOptions/Btn_commandes" to="." method="_on_btn_commandes_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer/MenuOptions/Btn_quitter" to="." method="_on_btn_quitter_mouse_entered"]
