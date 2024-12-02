@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://bcb403ooiuvsu"
-path="res://.godot/imported/grass_slow.ogg-a51bd0a873db6c69eec9012219f41981.oggvorbisstr"
+path="res://.godot/imported/grass_slow.ogg-c4c1f00decf71589b86b9c6c6da61c07.oggvorbisstr"
 
 [deps]
 
-source_file="res://assets/sounds/grass_slow.ogg"
-dest_files=["res://.godot/imported/grass_slow.ogg-a51bd0a873db6c69eec9012219f41981.oggvorbisstr"]
+source_file="res://Assets/sounds/grass_slow.ogg"
+dest_files=["res://.godot/imported/grass_slow.ogg-c4c1f00decf71589b86b9c6c6da61c07.oggvorbisstr"]
 
 [params]
 
