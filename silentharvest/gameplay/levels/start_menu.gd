@@ -3,6 +3,7 @@ class_name StartMenu extends BaseLevel
 @onready var btn_newgame: Button = $CanvasLayer/VBoxContainer/MenuOptions/Btn_newgame
 @onready var btn_commandes: Button = $CanvasLayer/VBoxContainer/MenuOptions/Btn_commandes
 @onready var btn_quitter: Button = $CanvasLayer/VBoxContainer/MenuOptions/Btn_quitter
+@onready var sound_hover: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
 	Inventory_Hud.hide()
@@ -21,3 +22,13 @@ func show_commands() -> void:
 
 func quit_game() -> void:
 	get_tree().quit()
+
+
+func _on_btn_newgame_mouse_entered() -> void:
+	sound_hover.play()
+
+func _on_btn_commandes_mouse_entered() -> void:
+	sound_hover.play()
+
+func _on_btn_quitter_mouse_entered() -> void:
+	sound_hover.play()

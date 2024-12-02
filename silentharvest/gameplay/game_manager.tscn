@@ -1,12 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://bumy2ps6mq51i"]
+[gd_scene load_steps=8 format=3 uid="uid://1j8jl6xory57"]
 
 [ext_resource type="Script" path="res://gameplay/game_manager.gd" id="1_cnmgr"]
 [ext_resource type="PackedScene" uid="uid://fehr3p1frps7" path="res://gameplay/levels/level_1.tscn" id="2_ruspc"]
 [ext_resource type="PackedScene" uid="uid://c3jp10ql71lfr" path="res://GUI/pause_menu/pause_menu.tscn" id="3_pxpiu"]
 [ext_resource type="PackedScene" uid="uid://87g4wsndngl3" path="res://gameplay/levels/game_over.tscn" id="4_rjl78"]
+[ext_resource type="AudioStream" uid="uid://s87am5ghkn3t" path="res://assets/sounds/suspense-pulse-tense-music-266060.mp3" id="5_ahp6k"]
 [ext_resource type="PackedScene" uid="uid://2gr5pglniw2h" path="res://gameplay/levels/start_menu.tscn" id="5_spt0p"]
-[ext_resource type="PackedScene" uid="uid://dvx4rma48j2bj" path="res://gameplay/levels/controls.tscn" id="6_3gbwr"]
+[ext_resource type="PackedScene" uid="uid://jfq8hpqhtkju" path="res://gameplay/levels/controls.tscn" id="6_3gbwr"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_cnmgr")
 lst_levels = Array[PackedScene]([ExtResource("2_ruspc"), ExtResource("3_pxpiu"), ExtResource("4_rjl78"), ExtResource("5_spt0p"), ExtResource("6_3gbwr")])
+
+[node name="TransitionSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.356863)
+top_level = true
+z_index = 999
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("5_ahp6k")
+volume_db = -13.115
+autoplay = true
+bus = &"Music"
+playback_type = 1
+parameters/looping = true
