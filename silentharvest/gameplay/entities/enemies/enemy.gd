@@ -16,6 +16,8 @@ var suspicion_jauge := 0. : set = _set_suspicion_jauge
 @export var min_jauge_color : Color = Color("da863e")
 @export var max_jauge_color : Color = Color("a53030")
 
+@export var base_direction := Vector2(1, 0)
+
 const DIR_4 = [Vector2.RIGHT,Vector2.DOWN,Vector2.LEFT,Vector2.UP]
 var cardinal_direction : Vector2 = Vector2.DOWN #TODO to delete
 
@@ -51,6 +53,8 @@ func _ready():
 	$EnemyStateMachine/GotoInspect.navigation_agent = nav_agent
 	$"lost".visible = false
 	$"found".visible = false
+	animation_tree["parameters/Idle/blend_position"] = base_direction
+	
 	
 func _process(delta):
 	update_animation_parameters()
@@ -71,6 +75,9 @@ func set_direction(angle_degree : float):
 	if (!vision_area):
 		return
 	vision_area.angle_target_degree = angle_degree
+	
+func set_defualt_direction():
+	set_direction(rad_to_deg(base_direction.angle()))
 	
 func update_animation_parameters():
 	if(velocity == Vector2.ZERO):

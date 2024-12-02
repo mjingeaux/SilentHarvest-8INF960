@@ -2,7 +2,8 @@ class_name Level_1 extends BaseLevel
 
 var TUTO = preload("res://GUI/HUD/crouch_tuto.tscn")
 
-var tuto_entered := true #set to false if it's first attempt inb gamemanager
+var tuto_entered := true #set to false in gamemanager if it's first attempt 
+var call_destroy := false
 var tuto_node : CanvasLayer
 
 func _ready() -> void:
@@ -18,6 +19,8 @@ func _on_tuto_zone_body_entered(body: Node2D) -> void:
 		add_child(tuto_node)
 		
 func _input(event: InputEvent) -> void:
-	if (tuto_entered && event.is_action("crouch")):
-		await get_tree().create_timer(2).timeout
-		tuto_node.hide_and_destroy()
+	if (tuto_entered && !call_destroy && event.is_action("crouch")):
+		call_destroy = true
+		await get_tree().create_timer(1.2).timeout
+		if (is_instance_valid(tuto_node)):
+			tuto_node.hide_and_destroy()

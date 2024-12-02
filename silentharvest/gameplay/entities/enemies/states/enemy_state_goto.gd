@@ -15,7 +15,6 @@ var next_path_pos : Vector2
 ## What happens when we initialize this state ?
 func init() -> void:
 	pass
-	
 
 ## What happens when the enemy enters this state ?
 func enter() -> void:

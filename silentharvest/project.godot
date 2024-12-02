@@ -41,6 +41,11 @@ folder_colors={
 "res://globals/": "gray"
 }
 
+[gui]
+
+theme/custom_font="res://assets/dogicapixel.ttf"
+theme/default_font_antialiasing=0
+
 [input]
 
 up={
