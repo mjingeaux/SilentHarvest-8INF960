@@ -6,14 +6,14 @@ class_name ItemPickup extends Node2D
 @onready var audio_player_2d : AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var is_player_in_area : bool = false
+var picked_up := false
 
 func _input(event) -> void:
 	if is_player_in_area and event.is_action_pressed("collect"):
-		if item_data:
+		if item_data && picked_up == false:
 			PlayerManager.INVENTORY_DATA.score = PlayerManager.INVENTORY_DATA.add_item(item_data)
 			item_picked_up()
 			Pickup_Key.hide()
-	pass
 
 func _ready() -> void:
 	_update_texture()
@@ -24,7 +24,6 @@ func _on_body_entered(b) -> void:
 	if b is Player:
 		Pickup_Key.show()
 		is_player_in_area = true
-	pass
 
 func _on_body_exited(b) -> void:
 	if b is Player:
@@ -32,22 +31,20 @@ func _on_body_exited(b) -> void:
 		is_player_in_area = false
 		
 func item_picked_up() -> void:
-	area_2d.body_entered.disconnect(_on_body_entered)
+	#area_2d.body_entered.disconnect(_on_body_entered)
 	audio_player_2d.play()
 	visible = false
+	picked_up = true
 	await audio_player_2d.finished
 	queue_free()
 	#Inventory_Hud.inventory.clear_inventory()
 	Inventory_Hud.inventory.update_inventory()
-	pass
 	
 func _set_item_data(value : ItemData) -> void:
 	item_data = value
 	_update_texture()
-	pass
 
 func _update_texture() -> void:
 	if item_data and sprite_2d:
 		sprite_2d.texture = item_data.texture
 		
-	pass
