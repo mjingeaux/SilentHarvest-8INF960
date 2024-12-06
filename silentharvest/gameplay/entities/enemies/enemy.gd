@@ -1,6 +1,5 @@
 class_name Enemy extends CharacterBody2D
 
-signal direction_changed( _new_direction : Vector2)
 signal poi_finished()
 signal inspect_finished()
 

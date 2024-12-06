@@ -94,7 +94,7 @@ func _process(delta: float) -> void:
 		just_started = false
 		
 func _next_state():
-	state += step
+	state += int(step)
 	
 	var min_state := 0 #included 
 	var max_state := path_count * 2 #included
@@ -114,7 +114,7 @@ func _next_state():
 			if (!pause_at_end):
 				state = clampi(state, min_state, max_state)
 			else:
-					state = pingpong(state, max_state)
+				state = int(pingpong(state, max_state))
 			
 	if (_is_state_path()): #path
 		_start_path((state-1) / 2)

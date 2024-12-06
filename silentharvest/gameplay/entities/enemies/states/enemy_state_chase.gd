@@ -14,9 +14,7 @@ class_name EnemyStateChase extends EnemyState
 
 var _timer : float = 0.0
 var _can_see_player : bool = false
-var _last_player_position : Vector2
 var _start_chase := false
-@onready var _player : Player = PlayerManager.player
 @onready var sound_hoey: AudioStreamPlayer = $Hoey
 var navigation_agent : NavigationAgent2D
 
@@ -49,7 +47,7 @@ func exit() -> void:
 	enemy.update_animation("?", true) 
 	enemy.vision_area.rotation_speed = VisionArea.Erotation_speed.default
 	
-func physics_process(delta: float) -> void:
+func physics_process(_delta: float) -> void:
 	if (_start_chase):
 		navigation_agent.target_position = PlayerManager.player.global_position
 		var direction_vec = enemy.global_position.direction_to(navigation_agent.get_next_path_position())
