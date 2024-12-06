@@ -35,7 +35,7 @@ func load_level(level_nb : int) -> void:
 			sprite.scale = Vector2(1, 1)
 		sprite.modulate.a = 1.
 		var tween = get_tree().create_tween()
-		tween.tween_property(sprite, "modulate", Color(1, 1, 1, 0), 1)
+		tween.tween_property(sprite, "modulate", Color(1, 1, 1, 0), 0.5)
 	
 	if (active_level):
 		get_tree().root.remove_child.call_deferred(active_level)

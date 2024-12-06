@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://jfq8hpqhtkju"]
+[gd_scene load_steps=14 format=3 uid="uid://jfq8hpqhtkju"]
 
 [ext_resource type="Script" path="res://gameplay/levels/controls.gd" id="1_ajlam"]
 [ext_resource type="Texture2D" uid="uid://c8m7hga3dfnjj" path="res://assets/keyboard_arrows.png" id="2_vpnbt"]
@@ -9,6 +9,38 @@
 [ext_resource type="Texture2D" uid="uid://b8vuy7l8npt6w" path="res://addons/controller_icons/assets/mouse/left.png" id="7_ncptq"]
 [ext_resource type="AudioStream" uid="uid://brqrq42tpm7n5" path="res://assets/sounds/menu_hover.wav" id="8_hxrrr"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1u7ug"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.541176, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dnfra"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.427451, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4l6x"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.313726, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36do6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.2, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ciqxv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
@@ -16,111 +48,154 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 script = ExtResource("1_ajlam")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_right = 1122.0
-offset_bottom = 635.0
+offset_right = 1155.0
+offset_bottom = 650.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="move" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="moveContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-alignment = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1u7ug")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/move"]
+[node name="move" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/moveContainer"]
 layout_mode = 2
+alignment = 1
 
-[node name="arrows" type="TextureRect" parent="HBoxContainer/VBoxContainer/move/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/moveContainer/move"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="arrows" type="TextureRect" parent="HBoxContainer/VBoxContainer/moveContainer/move/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_vpnbt")
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/move/HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/moveContainer/move/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 69
 text = "/"
 
-[node name="zqsd" type="TextureRect" parent="HBoxContainer/VBoxContainer/move/HBoxContainer"]
+[node name="zqsd" type="TextureRect" parent="HBoxContainer/VBoxContainer/moveContainer/move/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("3_5trjb")
 stretch_mode = 4
 
-[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/move"]
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/moveContainer/move"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 25
-text = "                         Se deplacer"
+text = "Se deplacer"
+horizontal_alignment = 1
 
-[node name="pickup" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="pickupContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-alignment = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dnfra")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/pickup"]
+[node name="pickup" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/pickupContainer"]
 layout_mode = 2
+alignment = 1
 
-[node name="e" type="TextureRect" parent="HBoxContainer/VBoxContainer/pickup/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/pickupContainer/pickup"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="e" type="TextureRect" parent="HBoxContainer/VBoxContainer/pickupContainer/pickup/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_ovk1p")
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/pickup"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/pickupContainer/pickup"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 25
-text = "                           Ramasser un objet "
-horizontal_alignment = 2
+text = "Ramasser un objet "
+horizontal_alignment = 1
 
-[node name="crouch" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="crouchContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-alignment = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4l6x")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/crouch"]
+[node name="crouch" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/crouchContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/crouch/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/crouchContainer/crouch"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/crouchContainer/crouch/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("5_shfcs")
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/crouch/HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/crouchContainer/crouch/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 69
 text = "/"
 
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/VBoxContainer/crouch/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/VBoxContainer/crouchContainer/crouch/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("6_hn5jw")
 stretch_mode = 4
 
-[node name="Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/crouch"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/crouchContainer/crouch"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/crouchContainer/crouch/HBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/crouchContainer/crouch/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
-text = "[right]                        [font_size=1
+text = "[right][font_size=1
 5](Maintenir) [/font_size] S'accroupir [/right]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="drop" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="dropContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-alignment = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_36do6")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/drop"]
+[node name="drop" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/dropContainer"]
 layout_mode = 2
-alignment = 2
+alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/drop/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/dropContainer/drop"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/dropContainer/drop/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("7_ncptq")
 stretch_mode = 4
 
-[node name="Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/drop"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/dropContainer/drop"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/dropContainer/drop/HBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/dropContainer/drop/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
-text = "[right]   [font_size=15
-
-] (Sur un objet de l'inventaire) [/font_size] Déposer un objet [/right]
+text = "[left][font_size=15](Sur un objet de l'inventaire)[/font_size] Déposer un objet [/left]
 "
 fit_content = true
 scroll_active = false
