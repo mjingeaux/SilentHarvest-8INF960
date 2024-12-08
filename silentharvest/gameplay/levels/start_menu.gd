@@ -16,17 +16,19 @@ var title_elapsed_time = 0.0
 var menu_elapsed_time = 0.0
 
 func _ready() -> void:
-	title.modulate.a = 0
-	menu_options.modulate.a = 0
+	print(PlayerManager.is_first_time_start)
 	Inventory_Hud.hide()
 	btn_newgame.pressed.connect(start_game)
 	btn_commandes.pressed.connect(show_commands)
 	btn_quitter.pressed.connect(quit_game)
-	title_timer.timeout.connect(_on_title_timer_timeout)
-	menu_timer.timeout.connect(_on_menu_timer_timeout)
-	title_timer.start()
-	menu_timer.start()
-	
+	if PlayerManager.is_first_time_start:
+		PlayerManager.is_first_time_start = false
+		title.modulate.a = 0
+		menu_options.modulate.a = 0
+		title_timer.timeout.connect(_on_title_timer_timeout)
+		menu_timer.timeout.connect(_on_menu_timer_timeout)
+		title_timer.start()
+		menu_timer.start()
 
 func _on_title_timer_timeout() -> void:
 	title_fading_in = true
