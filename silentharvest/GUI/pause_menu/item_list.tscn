@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://bdxlqncacqula"]
 
-[ext_resource type="Texture2D" uid="uid://bqgr86oxg6ruj" path="res://assets/sprites/items/carrot.png" id="1_xa0td"]
-[ext_resource type="LabelSettings" path="res://assets/resources/text_size_item_list.tres" id="2_0sdxw"]
-[ext_resource type="Texture2D" uid="uid://d03no7tfi3cj7" path="res://assets/sprites/items/corn.png" id="2_2aqpt"]
-[ext_resource type="Texture2D" uid="uid://cv7x62xklc8ui" path="res://assets/sprites/items/eggplant.png" id="3_jkb4j"]
-[ext_resource type="Texture2D" uid="uid://di81e6fxeq2sq" path="res://assets/sprites/items/potato.png" id="4_487pb"]
+[ext_resource type="Texture2D" uid="uid://bqgr86oxg6ruj" path="res://Assets/sprites/items/carrot.png" id="1_xa0td"]
+[ext_resource type="LabelSettings" uid="uid://clkp4r65kknsg" path="res://Assets/resources/text_size_item_list.tres" id="2_0sdxw"]
+[ext_resource type="Texture2D" uid="uid://d03no7tfi3cj7" path="res://Assets/sprites/items/corn.png" id="2_2aqpt"]
+[ext_resource type="Texture2D" uid="uid://cv7x62xklc8ui" path="res://Assets/sprites/items/eggplant.png" id="3_jkb4j"]
+[ext_resource type="Texture2D" uid="uid://di81e6fxeq2sq" path="res://Assets/sprites/items/potato.png" id="4_487pb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1edy"]
 bg_color = Color(0, 0, 0, 0.458824)

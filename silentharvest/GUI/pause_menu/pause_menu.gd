@@ -3,7 +3,7 @@ class_name PauseMenu extends CanvasLayer
 signal shown
 signal hidden
 
-@onready var scorelabel: Label = $ScoreLabel
+@onready var scorelabel: Label = $HBoxContainer/ScoreLabel
 @onready var hover_sound: AudioStreamPlayer = $AudioStreamPlayer
 
 var is_paused : bool = false

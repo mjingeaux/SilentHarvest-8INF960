@@ -12,7 +12,7 @@ var first_attempt := true
 func _ready() -> void:
 	setup_screen()
 	process_mode = PROCESS_MODE_ALWAYS
-	load_level(3)
+	load_level(5)
 
 func load_level(level_nb : int) -> void:
 	if (!can_player_loose && level_nb == 2):
