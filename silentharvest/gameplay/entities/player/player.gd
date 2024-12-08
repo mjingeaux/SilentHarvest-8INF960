@@ -76,7 +76,6 @@ func _physics_process(delta: float) -> void: # switch to _process
 	var direction = Input.get_vector("left", "right","up","down")
 	if(Input.is_action_pressed("crouch")):
 		move_and_slide()
-		return
 		crouching_movement(direction)
 		crouching_animation()
 		if (velocity != Vector2.ZERO):

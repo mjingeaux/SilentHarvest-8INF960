@@ -28,6 +28,11 @@ Inventory_Hud="*res://GUI/HUD/inventory_hud.tscn"
 
 window/stretch/mode="viewport"
 
+[editor]
+
+movie_writer/mjpeg_quality=1.0
+movie_writer/movie_file="C:/Users/jinge/OneDrive/Documents/GitHub/SilentHarvest-8INF960/silentharvest/gameplay_footage.avi"
+
 [file_customization]
 
 folder_colors={
@@ -96,5 +101,8 @@ pause={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_2d=1
+anti_aliasing/quality/msaa_3d=1
+anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_taa=true
