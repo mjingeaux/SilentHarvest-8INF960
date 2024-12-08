@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=10 format=3 uid="uid://4m1whi8xvife"]
 
-[ext_resource type="Texture2D" uid="uid://defej6afognel" path="res://Assets/sprites/small_crops.png" id="2_55jeg"]
-[ext_resource type="Texture2D" uid="uid://0nxhofknnns8" path="res://Assets/sprites/farmland.png" id="2_d8mqx"]
-[ext_resource type="Texture2D" uid="uid://b6mcsj8a5byhi" path="res://Assets/sprites/PLACEHOLDER_autotile.png" id="2_f2pgv"]
-[ext_resource type="Texture2D" uid="uid://mvsh7ymmabmx" path="res://Assets/sprites/dirt.png" id="3_dsbhc"]
+[ext_resource type="Texture2D" uid="uid://defej6afognel" path="res://assets/sprites/small_crops.png" id="2_55jeg"]
+[ext_resource type="Texture2D" uid="uid://0nxhofknnns8" path="res://assets/sprites/farmland.png" id="2_d8mqx"]
+[ext_resource type="Texture2D" uid="uid://b6mcsj8a5byhi" path="res://assets/sprites/PLACEHOLDER_autotile.png" id="2_f2pgv"]
+[ext_resource type="Texture2D" uid="uid://mvsh7ymmabmx" path="res://assets/sprites/dirt.png" id="3_dsbhc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1h8yf"]
 texture = ExtResource("2_d8mqx")

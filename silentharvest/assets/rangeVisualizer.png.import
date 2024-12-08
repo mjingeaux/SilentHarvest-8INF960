@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://qc7thoqo4onh"
-path="res://.godot/imported/rangeVisualizer.png-2209a79d5a88c22dcbdeb880bc259c2d.ctex"
+path="res://.godot/imported/rangeVisualizer.png-c41f21a28cd386a418882021972d9c2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/rangeVisualizer.png"
-dest_files=["res://.godot/imported/rangeVisualizer.png-2209a79d5a88c22dcbdeb880bc259c2d.ctex"]
+source_file="res://assets/rangeVisualizer.png"
+dest_files=["res://.godot/imported/rangeVisualizer.png-c41f21a28cd386a418882021972d9c2c.ctex"]
 
 [params]
 

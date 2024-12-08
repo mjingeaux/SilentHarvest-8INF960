@@ -18,6 +18,7 @@ var menu_elapsed_time = 0.0
 func _ready() -> void:
 	print(PlayerManager.is_first_time_start)
 	Inventory_Hud.hide()
+
 	btn_newgame.pressed.connect(start_game)
 	btn_commandes.pressed.connect(show_commands)
 	btn_quitter.pressed.connect(quit_game)

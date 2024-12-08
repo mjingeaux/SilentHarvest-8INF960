@@ -32,6 +32,10 @@ func _on_Timer_timeout():
 	else:
 		await get_tree().create_timer(1.0).timeout
 		get_node("/root/GameManager").load_level(3)
+		
+func _input(event: InputEvent) -> void:
+	if (event.is_action_pressed("pause")):
+		get_node("/root/GameManager").load_level(3)
 
 func _go_to_next_scene():
 	get_tree().change_scene("res://next_scene.tscn")
