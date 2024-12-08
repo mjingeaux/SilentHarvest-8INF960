@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://fehr3p1frps7" path="res://gameplay/levels/level_1.tscn" id="2_ruspc"]
 [ext_resource type="PackedScene" uid="uid://c3jp10ql71lfr" path="res://GUI/pause_menu/pause_menu.tscn" id="3_pxpiu"]
 [ext_resource type="PackedScene" uid="uid://87g4wsndngl3" path="res://gameplay/levels/game_over.tscn" id="4_rjl78"]
-[ext_resource type="AudioStream" uid="uid://s87am5ghkn3t" path="res://Assets/sounds/suspense-pulse-tense-music-266060.mp3" id="5_ahp6k"]
+[ext_resource type="AudioStream" uid="uid://s87am5ghkn3t" path="res://assets/sounds/suspense-pulse-tense-music-266060.mp3" id="5_ahp6k"]
 [ext_resource type="PackedScene" uid="uid://2gr5pglniw2h" path="res://gameplay/levels/start_menu.tscn" id="5_spt0p"]
 [ext_resource type="PackedScene" uid="uid://jfq8hpqhtkju" path="res://gameplay/levels/controls.tscn" id="6_3gbwr"]
 [ext_resource type="PackedScene" uid="uid://cy2mwovjb0kfa" path="res://gameplay/levels/intro_scene.tscn" id="7_a4hdg"]

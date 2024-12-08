@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://2gr5pglniw2h"]
 
 [ext_resource type="Script" path="res://gameplay/levels/start_menu.gd" id="1_g5rg3"]
+
 [ext_resource type="AudioStream" uid="uid://brqrq42tpm7n5" path="res://Assets/sounds/menu_hover.wav" id="2_6insx"]
 [ext_resource type="Texture2D" uid="uid://b18x6qu4n8w17" path="res://Assets/intro/frame4.jpg" id="3_k05cr"]
-[ext_resource type="Texture2D" uid="uid://ofildp4o1exc" path="res://Assets/intro/title.png" id="4_bmh6j"]
-
+[ext_resource type="Texture2D" uid="uid://ofildp4o1exc" path="res://Assets/intro/title.png" id="4_bmh6j"
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3ln8"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 

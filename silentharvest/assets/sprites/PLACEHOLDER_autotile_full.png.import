@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bs5okorvhq0ty"
-path="res://.godot/imported/PLACEHOLDER_autotile_full.png-000c26fe54928ce3753a90dee33ea40e.ctex"
+path="res://.godot/imported/PLACEHOLDER_autotile_full.png-f5ccc5aaf21d6ab2be2c1cd4b7fa38f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/PLACEHOLDER_autotile_full.png"
-dest_files=["res://.godot/imported/PLACEHOLDER_autotile_full.png-000c26fe54928ce3753a90dee33ea40e.ctex"]
+source_file="res://assets/sprites/PLACEHOLDER_autotile_full.png"
+dest_files=["res://.godot/imported/PLACEHOLDER_autotile_full.png-f5ccc5aaf21d6ab2be2c1cd4b7fa38f3.ctex"]
 
 [params]
 
