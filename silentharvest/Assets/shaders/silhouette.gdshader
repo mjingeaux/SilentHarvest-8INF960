@@ -17,7 +17,7 @@ void fragment() {
 		// This means the character is visible
 		COLOR = sprite_color;
 	}
-	 else 
+	 else
 	{
 		// This means the character is behind an object
 		COLOR = vec4(silhouette_color.rgb, silhouette_color.a * sprite_color.a);

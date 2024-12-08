@@ -11,7 +11,7 @@ script = ExtResource("1_midg7")
 
 [node name="BlockingArea" type="CollisionPolygon2D" parent="."]
 position = Vector2(-1.5, -3.185)
-polygon = PackedVector2Array(-10.5, 1, 1.5, -5, 10.5, 1, 1.5, 4)
+polygon = PackedVector2Array(-12.5, 1, 1.5, -8, 12.5, 1, 1.5, 5)
 
 [node name="Tree" type="Sprite2D" parent="."]
 y_sort_enabled = true
