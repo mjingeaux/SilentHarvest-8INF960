@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://jfq8hpqhtkju"]
+[gd_scene load_steps=15 format=3 uid="uid://jfq8hpqhtkju"]
 
 [ext_resource type="Script" path="res://gameplay/levels/controls.gd" id="1_ajlam"]
 [ext_resource type="Texture2D" uid="uid://c8m7hga3dfnjj" path="res://assets/keyboard_arrows.png" id="2_vpnbt"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://bvan6ddb77ca3" path="res://addons/controller_icons/assets/key/shift.png" id="5_shfcs"]
 [ext_resource type="Texture2D" uid="uid://dhwug5n7wvn8b" path="res://addons/controller_icons/assets/key/0.png" id="6_hn5jw"]
 [ext_resource type="Texture2D" uid="uid://b8vuy7l8npt6w" path="res://addons/controller_icons/assets/mouse/left.png" id="7_ncptq"]
-[ext_resource type="AudioStream" uid="uid://brqrq42tpm7n5" path="res://assets/sounds/menu_hover.wav" id="8_hxrrr"]
+
+[ext_resource type="AudioStream" uid="uid://brqrq42tpm7n5" path="res://Assets/sounds/menu_hover.wav" id="8_hxrrr"]
+[ext_resource type="Texture2D" uid="uid://b18x6qu4n8w17" path="res://Assets/intro/frame4.jpg" id="9_8xpck"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1u7ug"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -65,6 +67,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1u7ug")
 layout_mode = 2
 alignment = 1
 
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/moveContainer/move"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Se deplacer"
+horizontal_alignment = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/moveContainer/move"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -85,13 +95,6 @@ layout_mode = 2
 texture = ExtResource("3_5trjb")
 stretch_mode = 4
 
-[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/moveContainer/move"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 25
-text = "Se deplacer"
-horizontal_alignment = 1
-
 [node name="pickupContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dnfra")
@@ -99,6 +102,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_dnfra")
 [node name="pickup" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/pickupContainer"]
 layout_mode = 2
 alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/pickupContainer/pickup"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Ramasser un objet "
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/pickupContainer/pickup"]
 layout_mode = 2
@@ -110,13 +121,6 @@ layout_mode = 2
 texture = ExtResource("4_ovk1p")
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/pickupContainer/pickup"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 25
-text = "Ramasser un objet "
-horizontal_alignment = 1
-
 [node name="crouchContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_g4l6x")
@@ -124,6 +128,26 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_g4l6x")
 [node name="crouch" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/crouchContainer"]
 layout_mode = 2
 alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/crouchContainer/crouch"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/crouchContainer/crouch/HBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/crouchContainer/crouch/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "[right][font_size=1
+5](Maintenir) [/font_size] S'accroupir [/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/crouchContainer/crouch"]
 layout_mode = 2
@@ -145,25 +169,6 @@ layout_mode = 2
 texture = ExtResource("6_hn5jw")
 stretch_mode = 4
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/crouchContainer/crouch"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/crouchContainer/crouch/HBoxContainer2"]
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/crouchContainer/crouch/HBoxContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 25
-bbcode_enabled = true
-text = "[right][font_size=1
-5](Maintenir) [/font_size] S'accroupir [/right]"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
 [node name="dropContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_36do6")
@@ -171,6 +176,25 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_36do6")
 [node name="drop" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/dropContainer"]
 layout_mode = 2
 alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/dropContainer/drop"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/dropContainer/drop/HBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/dropContainer/drop/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "[left][font_size=11](Sur un objet de l'inventaire)[/font_size]Déposer un objet [/left]
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/dropContainer/drop"]
 layout_mode = 2
@@ -182,37 +206,36 @@ layout_mode = 2
 texture = ExtResource("7_ncptq")
 stretch_mode = 4
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/dropContainer/drop"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/dropContainer/drop/HBoxContainer2"]
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/dropContainer/drop/HBoxContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 25
-bbcode_enabled = true
-text = "[left][font_size=15](Sur un objet de l'inventaire)[/font_size] Déposer un objet [/left]
-"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
 [node name="Container" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 alignment = 1
 
 [node name="btn_retour" type="Button" parent="HBoxContainer/VBoxContainer/Container"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ciqxv")
 text = "Retour   "
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_hxrrr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -168.0
+offset_right = 520.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_8xpck")
+expand_mode = 1
+stretch_mode = 4
 
 [connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/Container/btn_retour" to="." method="_on_btn_retour_mouse_entered"]

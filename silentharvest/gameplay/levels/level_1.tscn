@@ -1789,5 +1789,6 @@ position = Vector2(331, 116)
 shape = SubResource("RectangleShape2D_h6ihe")
 
 [node name="PlayerStart" type="Marker2D" parent="."]
+position = Vector2(41, 31)
 
 [connection signal="body_entered" from="TutoZone" to="." method="_on_tuto_zone_body_entered"]

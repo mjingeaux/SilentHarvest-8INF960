@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy2mwovjb0kfa"]
+
+[ext_resource type="Script" path="res://gameplay/levels/intro_layer.gd" id="1_omr3v"]
+[ext_resource type="Script" path="res://gameplay/levels/intro_scene.gd" id="1_rtbwx"]
+[ext_resource type="Texture2D" uid="uid://b18x6qu4n8w17" path="res://Assets/intro/frame4.jpg" id="3_d60xn"]
+
+[node name="IntroScene" type="Node2D"]
+script = ExtResource("1_rtbwx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_omr3v")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_d60xn")
+expand_mode = 1
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+wait_time = 5.0

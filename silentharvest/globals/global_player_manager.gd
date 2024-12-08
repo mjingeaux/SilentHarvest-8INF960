@@ -7,6 +7,7 @@ var player : Player
 var is_player_in_scene := false
 var scene_containing_player : BaseLevel
 var scene_id : int
+var is_first_time_start = true
 
 var can_die := false
 

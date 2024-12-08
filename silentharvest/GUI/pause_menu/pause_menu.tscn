@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3jp10ql71lfr"]
 
 [ext_resource type="Script" path="res://GUI/pause_menu/pause_menu.gd" id="1_rypip"]
-[ext_resource type="AudioStream" uid="uid://brqrq42tpm7n5" path="res://assets/sounds/menu_hover.wav" id="3_17dli"]
+[ext_resource type="AudioStream" uid="uid://brqrq42tpm7n5" path="res://Assets/sounds/menu_hover.wav" id="3_17dli"]
 [ext_resource type="PackedScene" uid="uid://bdxlqncacqula" path="res://GUI/pause_menu/item_list.tscn" id="4_dsc0a"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4j3kl"]
@@ -45,17 +45,6 @@ custom_minimum_size = Vector2(300, 75)
 layout_mode = 2
 text = "Quitter"
 
-[node name="ScoreLabel" type="Label" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -932.0
-offset_top = 100.0
-offset_right = -809.0
-offset_bottom = 172.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 50
-
 [node name="ItemList" parent="." instance=ExtResource("4_dsc0a")]
 anchors_preset = 6
 anchor_left = 1.0
@@ -69,6 +58,30 @@ grow_horizontal = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_17dli")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -181.0
+offset_right = 109.0
+offset_bottom = -137.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Score : "
+
+[node name="ScoreLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
 
 [connection signal="mouse_entered" from="GridContainer/Btn_Reprendre" to="." method="_on_btn_reprendre_mouse_entered"]
 [connection signal="pressed" from="GridContainer/Btn_Reprendre" to="." method="_on_btn_reprendre_pressed"]
