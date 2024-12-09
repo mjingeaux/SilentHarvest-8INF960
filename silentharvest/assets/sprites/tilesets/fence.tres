@@ -100,6 +100,21 @@ texture = ExtResource("1_1gvvw")
 0:1/0/terrains_peering_bit/right_side = 0
 0:1/0/terrains_peering_bit/bottom_side = 0
 0:1/0/terrains_peering_bit/top_side = 0
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, 6, 3, 1, -8, 1, -8, 6)
+5:0/0 = 0
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 6, -8, 6, -8, 1, 8, 1)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 6, 3, 6, 3, -8, -3, -8)
+6:2/0 = 0
+6:3/0 = 0
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, 8, 3, 2, -3, 2, -3, 8)
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, 8, 3, 2, -3, 2, -3, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -8, -3, 7, 3, 7, 3, -8)
+4:2/0 = 0
 
 [resource]
 physics_layer_0/collision_layer = 1

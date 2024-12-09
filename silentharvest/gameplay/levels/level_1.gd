@@ -24,3 +24,8 @@ func _input(event: InputEvent) -> void:
 		await get_tree().create_timer(1.2).timeout
 		if (is_instance_valid(tuto_node)):
 			tuto_node.hide_and_destroy()
+
+
+func _on_end_zone_body_entered(body: Node2D) -> void:
+	if (body is Player):
+		get_node("/root/GameManager").load_level(2)
