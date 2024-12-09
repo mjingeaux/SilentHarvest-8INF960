@@ -33,9 +33,6 @@ var _is_player_visible := false : set = _set_is_player_visible
 func _ready() -> void:
 	body_entered.connect(_on_body_enter)
 	body_exited.connect(_on_body_exit)
-	var p = get_parent()
-	if p is Enemy:
-		p.direction_changed.connect(_on_direction_change)
 		
 func _on_body_enter(_b : Node2D) -> void:
 	if _b is Player:

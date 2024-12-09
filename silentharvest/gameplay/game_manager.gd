@@ -46,7 +46,6 @@ func load_level(level_nb : int) -> void:
 		
 	if (level_nb == 0 && first_attempt):
 		first_attempt = false
-		new_level is Level_1
 		new_level.tuto_entered = false
 
 

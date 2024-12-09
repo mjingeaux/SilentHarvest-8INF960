@@ -9,5 +9,5 @@ func _ready() -> void:
 	collision_layer = collision_layer | 256
 	
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

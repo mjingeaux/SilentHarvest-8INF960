@@ -13,10 +13,12 @@ void fragment() {
 	// Sample the sprite color
 	vec4 sprite_color = texture(TEXTURE, UV);
 	// Check if the sprite and the screen color match
-	if (all(lessThan(abs(sprite_color - screen_color), vec4(0.01)))) {
+	if (all(lessThan(abs(sprite_color - screen_color), vec4(0.001)))) {
 		// This means the character is visible
 		COLOR = sprite_color;
-	} else {
+	}
+	 else
+	{
 		// This means the character is behind an object
 		COLOR = vec4(silhouette_color.rgb, silhouette_color.a * sprite_color.a);
 	}

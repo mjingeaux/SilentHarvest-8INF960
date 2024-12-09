@@ -30,7 +30,7 @@ func exit() -> void:
 	super()
 	enemy.update_animation("?", false)
 
-func physics_process(delta: float) -> void:
+func physics_process(_delta: float) -> void:
 	if (navigation_agent.is_navigation_finished()):
 		return
 	next_path_pos = navigation_agent.get_next_path_position()

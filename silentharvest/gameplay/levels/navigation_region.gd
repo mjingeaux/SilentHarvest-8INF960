@@ -3,12 +3,12 @@ extends NavigationRegion2D
 var geometry_data: NavigationMeshSourceGeometryData2D = NavigationMeshSourceGeometryData2D.new()
 
 func _ready():
-	parse_2d_collisionshapes(self)
+	parse_2d_collisionshapes()
 	var new_navigation_polygon: NavigationPolygon = get_navigation_polygon()
 	NavigationServer2D.bake_from_source_geometry_data(new_navigation_polygon, geometry_data)
 	navigation_polygon = new_navigation_polygon
 
-func parse_2d_collisionshapes(root_node: Node2D):
+func parse_2d_collisionshapes():
 	for node in get_parent().get_node("LstProp").get_children():
 		if node is BaseProp:
 			var area : CollisionPolygon2D = node.get_node("BlockingArea")
