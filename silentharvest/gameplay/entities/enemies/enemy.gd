@@ -53,6 +53,7 @@ func _ready():
 	$"lost".visible = false
 	$"found".visible = false
 	animation_tree["parameters/Idle/blend_position"] = base_direction
+	set_defualt_direction()
 	
 	
 func _process(delta):

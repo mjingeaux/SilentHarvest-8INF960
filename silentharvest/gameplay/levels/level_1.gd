@@ -28,4 +28,4 @@ func _input(event: InputEvent) -> void:
 
 func _on_end_zone_body_entered(body: Node2D) -> void:
 	if (body is Player):
-		get_node("/root/GameManager").load_level(2)
+		get_node("/root/GameManager").load_level(6)

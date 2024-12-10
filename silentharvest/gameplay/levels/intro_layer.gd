@@ -3,8 +3,8 @@ extends CanvasLayer
 @onready var sprite: TextureRect = $TextureRect
 @onready var timer: Timer = $Timer
 
-var images = [preload("res://Assets/intro/frame1.png"), preload("res://Assets/intro/frame2.jpg"),
- preload("res://Assets/intro/frame3.jpg")]
+var images = [preload("res://assets/intro/frame1.png"), preload("res://assets/intro/frame2.jpg"),
+ preload("res://assets/intro/frame3.jpg")]
 var current_index = 0
 var zoom_speed = 0.01
 var max_scale = Vector2(1.2, 1.2)

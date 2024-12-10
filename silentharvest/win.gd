@@ -1,4 +1,4 @@
-class_name Win extends BaseLevel
+class_name GameOver extends BaseLevel
 
 @onready var final_score_label: Label = $CanvasLayer/VBoxContainer/HBoxContainer/FinalScoreLabel
 @onready var btn_recommencer: Button = $CanvasLayer/VBoxContainer2/Btn_Recommencer
@@ -6,7 +6,7 @@ class_name Win extends BaseLevel
 
 func _ready() -> void:
 	Inventory_Hud.hide()
-	final_score_label.text = str(PlayerManager.INVENTORY_DATA.score )
+	final_score_label.text = str(PlayerManager.INVENTORY_DATA.score + 20)
 	btn_recommencer.pressed.connect(_on_recommencer_pressed)
 	btn_quitter.pressed.connect(_on_quitter_pressed)
 	

@@ -1,14 +1,14 @@
 [gd_scene load_steps=15 format=3 uid="uid://jfq8hpqhtkju"]
 
 [ext_resource type="Script" path="res://gameplay/levels/controls.gd" id="1_ajlam"]
-[ext_resource type="Texture2D" uid="uid://c8m7hga3dfnjj" path="res://Assets/keyboard_arrows.png" id="2_vpnbt"]
-[ext_resource type="Texture2D" uid="uid://bjpavai638ngc" path="res://Assets/keyboard_zqsd.png" id="3_5trjb"]
+[ext_resource type="Texture2D" uid="uid://c8m7hga3dfnjj" path="res://assets/keyboard_arrows.png" id="2_vpnbt"]
+[ext_resource type="Texture2D" uid="uid://bjpavai638ngc" path="res://assets/keyboard_zqsd.png" id="3_5trjb"]
 [ext_resource type="Texture2D" uid="uid://xe4n818le3p8" path="res://addons/controller_icons/assets/key/e.png" id="4_ovk1p"]
 [ext_resource type="Texture2D" uid="uid://bvan6ddb77ca3" path="res://addons/controller_icons/assets/key/shift.png" id="5_shfcs"]
 [ext_resource type="Texture2D" uid="uid://dhwug5n7wvn8b" path="res://addons/controller_icons/assets/key/0.png" id="6_hn5jw"]
 [ext_resource type="Texture2D" uid="uid://b8vuy7l8npt6w" path="res://addons/controller_icons/assets/mouse/left.png" id="7_ncptq"]
-[ext_resource type="AudioStream" uid="uid://brqrq42tpm7n5" path="res://Assets/sounds/menu_hover.wav" id="8_hxrrr"]
-[ext_resource type="Texture2D" uid="uid://b18x6qu4n8w17" path="res://Assets/intro/frame4.jpg" id="9_8xpck"]
+[ext_resource type="AudioStream" uid="uid://brqrq42tpm7n5" path="res://assets/sounds/menu_hover.wav" id="8_hxrrr"]
+[ext_resource type="Texture2D" uid="uid://b18x6qu4n8w17" path="res://assets/intro/frame4.jpg" id="9_8xpck"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1u7ug"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
