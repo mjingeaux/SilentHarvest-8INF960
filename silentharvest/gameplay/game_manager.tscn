@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://1j8jl6xory57"]
+[gd_scene load_steps=11 format=3 uid="uid://1j8jl6xory57"]
 
 [ext_resource type="Script" path="res://gameplay/game_manager.gd" id="1_cnmgr"]
 [ext_resource type="PackedScene" uid="uid://fehr3p1frps7" path="res://gameplay/levels/level_1.tscn" id="2_ruspc"]
@@ -7,8 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://s87am5ghkn3t" path="res://assets/sounds/suspense-pulse-tense-music-266060.mp3" id="5_ahp6k"]
 [ext_resource type="PackedScene" uid="uid://2gr5pglniw2h" path="res://gameplay/levels/start_menu.tscn" id="5_spt0p"]
 [ext_resource type="PackedScene" uid="uid://jfq8hpqhtkju" path="res://gameplay/levels/controls.tscn" id="6_3gbwr"]
-[ext_resource type="PackedScene" path="res://gameplay/levels/intro_scene.tscn" id="7_a4hdg"]
+[ext_resource type="PackedScene" uid="uid://d1u1npgcoid2r" path="res://gameplay/levels/intro_scene.tscn" id="7_a4hdg"]
 [ext_resource type="PackedScene" uid="uid://b1khlpn6x7nf6" path="res://gameplay/levels/win.tscn" id="8_ta7u0"]
+[ext_resource type="AudioStream" uid="uid://dt14a1uew1u12" path="res://assets/sounds/this-is-suspense-end-of-the-line-181766.mp3" id="10_37ka3"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_cnmgr")
@@ -18,7 +19,6 @@ lst_levels = Array[PackedScene]([ExtResource("2_ruspc"), ExtResource("3_pxpiu"),
 process_mode = 3
 stream = ExtResource("5_ahp6k")
 volume_db = -13.115
-autoplay = true
 bus = &"Music"
 playback_type = 1
 parameters/looping = true
@@ -37,3 +37,10 @@ offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="IntroMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_37ka3")
+autoplay = true
+bus = &"Music"
+playback_type = 1
+parameters/looping = true

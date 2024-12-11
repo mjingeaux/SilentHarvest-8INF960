@@ -9,6 +9,9 @@ class_name StartMenu extends BaseLevel
 @onready var title_timer: Timer = $TitleTimer
 @onready var menu_timer: Timer = $MenuTimer
 
+@onready var cicada: AudioStreamPlayer = $cicada
+@onready var raven: AudioStreamPlayer = $raven
+
 var title_fading_in = false
 var menu_fading_in = false
 var fade_in_duration = 2.0
@@ -16,13 +19,16 @@ var title_elapsed_time = 0.0
 var menu_elapsed_time = 0.0
 
 func _ready() -> void:
-	print(PlayerManager.is_first_time_start)
 	Inventory_Hud.hide()
+	
+	var fadein = get_tree().create_tween()
+	fadein.tween_property(cicada, "volume_db", -12, 4)
 
 	btn_newgame.pressed.connect(start_game)
 	btn_commandes.pressed.connect(show_commands)
 	btn_quitter.pressed.connect(quit_game)
 	if PlayerManager.is_first_time_start:
+		raven.play()
 		PlayerManager.is_first_time_start = false
 		title.modulate.a = 0
 		menu_options.modulate.a = 0

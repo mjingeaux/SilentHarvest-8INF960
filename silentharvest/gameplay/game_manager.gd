@@ -7,7 +7,9 @@ var active_level_id : int
 var can_player_loose := true
 var first_attempt := true
 @onready var sprite: TextureRect = $CanvasLayer/TransitionSprite
-@onready var music: AudioStreamPlayer = $AudioStreamPlayer
+
+@onready var game_music: AudioStreamPlayer = $AudioStreamPlayer
+@onready var intro_music: AudioStreamPlayer = $IntroMusic
 
 func _ready() -> void:
 	setup_screen()
@@ -40,7 +42,12 @@ func load_level(level_nb : int) -> void:
 	
 	if (level_nb == 0):
 		PlayerManager.add_player_to_scene(new_level)
+		switch_music(intro_music, game_music, 4)
+		
+		
 	get_tree().root.add_child.call_deferred(new_level)
+	
+	
 	active_level = new_level
 	PlayerManager.scene_id = level_nb
 		
@@ -48,6 +55,15 @@ func load_level(level_nb : int) -> void:
 		first_attempt = false
 		new_level.tuto_entered = false
 
+func switch_music(from : AudioStreamPlayer, to : AudioStreamPlayer, transition := 1.):
+	to.play()
+	to.volume_db = -80
+	var fadein = get_tree().create_tween()
+	fadein.tween_property(to, "volume_db", 0, transition)
+	
+	var fadeout = get_tree().create_tween()
+	fadeout.tween_property(from, "volume_db", -80, transition)
+	fadeout.tween_callback(from.stop)
 
 func setup_screen():
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://2gr5pglniw2h"]
+[gd_scene load_steps=9 format=3 uid="uid://2gr5pglniw2h"]
 
 [ext_resource type="Script" path="res://gameplay/levels/start_menu.gd" id="1_g5rg3"]
 [ext_resource type="AudioStream" uid="uid://brqrq42tpm7n5" path="res://assets/sounds/menu_hover.wav" id="2_6insx"]
 [ext_resource type="Texture2D" uid="uid://b18x6qu4n8w17" path="res://assets/intro/frame4.jpg" id="3_k05cr"]
 [ext_resource type="Texture2D" uid="uid://ofildp4o1exc" path="res://assets/intro/title.png" id="4_bmh6j"]
+[ext_resource type="AudioStream" uid="uid://clglc7sppftm8" path="res://assets/sounds/raven_caw.ogg" id="5_rja18"]
+[ext_resource type="AudioStream" uid="uid://dvvdje4p6i7wy" path="res://assets/sounds/cicada.ogg" id="6_xp1kx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3ln8"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -87,8 +89,20 @@ stretch_mode = 4
 one_shot = true
 
 [node name="MenuTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 4.0
 one_shot = true
+
+[node name="raven" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_rja18")
+volume_db = -4.952
+
+[node name="cicada" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_xp1kx")
+volume_db = -80.0
+autoplay = true
+bus = &"Music"
+playback_type = 1
+parameters/looping = true
 
 [connection signal="mouse_entered" from="CanvasLayer/MenuOptions/Btn_newgame" to="." method="_on_btn_newgame_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/MenuOptions/Btn_commandes" to="." method="_on_btn_commandes_mouse_entered"]
