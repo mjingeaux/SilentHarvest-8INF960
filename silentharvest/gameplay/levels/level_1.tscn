@@ -3646,32 +3646,25 @@ loop_between_segments = true
 lst_poi = Array[int]([5, 3, 7, 4, 1, 1, 1])
 
 [node name="1" type="Path2D" parent="lstPatrol/Patrol10"]
-modulate = Color(0, 0.583333, 1, 1)
 curve = SubResource("Curve2D_4dtba")
 
 [node name="2" type="Path2D" parent="lstPatrol/Patrol10"]
-modulate = Color(0, 1, 0.533333, 1)
 curve = SubResource("Curve2D_re118")
 
 [node name="3" type="Path2D" parent="lstPatrol/Patrol10"]
-modulate = Color(1, 0.533333, 0, 1)
 curve = SubResource("Curve2D_0bb4j")
 
 [node name="4" type="Path2D" parent="lstPatrol/Patrol10"]
-modulate = Color(1, 0.233333, 0, 1)
 curve = SubResource("Curve2D_4l1m0")
 
 [node name="5" type="Path2D" parent="lstPatrol/Patrol10"]
-modulate = Color(1, 0, 0.4, 1)
 curve = SubResource("Curve2D_elt33")
 
 [node name="6" type="Path2D" parent="lstPatrol/Patrol10"]
-modulate = Color(0.116667, 0, 1, 1)
 position = Vector2(4, -4)
 curve = SubResource("Curve2D_cadng")
 
 [node name="7" type="Path2D" parent="lstPatrol/Patrol10"]
-modulate = Color(0, 0.15, 1, 1)
 position = Vector2(4, -4)
 curve = SubResource("Curve2D_8g8yv")
 
@@ -3682,33 +3675,26 @@ loop_between_segments = true
 lst_poi = Array[int]([3, 7, 4, 1, 1, 1, 5])
 
 [node name="2" type="Path2D" parent="lstPatrol/Patrol11"]
-modulate = Color(0, 1, 0.533333, 1)
 curve = SubResource("Curve2D_re118")
 
 [node name="3" type="Path2D" parent="lstPatrol/Patrol11"]
-modulate = Color(1, 0.533333, 0, 1)
 curve = SubResource("Curve2D_0bb4j")
 
 [node name="4" type="Path2D" parent="lstPatrol/Patrol11"]
-modulate = Color(1, 0.233333, 0, 1)
 curve = SubResource("Curve2D_4l1m0")
 
 [node name="5" type="Path2D" parent="lstPatrol/Patrol11"]
-modulate = Color(1, 0, 0.4, 1)
 curve = SubResource("Curve2D_elt33")
 
 [node name="6" type="Path2D" parent="lstPatrol/Patrol11"]
-modulate = Color(0.116667, 0, 1, 1)
 position = Vector2(4, -4)
 curve = SubResource("Curve2D_cadng")
 
 [node name="7" type="Path2D" parent="lstPatrol/Patrol11"]
-modulate = Color(0, 0.15, 1, 1)
 position = Vector2(4, -4)
 curve = SubResource("Curve2D_8g8yv")
 
 [node name="1" type="Path2D" parent="lstPatrol/Patrol11"]
-modulate = Color(0, 0.583333, 1, 1)
 curve = SubResource("Curve2D_4dtba")
 
 [node name="Patrol12" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
@@ -3718,33 +3704,26 @@ loop_between_segments = true
 lst_poi = Array[int]([7, 4, 1, 1, 1, 5, 3])
 
 [node name="3" type="Path2D" parent="lstPatrol/Patrol12"]
-modulate = Color(1, 0.533333, 0, 1)
 curve = SubResource("Curve2D_0bb4j")
 
 [node name="4" type="Path2D" parent="lstPatrol/Patrol12"]
-modulate = Color(1, 0.233333, 0, 1)
 curve = SubResource("Curve2D_4l1m0")
 
 [node name="5" type="Path2D" parent="lstPatrol/Patrol12"]
-modulate = Color(1, 0, 0.4, 1)
 curve = SubResource("Curve2D_elt33")
 
 [node name="6" type="Path2D" parent="lstPatrol/Patrol12"]
-modulate = Color(0.116667, 0, 1, 1)
 position = Vector2(4, -4)
 curve = SubResource("Curve2D_cadng")
 
 [node name="7" type="Path2D" parent="lstPatrol/Patrol12"]
-modulate = Color(0, 0.15, 1, 1)
 position = Vector2(4, -4)
 curve = SubResource("Curve2D_8g8yv")
 
 [node name="1" type="Path2D" parent="lstPatrol/Patrol12"]
-modulate = Color(0, 0.583333, 1, 1)
 curve = SubResource("Curve2D_4dtba")
 
 [node name="2" type="Path2D" parent="lstPatrol/Patrol12"]
-modulate = Color(0, 1, 0.533333, 1)
 curve = SubResource("Curve2D_re118")
 
 [node name="Patrol13" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
@@ -3754,33 +3733,26 @@ loop_between_segments = true
 lst_poi = Array[int]([4, 1, 1, 1, 5, 3, 7])
 
 [node name="4" type="Path2D" parent="lstPatrol/Patrol13"]
-modulate = Color(1, 0.233333, 0, 1)
 curve = SubResource("Curve2D_4l1m0")
 
 [node name="5" type="Path2D" parent="lstPatrol/Patrol13"]
-modulate = Color(1, 0, 0.4, 1)
 curve = SubResource("Curve2D_elt33")
 
 [node name="6" type="Path2D" parent="lstPatrol/Patrol13"]
-modulate = Color(0.116667, 0, 1, 1)
 position = Vector2(4, -4)
 curve = SubResource("Curve2D_cadng")
 
 [node name="7" type="Path2D" parent="lstPatrol/Patrol13"]
-modulate = Color(0, 0.15, 1, 1)
 position = Vector2(4, -4)
 curve = SubResource("Curve2D_8g8yv")
 
 [node name="1" type="Path2D" parent="lstPatrol/Patrol13"]
-modulate = Color(0, 0.583333, 1, 1)
 curve = SubResource("Curve2D_4dtba")
 
 [node name="2" type="Path2D" parent="lstPatrol/Patrol13"]
-modulate = Color(0, 1, 0.533333, 1)
 curve = SubResource("Curve2D_re118")
 
 [node name="3" type="Path2D" parent="lstPatrol/Patrol13"]
-modulate = Color(1, 0.533333, 0, 1)
 curve = SubResource("Curve2D_0bb4j")
 
 [node name="Patrol14" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
@@ -3790,33 +3762,26 @@ loop_between_segments = true
 lst_poi = Array[int]([1, 1, 1, 5, 3, 7, 4])
 
 [node name="5" type="Path2D" parent="lstPatrol/Patrol14"]
-modulate = Color(1, 0, 0.4, 1)
 curve = SubResource("Curve2D_elt33")
 
 [node name="6" type="Path2D" parent="lstPatrol/Patrol14"]
-modulate = Color(0.116667, 0, 1, 1)
 position = Vector2(4, -4)
 curve = SubResource("Curve2D_cadng")
 
 [node name="7" type="Path2D" parent="lstPatrol/Patrol14"]
-modulate = Color(0, 0.15, 1, 1)
 position = Vector2(4, -4)
 curve = SubResource("Curve2D_8g8yv")
 
 [node name="1" type="Path2D" parent="lstPatrol/Patrol14"]
-modulate = Color(0, 0.583333, 1, 1)
 curve = SubResource("Curve2D_4dtba")
 
 [node name="2" type="Path2D" parent="lstPatrol/Patrol14"]
-modulate = Color(0, 1, 0.533333, 1)
 curve = SubResource("Curve2D_re118")
 
 [node name="3" type="Path2D" parent="lstPatrol/Patrol14"]
-modulate = Color(1, 0.533333, 0, 1)
 curve = SubResource("Curve2D_0bb4j")
 
 [node name="4" type="Path2D" parent="lstPatrol/Patrol14"]
-modulate = Color(1, 0.233333, 0, 1)
 curve = SubResource("Curve2D_4l1m0")
 
 [node name="Patrol15" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
@@ -3826,33 +3791,26 @@ loop_between_segments = true
 lst_poi = Array[int]([1, 1, 5, 3, 7, 4, 1])
 
 [node name="6" type="Path2D" parent="lstPatrol/Patrol15"]
-modulate = Color(0.116667, 0, 1, 1)
 position = Vector2(4, -4)
 curve = SubResource("Curve2D_cadng")
 
 [node name="7" type="Path2D" parent="lstPatrol/Patrol15"]
-modulate = Color(0, 0.15, 1, 1)
 position = Vector2(4, -4)
 curve = SubResource("Curve2D_8g8yv")
 
 [node name="1" type="Path2D" parent="lstPatrol/Patrol15"]
-modulate = Color(0, 0.583333, 1, 1)
 curve = SubResource("Curve2D_4dtba")
 
 [node name="2" type="Path2D" parent="lstPatrol/Patrol15"]
-modulate = Color(0, 1, 0.533333, 1)
 curve = SubResource("Curve2D_re118")
 
 [node name="3" type="Path2D" parent="lstPatrol/Patrol15"]
-modulate = Color(1, 0.533333, 0, 1)
 curve = SubResource("Curve2D_0bb4j")
 
 [node name="4" type="Path2D" parent="lstPatrol/Patrol15"]
-modulate = Color(1, 0.233333, 0, 1)
 curve = SubResource("Curve2D_4l1m0")
 
 [node name="5" type="Path2D" parent="lstPatrol/Patrol15"]
-modulate = Color(1, 0, 0.4, 1)
 curve = SubResource("Curve2D_elt33")
 
 [node name="Patrol16" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
@@ -3862,36 +3820,30 @@ loop_between_segments = true
 lst_poi = Array[int]([1, 5, 3, 7, 4, 1, 1])
 
 [node name="7" type="Path2D" parent="lstPatrol/Patrol16"]
-modulate = Color(0, 0.15, 1, 1)
 position = Vector2(4, -4)
 curve = SubResource("Curve2D_8g8yv")
 
 [node name="1" type="Path2D" parent="lstPatrol/Patrol16"]
-modulate = Color(0, 0.583333, 1, 1)
 curve = SubResource("Curve2D_4dtba")
 
 [node name="2" type="Path2D" parent="lstPatrol/Patrol16"]
-modulate = Color(0, 1, 0.533333, 1)
 curve = SubResource("Curve2D_re118")
 
 [node name="3" type="Path2D" parent="lstPatrol/Patrol16"]
-modulate = Color(1, 0.533333, 0, 1)
 curve = SubResource("Curve2D_0bb4j")
 
 [node name="4" type="Path2D" parent="lstPatrol/Patrol16"]
-modulate = Color(1, 0.233333, 0, 1)
 curve = SubResource("Curve2D_4l1m0")
 
 [node name="5" type="Path2D" parent="lstPatrol/Patrol16"]
-modulate = Color(1, 0, 0.4, 1)
 curve = SubResource("Curve2D_elt33")
 
 [node name="6" type="Path2D" parent="lstPatrol/Patrol16"]
-modulate = Color(0.116667, 0, 1, 1)
 position = Vector2(4, -4)
 curve = SubResource("Curve2D_cadng")
 
 [node name="NavigationRegion" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(-158, -76)
 navigation_polygon = SubResource("NavigationPolygon_jad42")
 script = ExtResource("13_krvxk")
