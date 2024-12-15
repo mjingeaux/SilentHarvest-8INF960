@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://fehr3p1frps7"]
+[gd_scene load_steps=45 format=4 uid="uid://fehr3p1frps7"]
 
 [ext_resource type="Script" path="res://gameplay/levels/level_1.gd" id="1_ehrcc"]
 [ext_resource type="TileSet" uid="uid://4m1whi8xvife" path="res://assets/sprites/tilesets/grass.tres" id="2_27k8j"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://pleh7sbv35xa" path="res://gameplay/entities/props/Jar.tscn" id="10_1aw8l"]
 [ext_resource type="Texture2D" uid="uid://fblkuck61dp7" path="res://assets/sprites/props.png" id="10_f73xh"]
 [ext_resource type="PackedScene" uid="uid://drlbic8jcmk7x" path="res://gameplay/entities/props/Tree.tscn" id="11_pi4f2"]
-[ext_resource type="Script" path="res://gameplay/behaviors/patrol/patrol.gd" id="12_tlapw"]
 [ext_resource type="Script" path="res://gameplay/levels/navigation_region.gd" id="13_krvxk"]
 [ext_resource type="Resource" uid="uid://brokmhnraf3iv" path="res://assets/resources/corn.tres" id="13_yexcl"]
 [ext_resource type="Resource" uid="uid://dcc4t208nuwxq" path="res://assets/resources/carrot.tres" id="14_jttek"]
@@ -3562,17 +3561,15 @@ lst_poi = Array[int]([1, 1])
 position = Vector2(436, 310)
 curve = SubResource("Curve2D_stvnh")
 
-[node name="Patrol2" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
-script = ExtResource("12_tlapw")
+[node name="Patrol2" parent="lstPatrol" node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
 entity = NodePath("../../HumanEnemy2")
 lst_poi = Array[int]([2, 0])
 
 [node name="Path2D" type="Path2D" parent="lstPatrol/Patrol2"]
-position = Vector2(8, -2)
+position = Vector2(6, 1)
 curve = SubResource("Curve2D_4jsk5")
 
-[node name="Patrol3" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
-script = ExtResource("12_tlapw")
+[node name="Patrol3" parent="lstPatrol" node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
 entity = NodePath("../../HumanEnemy3")
 speed = 23.0
 lst_poi = Array[int]([1, 1])
@@ -3580,8 +3577,7 @@ lst_poi = Array[int]([1, 1])
 [node name="Path2D" type="Path2D" parent="lstPatrol/Patrol3"]
 curve = SubResource("Curve2D_13n1m")
 
-[node name="Patrol4" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
-script = ExtResource("12_tlapw")
+[node name="Patrol4" parent="lstPatrol" node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
 entity = NodePath("../../HumanEnemy4")
 speed = 23.0
 lst_poi = Array[int]([1, 1])
@@ -3589,26 +3585,23 @@ lst_poi = Array[int]([1, 1])
 [node name="Path2D" type="Path2D" parent="lstPatrol/Patrol4"]
 curve = SubResource("Curve2D_vi8l4")
 
-[node name="Patrol5" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
+[node name="Patrol5" parent="lstPatrol" node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
 position = Vector2(1487, 1238)
-script = ExtResource("12_tlapw")
 entity = NodePath("../../HumanEnemy6")
 lst_poi = Array[int]([1, 1])
 
 [node name="Path2D" type="Path2D" parent="lstPatrol/Patrol5"]
 curve = SubResource("Curve2D_qotto")
 
-[node name="Patrol6" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
+[node name="Patrol6" parent="lstPatrol" node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
 position = Vector2(757, 1068)
-script = ExtResource("12_tlapw")
 entity = NodePath("../../HumanEnemy5")
 lst_poi = Array[int]([0, 0])
 
 [node name="Path2D" type="Path2D" parent="lstPatrol/Patrol6"]
 curve = SubResource("Curve2D_feic8")
 
-[node name="Patrol7" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
-script = ExtResource("12_tlapw")
+[node name="Patrol7" parent="lstPatrol" node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
 entity = NodePath("../../HumanEnemy7")
 loop_between_segments = true
 lst_poi = Array[int]([2, 4])
@@ -3619,8 +3612,7 @@ curve = SubResource("Curve2D_eghww")
 [node name="Path2D2" type="Path2D" parent="lstPatrol/Patrol7"]
 curve = SubResource("Curve2D_uo48h")
 
-[node name="Patrol8" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
-script = ExtResource("12_tlapw")
+[node name="Patrol8" parent="lstPatrol" node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
 entity = NodePath("../../HumanEnemy8")
 loop_between_segments = true
 lst_poi = Array[int]([2, 3])
@@ -3631,16 +3623,14 @@ curve = SubResource("Curve2D_uo48h")
 [node name="Path2D" type="Path2D" parent="lstPatrol/Patrol8"]
 curve = SubResource("Curve2D_eghww")
 
-[node name="Patrol9" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
-script = ExtResource("12_tlapw")
+[node name="Patrol9" parent="lstPatrol" node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
 entity = NodePath("../../HumanEnemy9")
 lst_poi = Array[int]([8, 5])
 
 [node name="Path2D" type="Path2D" parent="lstPatrol/Patrol9"]
 curve = SubResource("Curve2D_t6513")
 
-[node name="Patrol10" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
-script = ExtResource("12_tlapw")
+[node name="Patrol10" parent="lstPatrol" node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
 entity = NodePath("../../HumanEnemy10")
 loop_between_segments = true
 lst_poi = Array[int]([5, 3, 7, 4, 1, 1, 1])
@@ -3668,8 +3658,7 @@ curve = SubResource("Curve2D_cadng")
 position = Vector2(4, -4)
 curve = SubResource("Curve2D_8g8yv")
 
-[node name="Patrol11" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
-script = ExtResource("12_tlapw")
+[node name="Patrol11" parent="lstPatrol" node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
 entity = NodePath("../../HumanEnemy11")
 loop_between_segments = true
 lst_poi = Array[int]([3, 7, 4, 1, 1, 1, 5])
@@ -3697,8 +3686,7 @@ curve = SubResource("Curve2D_8g8yv")
 [node name="1" type="Path2D" parent="lstPatrol/Patrol11"]
 curve = SubResource("Curve2D_4dtba")
 
-[node name="Patrol12" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
-script = ExtResource("12_tlapw")
+[node name="Patrol12" parent="lstPatrol" node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
 entity = NodePath("../../HumanEnemy12")
 loop_between_segments = true
 lst_poi = Array[int]([7, 4, 1, 1, 1, 5, 3])
@@ -3726,8 +3714,7 @@ curve = SubResource("Curve2D_4dtba")
 [node name="2" type="Path2D" parent="lstPatrol/Patrol12"]
 curve = SubResource("Curve2D_re118")
 
-[node name="Patrol13" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
-script = ExtResource("12_tlapw")
+[node name="Patrol13" parent="lstPatrol" node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
 entity = NodePath("../../HumanEnemy13")
 loop_between_segments = true
 lst_poi = Array[int]([4, 1, 1, 1, 5, 3, 7])
@@ -3755,8 +3742,7 @@ curve = SubResource("Curve2D_re118")
 [node name="3" type="Path2D" parent="lstPatrol/Patrol13"]
 curve = SubResource("Curve2D_0bb4j")
 
-[node name="Patrol14" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
-script = ExtResource("12_tlapw")
+[node name="Patrol14" parent="lstPatrol" node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
 entity = NodePath("../../HumanEnemy14")
 loop_between_segments = true
 lst_poi = Array[int]([1, 1, 1, 5, 3, 7, 4])
@@ -3784,8 +3770,7 @@ curve = SubResource("Curve2D_0bb4j")
 [node name="4" type="Path2D" parent="lstPatrol/Patrol14"]
 curve = SubResource("Curve2D_4l1m0")
 
-[node name="Patrol15" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
-script = ExtResource("12_tlapw")
+[node name="Patrol15" parent="lstPatrol" node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
 entity = NodePath("../../HumanEnemy15")
 loop_between_segments = true
 lst_poi = Array[int]([1, 1, 5, 3, 7, 4, 1])
@@ -3813,8 +3798,7 @@ curve = SubResource("Curve2D_4l1m0")
 [node name="5" type="Path2D" parent="lstPatrol/Patrol15"]
 curve = SubResource("Curve2D_elt33")
 
-[node name="Patrol16" type="Node2D" parent="lstPatrol" node_paths=PackedStringArray("entity")]
-script = ExtResource("12_tlapw")
+[node name="Patrol16" parent="lstPatrol" node_paths=PackedStringArray("entity") instance=ExtResource("5_i52hj")]
 entity = NodePath("../../HumanEnemy16")
 loop_between_segments = true
 lst_poi = Array[int]([1, 5, 3, 7, 4, 1, 1])
@@ -3864,7 +3848,7 @@ position = Vector2(331, 116)
 shape = SubResource("RectangleShape2D_h6ihe")
 
 [node name="PlayerStart" type="Marker2D" parent="."]
-position = Vector2(1513, 743)
+position = Vector2(1605, 606)
 
 [node name="VisionObstruer" type="Area2D" parent="."]
 collision_layer = 256
