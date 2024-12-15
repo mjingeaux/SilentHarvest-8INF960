@@ -15,6 +15,9 @@ var LAST_DIRECTION = 0
 func crouching_movement(direction: Vector2) -> void:
 	velocity.x = move_toward(velocity.x, direction.x * CROUCH_SPEED, CROUCH_ACCELERATION)
 	velocity.y = move_toward(velocity.y, direction.y * CROUCH_SPEED, CROUCH_ACCELERATION)
+	if (velocity.length() > CROUCH_SPEED):
+		velocity.x = move_toward(velocity.x, direction.x * CROUCH_SPEED, CROUCH_ACCELERATION)
+		velocity.y = move_toward(velocity.y, direction.y * CROUCH_SPEED, CROUCH_ACCELERATION)
 
 func crouching_animation() -> void:
 	if(velocity.x != 0 or velocity.y != 0):
@@ -75,7 +78,6 @@ func walking_animation() -> void:
 func _physics_process(delta: float) -> void: # switch to _process
 	var direction = Input.get_vector("left", "right","up","down")
 	if(Input.is_action_pressed("crouch")):
-		#move_and_slide()
 		crouching_movement(direction)
 		crouching_animation()
 		if (velocity != Vector2.ZERO):

@@ -10,7 +10,7 @@ var suspicion_jauge := 0. : set = _set_suspicion_jauge
 @export var reset_after_full_value := .3
 @export_range(0., 1., .1) var noise_sensibility := .5
 #time in seconds it would need to decrease suspicion from 1 to 0
-@export_range(.1, 10., .1) var suspicion_decay_time := 4.
+@export_range(.1, 10., .1) var suspicion_decay_time := 2.6
 
 @export var min_jauge_color : Color = Color("da863e")
 @export var max_jauge_color : Color = Color("a53030")

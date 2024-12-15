@@ -332,7 +332,7 @@ position = Vector2(0, -3)
 
 [node name="NoiseEmitter" type="Area2D" parent="."]
 script = ExtResource("3_mjrld")
-intensity = 1.0
+intensity = 1.4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoiseEmitter"]
 shape = SubResource("CircleShape2D_5owix")
@@ -340,7 +340,7 @@ debug_color = Color(0, 0.595, 0.7, 0.0392157)
 
 [node name="NoiseEmitterSneak" type="Area2D" parent="."]
 script = ExtResource("3_mjrld")
-intensity = 0.3
+intensity = 0.7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoiseEmitterSneak"]
 shape = SubResource("CircleShape2D_2wur0")
