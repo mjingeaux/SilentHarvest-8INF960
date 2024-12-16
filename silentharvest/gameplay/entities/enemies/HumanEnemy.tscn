@@ -365,7 +365,6 @@ script = ExtResource("1_nki0r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_i1cqg")
-disabled = true
 
 [node name="EnemyStateMachine" type="Node" parent="."]
 script = ExtResource("3_ym6pk")
@@ -467,6 +466,7 @@ texture_progress = ExtResource("11_qp3aq")
 [node name="NavigationAgent" type="NavigationAgent2D" parent="."]
 path_desired_distance = 3.0
 target_desired_distance = 5.0
+debug_enabled = true
 
 [node name="lost" type="Sprite2D" parent="."]
 position = Vector2(0, -40)
