@@ -32,6 +32,7 @@ var cardinal_direction : Vector2 = Vector2.DOWN #TODO to delete
 @onready var progress_bar : TextureProgressBar = $JaugeScaler/ProgressBar
 @onready var jauge_scaler: Node2D = $JaugeScaler
 @onready var inspect_timer: Timer = $EnemyStateMachine/Inspect/InspectTimer
+@onready var footsteps: AudioStreamPlayer2D = $footsteps
 
 var is_listening_noise := true
 var patrol_restart_pos : Vector2
@@ -52,7 +53,7 @@ func _ready():
 	$EnemyStateMachine/GotoInspect.navigation_agent = nav_agent
 	$"lost".visible = false
 	$"found".visible = false
-	animation_tree["parameters/Idle/blend_position"] = base_direction
+	
 	set_defualt_direction()
 	
 	
@@ -77,18 +78,22 @@ func set_direction(angle_degree : float):
 	vision_area.angle_target_degree = angle_degree
 	
 func set_defualt_direction():
+	animation_tree["parameters/Idle/blend_position"] = base_direction
 	set_direction(rad_to_deg(base_direction.angle()))
 	
 func update_animation_parameters():
 	if(velocity == Vector2.ZERO):
 		animation_tree["parameters/conditions/is_resting"] = true
 		animation_tree["parameters/conditions/is_moving"] = false
+		footsteps.stop()
 	else:
 		animation_tree["parameters/conditions/is_resting"] = false
 		animation_tree["parameters/conditions/is_moving"] = true
 
 		animation_tree["parameters/Chase/blend_position"] = velocity
 		animation_tree["parameters/Idle/blend_position"] = velocity
+		if (!footsteps.playing):
+			footsteps.play()
 
 func update_animation(anim : String, activate : bool) -> void:
 	if (activate):
@@ -160,7 +165,7 @@ func add_suspicious_point(global_pos : Vector2):
 
 func hear_noise(intensity : float, delta : float):
 	if (is_listening_noise):
-		suspicion_jauge += intensity * delta
+		suspicion_jauge += intensity * delta * (noise_sensibility + .5)
 
 func play_poi(poi_id : GlobalE.Epoi_type):
 	velocity = Vector2.ZERO
@@ -249,17 +254,21 @@ func play_poi(poi_id : GlobalE.Epoi_type):
 			await poi_timer.timeout
 			
 		GlobalE.Epoi_type.cw_full_turn:
+			vision_area.rotation_speed = vision_area.Erotation_speed.very_slow
 			for i in range(3):
 				vision_area.angle_target_degree += 120
 				await vision_area.rotation_completed
+			vision_area.rotation_speed = vision_area.Erotation_speed.default
 			poi_timer.start(.3)
 			await poi_timer.timeout
 			
 			
 		GlobalE.Epoi_type.ccw_full_turn:
+			vision_area.rotation_speed = vision_area.Erotation_speed.very_slow
 			for i in range(3):
 				vision_area.angle_target_degree -= 120
 				await vision_area.rotation_completed
+			vision_area.rotation_speed = vision_area.Erotation_speed.default
 			poi_timer.start(.3)
 			await poi_timer.timeout
 			

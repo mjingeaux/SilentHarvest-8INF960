@@ -146,6 +146,9 @@ func _on_entity_entering_patrol():
 	else:
 		entity.poi_timer.paused = false
 		
+	if (single_point_patrol):
+		entity.set_defualt_direction()
+		
 	
 func _on_entity_exiting_patrol():
 	pause()

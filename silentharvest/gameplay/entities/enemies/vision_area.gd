@@ -2,6 +2,7 @@ class_name VisionArea extends Area2D
 
 
 enum Erotation_speed{
+	very_slow,
 	slow,
 	medium,
 	fast,
@@ -13,6 +14,7 @@ signal player_entered()
 signal player_exited()
 
 # progress [0, 1] per second
+const VERY_SLOW_ROTATION 	= .4
 const SLOW_ROTATION 	= 1.3
 const MEDIUM_ROTATION 	= 2.5
 const FAST_ROTATION 	= 3.9
@@ -92,6 +94,9 @@ func _set_is_player_visible(val : bool):
 
 func _get_rotation_speed():
 	match rotation_speed:
+		Erotation_speed.very_slow:
+			return VERY_SLOW_ROTATION
+			
 		Erotation_speed.slow:
 			return SLOW_ROTATION
 			

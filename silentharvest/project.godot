@@ -13,6 +13,7 @@ config_version=5
 config/name="SilentHarvest"
 run/main_scene="res://gameplay/game_manager.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/image="res://assets/intro/title.png"
 config/icon="res://icon.svg"
 
 [autoload]

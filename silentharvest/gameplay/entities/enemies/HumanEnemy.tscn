@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cs1plvef6f8u1"]
+[gd_scene load_steps=47 format=3 uid="uid://cs1plvef6f8u1"]
 
 [ext_resource type="Script" path="res://gameplay/entities/enemies/enemy.gd" id="1_nki0r"]
 [ext_resource type="Script" path="res://gameplay/entities/enemies/enemy_state_machine.gd" id="3_ym6pk"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bu3prwkud736u" path="res://assets/sprites/jauge_inner.png" id="11_qp3aq"]
 [ext_resource type="Texture2D" uid="uid://c75xstld3rxgv" path="res://assets/sprites/expression1.png" id="12_3w2ba"]
 [ext_resource type="Texture2D" uid="uid://lew24t41vs8p" path="res://assets/sprites/expression2.png" id="13_cery1"]
+[ext_resource type="AudioStream" uid="uid://da7gdx0mimw37" path="res://assets/sounds/grass.ogg" id="16_0rl6p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i1cqg"]
 radius = 6.0
@@ -409,7 +410,6 @@ metadata/_edit_lock_ = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea"]
 position = Vector2(108, -10)
 polygon = PackedVector2Array(-98, 19, -98, 3, 14, -62, 29, -27, 34, 11, 27, 49, 10, 82)
-disabled = true
 
 [node name="RangeVisualizer" type="Sprite2D" parent="VisionArea/CollisionPolygon2D"]
 position = Vector2(-73, 11)
@@ -452,9 +452,12 @@ wait_time = 2.0
 one_shot = true
 
 [node name="JaugeScaler" type="Node2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0, -32)
 
 [node name="ProgressBar" type="TextureProgressBar" parent="JaugeScaler"]
+z_index = 1
+y_sort_enabled = true
 offset_left = -11.0
 offset_top = -1.0
 offset_right = 11.0
@@ -467,7 +470,6 @@ texture_progress = ExtResource("11_qp3aq")
 [node name="NavigationAgent" type="NavigationAgent2D" parent="."]
 path_desired_distance = 3.0
 target_desired_distance = 5.0
-debug_enabled = true
 
 [node name="lost" type="Sprite2D" parent="."]
 position = Vector2(0, -40)
@@ -485,6 +487,11 @@ root_node = NodePath("../AnimationPlayer")
 libraries = {
 "": SubResource("AnimationLibrary_ug7sl")
 }
+
+[node name="footsteps" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_0rl6p")
+max_distance = 485.0
+attenuation = 0.225313
 
 [connection signal="state_entered" from="EnemyStateMachine/Idle" to="." method="_on_idle_state_entered"]
 [connection signal="state_exited" from="EnemyStateMachine/Idle" to="." method="_on_idle_state_exited"]
