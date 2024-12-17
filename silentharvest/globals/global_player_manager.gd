@@ -1,5 +1,7 @@
 extends Node
 
+signal player_caught()
+
 const PLAYER = preload("res://gameplay/entities/player/Player.tscn")
 var INVENTORY_DATA : InventoryData = preload("res://assets/resources/player_inventory.tres")
 var ITEM_PICKUP = preload("res://gameplay/entities/items/item_pickup.tscn")
@@ -45,3 +47,6 @@ func clear_inventory() -> void:
 	for i in INVENTORY_DATA.slots.size():
 		INVENTORY_DATA.slots[i] = null
 	INVENTORY_DATA.score = 0
+	
+func emit_player_caught():
+	player_caught.emit()

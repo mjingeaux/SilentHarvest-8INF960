@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://fehr3p1frps7"]
+[gd_scene load_steps=55 format=4 uid="uid://fehr3p1frps7"]
 
 [ext_resource type="Script" path="res://gameplay/levels/level_1.gd" id="1_ehrcc"]
 [ext_resource type="TileSet" uid="uid://4m1whi8xvife" path="res://assets/sprites/tilesets/grass.tres" id="2_27k8j"]
@@ -18,6 +18,7 @@
 [ext_resource type="Resource" uid="uid://cx4nvlu2jdg42" path="res://assets/resources/eggplant.tres" id="15_i5goh"]
 [ext_resource type="PackedScene" uid="uid://dkr0n04a3fpii" path="res://gameplay/entities/props/CrateS.tscn" id="16_ffs3m"]
 [ext_resource type="PackedScene" uid="uid://cdc1c2b0bx2om" path="res://gameplay/entities/props/Well.tscn" id="17_nprw7"]
+[ext_resource type="PackedScene" uid="uid://elpfksyit0rt" path="res://gameplay/levels/camera_plan.tscn" id="19_5ph0w"]
 
 [sub_resource type="Curve2D" id="Curve2D_stvnh"]
 _data = {
@@ -154,6 +155,27 @@ size = Vector2(133, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_35rfi"]
 size = Vector2(67, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijb8t"]
+size = Vector2(403, 196.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjqyk"]
+size = Vector2(315.5, 188.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs3eq"]
+size = Vector2(332, 203)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlsc3"]
+size = Vector2(244, 172)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_45r1f"]
+size = Vector2(326, 100.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00c6h"]
+size = Vector2(392, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ck1u"]
+size = Vector2(275, 58)
 
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
@@ -4110,7 +4132,7 @@ position = Vector2(331, 116)
 shape = SubResource("RectangleShape2D_h6ihe")
 
 [node name="PlayerStart" type="Marker2D" parent="."]
-position = Vector2(1605, 606)
+position = Vector2(1605, 631)
 
 [node name="VisionObstruer" type="Area2D" parent="."]
 collision_layer = 256
@@ -4169,6 +4191,51 @@ metadata/_edit_lock_ = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionObstruer"]
 polygon = PackedVector2Array(482, 855, 491, 845, 566, 878, 559, 884)
 metadata/_edit_lock_ = true
+
+[node name="CameraPlans" parent="." instance=ExtResource("19_5ph0w")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraPlans"]
+position = Vector2(647, 313.75)
+shape = SubResource("RectangleShape2D_ijb8t")
+
+[node name="CameraPlans2" parent="." instance=ExtResource("19_5ph0w")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraPlans2"]
+position = Vector2(44, 752)
+shape = SubResource("RectangleShape2D_fjqyk")
+
+[node name="CameraPlans3" parent="." instance=ExtResource("19_5ph0w")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraPlans3"]
+position = Vector2(432, 1057)
+shape = SubResource("RectangleShape2D_hs3eq")
+
+[node name="CameraPlans4" parent="." instance=ExtResource("19_5ph0w")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraPlans4"]
+position = Vector2(823, 1103)
+shape = SubResource("RectangleShape2D_tlsc3")
+
+[node name="CameraPlans5" parent="." instance=ExtResource("19_5ph0w")]
+offset = Vector2(0, -70)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraPlans5"]
+position = Vector2(1775, 1008.13)
+shape = SubResource("RectangleShape2D_45r1f")
+
+[node name="CameraPlans7" parent="." instance=ExtResource("19_5ph0w")]
+offset = Vector2(0, 80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraPlans7"]
+position = Vector2(1667, 808.5)
+shape = SubResource("RectangleShape2D_00c6h")
+
+[node name="CameraPlans6" parent="." instance=ExtResource("19_5ph0w")]
+offset = Vector2(0, -120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraPlans6"]
+position = Vector2(1457.5, 500)
+shape = SubResource("RectangleShape2D_4ck1u")
 
 [connection signal="body_entered" from="EndZone" to="." method="_on_end_zone_body_entered"]
 [connection signal="body_entered" from="TutoZone" to="." method="_on_tuto_zone_body_entered"]

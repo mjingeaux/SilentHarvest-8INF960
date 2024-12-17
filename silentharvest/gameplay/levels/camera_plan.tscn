@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://elpfksyit0rt"]
+
+[ext_resource type="Script" path="res://gameplay/levels/camera_plans.gd" id="1_iypre"]
+
+[node name="CameraPlans" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_iypre")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

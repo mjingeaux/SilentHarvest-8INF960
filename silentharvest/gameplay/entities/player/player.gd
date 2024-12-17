@@ -11,6 +11,7 @@ var LAST_DIRECTION = 0
 @onready var grass_sound: AudioStreamPlayer = $GrassSound
 @onready var grass_sound_slow: AudioStreamPlayer = $GrassSoundSlow
 @onready var sound_drop_item: AudioStreamPlayer = $DropItem
+@onready var camera_2d: Camera2D = $Camera2D
 
 func crouching_movement(direction: Vector2) -> void:
 	velocity.x = move_toward(velocity.x, direction.x * CROUCH_SPEED, CROUCH_ACCELERATION)

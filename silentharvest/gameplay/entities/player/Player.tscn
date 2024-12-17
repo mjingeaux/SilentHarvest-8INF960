@@ -298,7 +298,7 @@ radius = 111.113
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
-collision_layer = 257
+collision_layer = 259
 script = ExtResource("1_44c6v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -336,6 +336,7 @@ intensity = 1.4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoiseEmitter"]
 shape = SubResource("CircleShape2D_5owix")
+disabled = true
 debug_color = Color(0, 0.595, 0.7, 0.0392157)
 
 [node name="NoiseEmitterSneak" type="Area2D" parent="."]
@@ -344,6 +345,7 @@ intensity = 0.7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoiseEmitterSneak"]
 shape = SubResource("CircleShape2D_2wur0")
+disabled = true
 debug_color = Color(0, 0.595, 0.7, 0.0392157)
 
 [node name="GrassSound" type="AudioStreamPlayer" parent="."]
