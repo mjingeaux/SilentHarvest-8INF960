@@ -14,6 +14,7 @@ var transition_start : Vector2
 var camera : Camera2D
 
 @export var offset := Vector2(0, 0)
+@export var invert_one_way := false
 
 
 
@@ -71,6 +72,9 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		if (offset != Vector2.ZERO):
 			var area_direction = offset.normalized().snappedf(1.)
+			if (invert_one_way):
+				area_direction = -area_direction
+			
 			var body_direction = body.velocity.normalized().snappedf(1.)
 			if 	(area_direction.x == 0 && body_direction.y == -area_direction.y) ||	(
 				area_direction.y == 0 && body_direction.x == -area_direction.x):

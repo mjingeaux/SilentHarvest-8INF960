@@ -39,6 +39,7 @@ func _ready() -> void:
 
 func _on_title_timer_timeout() -> void:
 	title_fading_in = true
+	btn_newgame.grab_focus()
 	
 
 func _on_menu_timer_timeout() -> void:

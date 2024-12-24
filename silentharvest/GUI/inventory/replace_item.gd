@@ -38,7 +38,7 @@ func pause_game() -> void:
 	is_paused = true
 	show()
 	shown.emit()
-	pass
+	inventory.grab_focus()
 
 func resume_game() -> void:
 	get_tree().paused = false

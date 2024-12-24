@@ -57,10 +57,11 @@ func load_level(level_nb : int) -> void:
 		new_level.tuto_entered = false
 
 func switch_music(from : AudioStreamPlayer, to : AudioStreamPlayer, transition := 1.):
+	var target_volume = to.volume_db
 	to.play()
 	to.volume_db = -80
 	var fadein = get_tree().create_tween()
-	fadein.tween_property(to, "volume_db", 0, transition)
+	fadein.tween_property(to, "volume_db", target_volume, transition)
 	
 	var fadeout = get_tree().create_tween()
 	fadeout.tween_property(from, "volume_db", -80, transition)

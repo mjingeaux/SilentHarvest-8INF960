@@ -5,6 +5,7 @@ signal hidden
 
 @onready var scorelabel: Label = $HBoxContainer/ScoreLabel
 @onready var hover_sound: AudioStreamPlayer = $AudioStreamPlayer
+@onready var btn_reprendre: Button = $GridContainer/Btn_Reprendre
 
 var is_paused : bool = false
 
@@ -19,6 +20,7 @@ func pause_game() -> void:
 	show()
 	shown.emit()
 	AudioServer.set_bus_effect_enabled(1, 0, true)
+	btn_reprendre.grab_focus()
 
 func resume_game() -> void:
 	get_tree().paused = false
