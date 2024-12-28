@@ -93,6 +93,8 @@ func _on_body_entered(body: Node2D) -> void:
 			var size = shape.size
 			pos_target = collision_shape.global_position + offset
 			transition_start = camera.global_position
+			var zoom_t = get_tree().create_tween()
+			zoom_t.tween_property(camera, "zoom", Vector2(2, 2), 1)
 			#if (size.x >= size.y):
 				#width_target = size.x
 				#height_target = -1.

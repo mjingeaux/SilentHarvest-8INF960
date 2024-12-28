@@ -2,6 +2,7 @@ class_name GameManager extends Node
 
 @export var lst_levels : Array[PackedScene]
 
+const DEV_MODE := true
 var active_level : BaseLevel
 var active_level_id : int
 var can_player_loose := true
@@ -14,8 +15,12 @@ var first_attempt := true
 func _ready() -> void:
 	setup_screen()
 	process_mode = PROCESS_MODE_ALWAYS
-	#load_level(5)
-	load_level(5)
+	if (DEV_MODE):
+		load_level(0)
+		var bus_idx = AudioServer.get_bus_index("Master")
+		AudioServer.set_bus_mute(bus_idx, true)
+	else:
+		load_level(5)
 
 func load_level(level_nb : int) -> void:
 	if (!can_player_loose && level_nb == 2):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://jfq8hpqhtkju"]
+[gd_scene load_steps=14 format=3 uid="uid://jfq8hpqhtkju"]
 
 [ext_resource type="Script" path="res://gameplay/levels/controls.gd" id="1_ajlam"]
 [ext_resource type="Texture2D" uid="uid://c8m7hga3dfnjj" path="res://assets/keyboard_arrows.png" id="2_vpnbt"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dhwug5n7wvn8b" path="res://addons/controller_icons/assets/key/0.png" id="6_hn5jw"]
 [ext_resource type="Texture2D" uid="uid://b8vuy7l8npt6w" path="res://addons/controller_icons/assets/mouse/left.png" id="7_ncptq"]
 [ext_resource type="AudioStream" uid="uid://brqrq42tpm7n5" path="res://assets/sounds/menu_hover.wav" id="8_hxrrr"]
-[ext_resource type="Texture2D" uid="uid://b18x6qu4n8w17" path="res://assets/intro/frame4.jpg" id="9_8xpck"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1u7ug"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -233,7 +232,6 @@ offset_top = -168.0
 offset_right = 520.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("9_8xpck")
 expand_mode = 1
 stretch_mode = 4
 

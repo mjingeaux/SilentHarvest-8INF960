@@ -338,6 +338,7 @@ intensity = 1.4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoiseEmitter"]
 shape = SubResource("CircleShape2D_5owix")
+disabled = true
 debug_color = Color(0, 0.595, 0.7, 0.0392157)
 
 [node name="NoiseEmitterSneak" type="Area2D" parent="."]
