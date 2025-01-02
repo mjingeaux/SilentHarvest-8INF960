@@ -347,6 +347,7 @@ intensity = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoiseEmitterSneak"]
 shape = SubResource("CircleShape2D_2wur0")
+disabled = true
 debug_color = Color(0, 0.595, 0.7, 0.0392157)
 
 [node name="GrassSound" type="AudioStreamPlayer" parent="."]

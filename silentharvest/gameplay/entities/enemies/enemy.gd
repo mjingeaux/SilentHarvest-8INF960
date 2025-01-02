@@ -20,6 +20,10 @@ var suspicion_jauge := 0. : set = _set_suspicion_jauge
 const DIR_4 = [Vector2.RIGHT,Vector2.DOWN,Vector2.LEFT,Vector2.UP]
 var cardinal_direction : Vector2 = Vector2.DOWN #TODO to delete
 
+# indicates how many tall grass area the enemy is colliding with
+# used as a c style boolean
+var tall_grass_counter := 0 
+
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D 
 @onready var state_machine : EnemyStateMachine = $EnemyStateMachine

@@ -4,6 +4,7 @@ const SPEED = 150
 const ACCELERATION = 15
 const CROUCH_SPEED = 40
 const CROUCH_ACCELERATION = 4
+const TALL_GRASS_SPEED_RATIO = .4
 var LAST_DIRECTION = 0
 @onready var animation = $AnimationPlayer
 @onready var noise_emitter = $NoiseEmitter
@@ -13,12 +14,17 @@ var LAST_DIRECTION = 0
 @onready var sound_drop_item: AudioStreamPlayer = $DropItem
 @onready var camera_2d: Camera2D = $Camera2D
 
+# indicates how many tall grass area the player is colliding with
+# used as a c style boolean
+var tall_grass_counter := 0 
+
 func crouching_movement(direction: Vector2) -> void:
-	velocity.x = move_toward(velocity.x, direction.x * CROUCH_SPEED, CROUCH_ACCELERATION)
-	velocity.y = move_toward(velocity.y, direction.y * CROUCH_SPEED, CROUCH_ACCELERATION)
+	var max_speed = CROUCH_SPEED * (TALL_GRASS_SPEED_RATIO if tall_grass_counter else 1.)
+	velocity.x = move_toward(velocity.x, direction.x * max_speed, CROUCH_ACCELERATION)
+	velocity.y = move_toward(velocity.y, direction.y * max_speed, CROUCH_ACCELERATION)
 	if (velocity.length() > CROUCH_SPEED):
-		velocity.x = move_toward(velocity.x, direction.x * CROUCH_SPEED, CROUCH_ACCELERATION)
-		velocity.y = move_toward(velocity.y, direction.y * CROUCH_SPEED, CROUCH_ACCELERATION)
+		velocity.x = move_toward(velocity.x, direction.x * max_speed, CROUCH_ACCELERATION)
+		velocity.y = move_toward(velocity.y, direction.y * max_speed, CROUCH_ACCELERATION)
 
 func crouching_animation() -> void:
 	if(velocity.x != 0 or velocity.y != 0):
@@ -47,8 +53,9 @@ func crouching_animation() -> void:
 			animation.play("crouch_idle_up")
 
 func walking_movement(direction: Vector2) -> void:
-	velocity.x = move_toward(velocity.x, direction.x * SPEED, ACCELERATION)
-	velocity.y = move_toward(velocity.y, direction.y * SPEED, ACCELERATION)
+	var max_speed = SPEED * (TALL_GRASS_SPEED_RATIO if tall_grass_counter else 1.)
+	velocity.x = move_toward(velocity.x, direction.x * max_speed, ACCELERATION)
+	velocity.y = move_toward(velocity.y, direction.y * max_speed, ACCELERATION)
 
 func walking_animation() -> void:
 	if(velocity.x != 0 or velocity.y != 0):

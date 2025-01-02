@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw0n4msqu5gy8"]
+
+[ext_resource type="Texture2D" uid="uid://b1r4mrbngelrq" path="res://assets/sprites/tall_grass.png" id="1_0julc"]
+[ext_resource type="Script" path="res://gameplay/entities/hideout/tall_grass.gd" id="1_gj467"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3akx"]
+size = Vector2(36, 28)
+
+[node name="TallGrass" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_gj467")
+
+[node name="layer4" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("1_0julc")
+region_enabled = true
+region_rect = Rect2(144, 0, 48, 64)
+
+[node name="layer3" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 7)
+texture = ExtResource("1_0julc")
+offset = Vector2(0, -7)
+region_enabled = true
+region_rect = Rect2(96, 0, 48, 64)
+
+[node name="layer2" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 14)
+texture = ExtResource("1_0julc")
+offset = Vector2(0, -14)
+region_enabled = true
+region_rect = Rect2(48, 0, 48, 64)
+
+[node name="layer1" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 21)
+skew = 0.0436332
+texture = ExtResource("1_0julc")
+offset = Vector2(0, -21)
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 64)
+
+[node name="Area2D" type="Area2D" parent="."]
+z_as_relative = false
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+modulate = Color(1, 1, 1, 0.219608)
+z_index = 1
+z_as_relative = false
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_p3akx")
+
+[node name="WindTimer" type="Timer" parent="."]
+wait_time = 1.832
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="WindTimer" to="." method="_on_wind_timer_timeout"]
