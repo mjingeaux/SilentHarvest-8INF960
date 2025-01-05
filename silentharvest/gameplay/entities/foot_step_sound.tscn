@@ -1,0 +1,46 @@
+[gd_scene load_steps=11 format=3 uid="uid://bxm162k3qmx8p"]
+
+[ext_resource type="Script" path="res://gameplay/entities/foot_step_sound.gd" id="1_dplg8"]
+[ext_resource type="AudioStream" uid="uid://da7gdx0mimw37" path="res://assets/sounds/grass.ogg" id="1_l88kh"]
+[ext_resource type="AudioStream" uid="uid://bcb403ooiuvsu" path="res://assets/sounds/grass_slow.ogg" id="2_ki3ta"]
+[ext_resource type="AudioStream" uid="uid://ck4joa7a07173" path="res://assets/sounds/dirt.ogg" id="3_mbsnl"]
+[ext_resource type="AudioStream" uid="uid://bwmw4utfas4ba" path="res://assets/sounds/dirt_slow/1.ogg" id="4_gyr7d"]
+[ext_resource type="AudioStream" uid="uid://dak5g71nxishh" path="res://assets/sounds/dirt_slow/2.ogg" id="5_svpom"]
+[ext_resource type="AudioStream" uid="uid://dwpjijyt2704p" path="res://assets/sounds/dirt_slow/3.ogg" id="6_snhxg"]
+[ext_resource type="AudioStream" uid="uid://0holnt2wlj1f" path="res://assets/sounds/dirt_slow/4.ogg" id="7_gaajd"]
+[ext_resource type="AudioStream" uid="uid://bxqjwupu7t62l" path="res://assets/sounds/dirt_slow/5.ogg" id="8_bgsm4"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l3dmf"]
+random_volume_offset_db = 0.48
+streams_count = 5
+stream_0/stream = ExtResource("4_gyr7d")
+stream_1/stream = ExtResource("5_svpom")
+stream_2/stream = ExtResource("6_snhxg")
+stream_3/stream = ExtResource("7_gaajd")
+stream_4/stream = ExtResource("8_bgsm4")
+
+[node name="FootStepSound" type="Node2D"]
+script = ExtResource("1_dplg8")
+
+[node name="GrassSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_l88kh")
+volume_db = 4.0
+max_distance = 485.0
+parameters/looping = true
+
+[node name="GrassSoundSlow" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ki3ta")
+volume_db = 2.0
+max_distance = 485.0
+parameters/looping = false
+
+[node name="DirtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_mbsnl")
+volume_db = 6.427
+max_distance = 485.0
+parameters/looping = true
+
+[node name="DirtSoundSlow" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_l3dmf")
+volume_db = -3.506
+max_distance = 485.0

@@ -104,6 +104,9 @@ bus = &"Music"
 playback_type = 1
 parameters/looping = true
 
+[connection signal="focus_entered" from="CanvasLayer/MenuOptions/Btn_newgame" to="." method="_on_btn_newgame_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/MenuOptions/Btn_newgame" to="." method="_on_btn_newgame_mouse_entered"]
+[connection signal="focus_entered" from="CanvasLayer/MenuOptions/Btn_commandes" to="." method="_on_btn_commandes_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/MenuOptions/Btn_commandes" to="." method="_on_btn_commandes_mouse_entered"]
+[connection signal="focus_entered" from="CanvasLayer/MenuOptions/Btn_quitter" to="." method="_on_btn_quitter_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/MenuOptions/Btn_quitter" to="." method="_on_btn_quitter_mouse_entered"]

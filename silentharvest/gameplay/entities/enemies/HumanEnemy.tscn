@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bu3prwkud736u" path="res://assets/sprites/jauge_inner.png" id="11_qp3aq"]
 [ext_resource type="Texture2D" uid="uid://c75xstld3rxgv" path="res://assets/sprites/expression1.png" id="12_3w2ba"]
 [ext_resource type="Texture2D" uid="uid://lew24t41vs8p" path="res://assets/sprites/expression2.png" id="13_cery1"]
-[ext_resource type="AudioStream" uid="uid://da7gdx0mimw37" path="res://assets/sounds/grass.ogg" id="16_0rl6p"]
+[ext_resource type="PackedScene" uid="uid://bxm162k3qmx8p" path="res://gameplay/entities/foot_step_sound.tscn" id="17_ohhg8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i1cqg"]
 radius = 6.0
@@ -488,10 +488,7 @@ libraries = {
 "": SubResource("AnimationLibrary_ug7sl")
 }
 
-[node name="footsteps" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("16_0rl6p")
-max_distance = 485.0
-attenuation = 0.225313
+[node name="FootStepSound" parent="." instance=ExtResource("17_ohhg8")]
 
 [connection signal="state_entered" from="EnemyStateMachine/Idle" to="." method="_on_idle_state_entered"]
 [connection signal="state_exited" from="EnemyStateMachine/Idle" to="." method="_on_idle_state_exited"]

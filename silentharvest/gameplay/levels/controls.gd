@@ -6,6 +6,7 @@ class_name Controls extends BaseLevel
 func _ready() -> void:
 	Inventory_Hud.hide()
 	btn_retour.pressed.connect(return_to_start)
+	btn_retour.grab_focus()
 	
 func return_to_start() -> void:
 	get_node("/root/GameManager").load_level(3)

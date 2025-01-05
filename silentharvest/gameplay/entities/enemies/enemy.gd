@@ -16,6 +16,8 @@ var suspicion_jauge := 0. : set = _set_suspicion_jauge
 @export var max_jauge_color : Color = Color("a53030")
 
 @export var base_direction := Vector2(1, 0)
+@export_range(.1, 2., .1) var back_to_patrol_speed := 1.
+@export_range(0., 2., .1) var step_volume := 1.
 
 const DIR_4 = [Vector2.RIGHT,Vector2.DOWN,Vector2.LEFT,Vector2.UP]
 var cardinal_direction : Vector2 = Vector2.DOWN #TODO to delete
@@ -33,10 +35,11 @@ var tall_grass_counter := 0
 @onready var sus_timer : Timer = $SuspicionTimer
 @onready var poi_timer: Timer = $PoiTimer
 @onready var goto_inspect_state : EnemyStateGoto = $EnemyStateMachine/GotoInspect
+@onready var goto_patrol: EnemyStateGoto = $EnemyStateMachine/GotoPatrol
 @onready var progress_bar : TextureProgressBar = $JaugeScaler/ProgressBar
 @onready var jauge_scaler: Node2D = $JaugeScaler
 @onready var inspect_timer: Timer = $EnemyStateMachine/Inspect/InspectTimer
-@onready var footsteps: AudioStreamPlayer2D = $footsteps
+@onready var foot_step_sound: FootStepSound = $FootStepSound
 
 var is_listening_noise := true
 var patrol_restart_pos : Vector2
@@ -51,6 +54,7 @@ func _ready():
 	sus_timer.timeout.connect(func () : _is_suspicion_decaying = true)
 	
 	goto_inspect_state.state_exited.connect(func (): lst_suspicious_point.pop_front())
+	goto_patrol.goto_speed *= back_to_patrol_speed
 	var nav_agent = $NavigationAgent
 	$EnemyStateMachine/Chase.navigation_agent = nav_agent
 	$EnemyStateMachine/GotoPatrol.navigation_agent = nav_agent
@@ -59,7 +63,7 @@ func _ready():
 	$"found".visible = false
 	
 	set_defualt_direction()
-	
+	foot_step_sound.overall_volume = step_volume
 	
 func _process(delta):
 	update_animation_parameters()
@@ -89,15 +93,14 @@ func update_animation_parameters():
 	if(velocity == Vector2.ZERO):
 		animation_tree["parameters/conditions/is_resting"] = true
 		animation_tree["parameters/conditions/is_moving"] = false
-		footsteps.stop()
+		foot_step_sound.stop()
 	else:
 		animation_tree["parameters/conditions/is_resting"] = false
 		animation_tree["parameters/conditions/is_moving"] = true
 
 		animation_tree["parameters/Chase/blend_position"] = velocity
 		animation_tree["parameters/Idle/blend_position"] = velocity
-		if (!footsteps.playing):
-			footsteps.play()
+		foot_step_sound.play()
 
 func update_animation(anim : String, activate : bool) -> void:
 	if (activate):

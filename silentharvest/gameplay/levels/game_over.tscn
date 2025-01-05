@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://87g4wsndngl3"]
+[gd_scene load_steps=3 format=3 uid="uid://87g4wsndngl3"]
 
 [ext_resource type="Script" path="res://gameplay/levels/game_over.gd" id="1_vnmm8"]
+[ext_resource type="AudioStream" uid="uid://brqrq42tpm7n5" path="res://assets/sounds/menu_hover.wav" id="2_mndwn"]
 
 [node name="GameOver" type="Node2D"]
 script = ExtResource("1_vnmm8")
@@ -80,3 +81,11 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.000693898, 0.000693898, 0.000693898, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mndwn")
+
+[connection signal="focus_entered" from="CanvasLayer/VBoxContainer2/Btn_Recommencer" to="." method="_on_btn_recommencer_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer2/Btn_Recommencer" to="." method="_on_btn_recommencer_mouse_entered"]
+[connection signal="focus_entered" from="CanvasLayer/VBoxContainer2/Btn_Quitter" to="." method="_on_btn_quitter_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer2/Btn_Quitter" to="." method="_on_btn_quitter_mouse_entered"]

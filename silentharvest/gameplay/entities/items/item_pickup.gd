@@ -8,9 +8,10 @@ class_name ItemPickup extends Node2D
 var is_player_in_area : bool = false
 var picked_up := false
 
-func _input(event) -> void:
+func _input(event : InputEvent) -> void:
 	if is_player_in_area and event.is_action_pressed("collect"):
 		if item_data && picked_up == false:
+			get_viewport().set_input_as_handled()
 			PlayerManager.INVENTORY_DATA.score = PlayerManager.INVENTORY_DATA.add_item(item_data)
 			item_picked_up()
 			Pickup_Key.hide()

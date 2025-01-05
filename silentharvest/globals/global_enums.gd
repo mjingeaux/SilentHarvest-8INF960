@@ -36,3 +36,8 @@ enum Epoi_type{
 	cw_full_turn,
 	ccw_full_turn,
 }
+
+enum Esoil_type{
+	grass = 0,
+	dirt = 1
+}

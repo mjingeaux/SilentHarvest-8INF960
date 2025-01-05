@@ -36,6 +36,8 @@ func _ready() -> void:
 		menu_timer.timeout.connect(_on_menu_timer_timeout)
 		title_timer.start()
 		menu_timer.start()
+	else:
+		btn_newgame.grab_focus()
 
 func _on_title_timer_timeout() -> void:
 	title_fading_in = true

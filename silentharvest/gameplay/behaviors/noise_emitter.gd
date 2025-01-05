@@ -16,12 +16,12 @@ func _ready():
 	else:
 		printerr("La shape associé au noise emitter n'est pas de type CircleShape2D")
 	
-func noise_update(delta : float):
+func noise_update(delta : float, mult := 1.):
 	for recepter in _lst_recepter_in_range:
 		var dist := 1. - (recepter.global_position - global_position).length() / zone_radius
 		dist *= dist #change distance impact to quadratic
 		
-		recepter.hear_noise(dist * intensity, delta)
+		recepter.hear_noise(dist * intensity * mult, delta)
 	
 func _on_body_entered(body : Node2D):
 	if (body is Enemy):

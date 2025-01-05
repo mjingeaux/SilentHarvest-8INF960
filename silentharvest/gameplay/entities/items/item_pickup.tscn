@@ -18,3 +18,4 @@ scale = Vector2(0.7, 0.7)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_ysfbk")
+volume_db = 8.225

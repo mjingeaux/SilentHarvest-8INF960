@@ -11,7 +11,6 @@ func _ready() -> void:
 	PlayerManager.clear_inventory()
 	Inventory_Hud.show()
 
-
 func _on_tuto_zone_body_entered(body: Node2D) -> void:
 	if (!tuto_entered && body is Player):
 		tuto_entered = true

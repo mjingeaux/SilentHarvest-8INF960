@@ -117,7 +117,9 @@ pause={
 
 [layer_names]
 
+2d_physics/layer_1="Entities"
 2d_physics/layer_2="CameraPlan"
+2d_physics/layer_3="Player"
 2d_physics/layer_9="Hinder Visibility"
 
 [rendering]

@@ -2,7 +2,7 @@ class_name GameManager extends Node
 
 @export var lst_levels : Array[PackedScene]
 
-const DEV_MODE := true
+const DEV_MODE := false
 var active_level : BaseLevel
 var active_level_id : int
 var can_player_loose := true
@@ -18,7 +18,7 @@ func _ready() -> void:
 	if (DEV_MODE):
 		load_level(0)
 		var bus_idx = AudioServer.get_bus_index("Master")
-		AudioServer.set_bus_mute(bus_idx, true)
+		#AudioServer.set_bus_mute(bus_idx, true)
 	else:
 		load_level(5)
 
@@ -49,6 +49,7 @@ func load_level(level_nb : int) -> void:
 	if (level_nb == 0):
 		PlayerManager.add_player_to_scene(new_level)
 		switch_music(intro_music, game_music, 4)
+		PlayerManager.player.level = new_level
 		
 		
 	get_tree().root.add_child.call_deferred(new_level)

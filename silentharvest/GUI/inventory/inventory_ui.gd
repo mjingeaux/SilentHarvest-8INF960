@@ -1,4 +1,4 @@
-class_name InventoryUI extends Control
+class_name InventoryUI extends GridContainer
 
 
 

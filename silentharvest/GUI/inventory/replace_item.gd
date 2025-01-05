@@ -32,6 +32,7 @@ func show_menu(item_to_add : ItemData):
 		ITEM_TO_ADD.replace_item(item_to_add,0,true)
 	new_item.update_inventory()
 	pause_game()
+	inventory.get_child(0).grab_focus()
 
 func pause_game() -> void:
 	get_tree().paused = true
