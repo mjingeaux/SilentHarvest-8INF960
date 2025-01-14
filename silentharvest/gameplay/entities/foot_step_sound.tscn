@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://bxm162k3qmx8p"]
 
 [ext_resource type="Script" path="res://gameplay/entities/foot_step_sound.gd" id="1_dplg8"]
-[ext_resource type="AudioStream" uid="uid://da7gdx0mimw37" path="res://assets/sounds/grass.ogg" id="1_l88kh"]
-[ext_resource type="AudioStream" uid="uid://bcb403ooiuvsu" path="res://assets/sounds/grass_slow.ogg" id="2_ki3ta"]
+[ext_resource type="AudioStream" uid="uid://dgpe0mr5wstq7" path="res://assets/sounds/grass.mp3" id="2_j2qmp"]
 [ext_resource type="AudioStream" uid="uid://ck4joa7a07173" path="res://assets/sounds/dirt.ogg" id="3_mbsnl"]
+[ext_resource type="AudioStream" uid="uid://doyf6iplaygbe" path="res://assets/sounds/grass_slow.mp3" id="3_nley3"]
 [ext_resource type="AudioStream" uid="uid://bwmw4utfas4ba" path="res://assets/sounds/dirt_slow/1.ogg" id="4_gyr7d"]
 [ext_resource type="AudioStream" uid="uid://dak5g71nxishh" path="res://assets/sounds/dirt_slow/2.ogg" id="5_svpom"]
 [ext_resource type="AudioStream" uid="uid://dwpjijyt2704p" path="res://assets/sounds/dirt_slow/3.ogg" id="6_snhxg"]
@@ -23,20 +23,20 @@ stream_4/stream = ExtResource("8_bgsm4")
 script = ExtResource("1_dplg8")
 
 [node name="GrassSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("1_l88kh")
+stream = ExtResource("2_j2qmp")
 volume_db = 4.0
 max_distance = 485.0
 parameters/looping = true
 
 [node name="GrassSoundSlow" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_ki3ta")
+stream = ExtResource("3_nley3")
 volume_db = 2.0
 max_distance = 485.0
 parameters/looping = false
 
 [node name="DirtSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_mbsnl")
-volume_db = 6.427
+volume_db = 5.0
 max_distance = 485.0
 parameters/looping = true
 

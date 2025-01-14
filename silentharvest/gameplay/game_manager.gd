@@ -54,7 +54,6 @@ func load_level(level_nb : int) -> void:
 		
 	get_tree().root.add_child.call_deferred(new_level)
 	
-	
 	active_level = new_level
 	PlayerManager.scene_id = level_nb
 		

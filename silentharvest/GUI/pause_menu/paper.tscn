@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://okmp2onui3jq"]
+
+[ext_resource type="Texture2D" uid="uid://w8lwwueb3aqp" path="res://assets/sprites/paper_scene.png" id="1_kei5v"]
+[ext_resource type="Script" path="res://GUI/pause_menu/paper.gd" id="1_kjifb"]
+[ext_resource type="AudioStream" uid="uid://brqrq42tpm7n5" path="res://assets/sounds/menu_hover.wav" id="3_dge62"]
+[ext_resource type="AudioStream" uid="uid://du3nk4ginqw7y" path="res://assets/sounds/paper.wav" id="4_s12o2"]
+
+[node name="Paper_hud" type="CanvasLayer"]
+script = ExtResource("1_kjifb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dge62")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_kei5v")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="Control/TextureRect"]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 230.0
+offset_right = 604.0
+offset_bottom = 270.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "5
+"
+
+[node name="Label2" type="Label" parent="Control/TextureRect"]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 289.0
+offset_right = 604.0
+offset_bottom = 329.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "10
+"
+
+[node name="Label3" type="Label" parent="Control/TextureRect"]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 356.0
+offset_right = 604.0
+offset_bottom = 396.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "15
+"
+
+[node name="Label4" type="Label" parent="Control/TextureRect"]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 422.0
+offset_right = 604.0
+offset_bottom = 462.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "25"
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.038
+anchor_top = 0.789
+anchor_right = 0.232
+anchor_bottom = 0.932
+grow_horizontal = 2
+grow_vertical = 2
+text = "Retour"
+
+[node name="pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_s12o2")
+volume_db = -0.585
+
+[connection signal="mouse_entered" from="Control/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

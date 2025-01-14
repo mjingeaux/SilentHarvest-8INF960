@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://uvhsuj7uy84r"]
+
+[ext_resource type="Script" path="res://gameplay/entities/items/paper_item.gd" id="1_2fiuc"]
+[ext_resource type="Texture2D" uid="uid://br0iwal8iusw4" path="res://assets/sprites/items/item_paper.png" id="2_3bfpa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ase2x"]
+radius = 15.0
+
+[node name="Paper_item" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_2fiuc")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ase2x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("2_3bfpa")
+offset = Vector2(0, -28)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

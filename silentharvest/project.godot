@@ -24,6 +24,7 @@ Pause_Menu="*res://GUI/pause_menu/pause_menu.tscn"
 Replace_Item="*res://GUI/inventory/replace_item.tscn"
 Pickup_Key="*res://GUI/HUD/pickup_key.tscn"
 Inventory_Hud="*res://GUI/HUD/inventory_hud.tscn"
+Paper_hud="*res://GUI/pause_menu/paper.tscn"
 
 [display]
 
